@@ -32,6 +32,9 @@ public class CoreBuilder : MonoBehaviour
             // Add state and selecting key
             TSSState stateState = core.AddState(newStateObject, (i + 1).ToString());
             stateState.AddSelectionKey((KeyCode)((int)KeyCode.Alpha1 + i));
+
+            // For update buttens interactable when state was selected by keyboard
+            stateState.onOpen.AddListener(UpdateCurrentStateID);
         }
 
         // Set first core state as default. Default state will be selected and activated on start.
@@ -54,9 +57,8 @@ public class CoreBuilder : MonoBehaviour
         // New state ID
         currentStateID += stateIDoffset;
 
-        // Update navigation buttons interactable
-        prevBtn.interactable = !(currentStateID == 0);
-        nextBrn.interactable = !(currentStateID == stateCount - 1);
+        // Buttons interactable
+        UpdateButtons();
 
         // Select core state
         // You can use any of syntax:
@@ -64,5 +66,19 @@ public class CoreBuilder : MonoBehaviour
         // core.SelectState((currentStateID + 1).ToString());
         // core.GetState((currentStateID + 1).ToString()).Select();
         core[currentStateID].Select();
+    }
+
+    // Update navigation buttons interactable
+    public void UpdateButtons()
+    {
+        prevBtn.interactable = !(currentStateID == 0);
+        nextBrn.interactable = !(currentStateID == stateCount - 1);
+    }
+
+    // Update currentStateID by selected core state
+    public void UpdateCurrentStateID()
+    {
+        currentStateID = core.currentState.ID;
+        UpdateButtons();
     }
 }

@@ -187,6 +187,11 @@ namespace TSS
             if (states.Contains(state)) states.Remove(state);
         }
 
+        public int GetStateID(TSSState state)
+        {
+            return states.FindIndex(s => s == state);
+        }
+
         #endregion
     }
     
@@ -199,6 +204,9 @@ namespace TSS
 
         /// <summary>State identifier</summary>
         public string name = "new state";
+
+        /// <summary>State index</summary>
+        public int ID { get { return core.GetStateID(this); } }
 
         /// <summary>State marked as default</summary>
         public bool isDefault;
@@ -322,7 +330,6 @@ namespace TSS
         {
             core.SetDefaultState(this);
         }
-
 
         public TSSState(TSSCore core)
         {
