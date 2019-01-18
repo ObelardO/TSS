@@ -269,7 +269,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
@@ -852,7 +852,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
@@ -2205,7 +2205,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
@@ -2858,8 +2858,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
-  childStateCounts: 00000000000000000000000000000000
+  _state: 0
+  childStateCounts: 02000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
   childItems:
@@ -3066,7 +3066,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
@@ -3683,7 +3683,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
