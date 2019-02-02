@@ -39,7 +39,8 @@ namespace TSS.Editor
                                   editModeButtonContent,
                                   selectSegmentHelpContent = new GUIContent("LMB  -  Select point"),
                                   selectGroupSegmentHelpContent = new GUIContent("Ctrl + LMB  -  Select group of points"),
-                                  newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point");
+                                  newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point"),
+                                  handleSizeSliderContent = new GUIContent("Handles size");
 
         private static bool editMode;
 
@@ -48,6 +49,8 @@ namespace TSS.Editor
         private static bool backFocus = false;
 
         private static AnimBool foldOutAttachPoints;
+
+        private static float handleScaler = 1.0f;
 
         #endregion
 
@@ -60,7 +63,7 @@ namespace TSS.Editor
             selection.Clear();
             editModeButtonContent = EditorGUIUtility.IconContent("EditCollider");
             editMode = false;
-            path.gizmoSize = 0.033f;
+            path.gizmoSize = 0.033f * handleScaler;
 
             foldOutAttachPoints = new AnimBool(false);
             foldOutAttachPoints.valueChanged.AddListener(Repaint);
@@ -274,6 +277,8 @@ namespace TSS.Editor
                 EditorGUILayout.LabelField(selectGroupSegmentHelpContent, EditorStyles.miniLabel);
                 EditorGUILayout.LabelField(newSegmentHelpContent, EditorStyles.miniLabel);
 
+                handleScaler = EditorGUILayout.Slider(handleSizeSliderContent, handleScaler, 0.01f, 1.0f);
+
                 EditorGUILayout.EndVertical();
             }
 
@@ -325,7 +330,10 @@ namespace TSS.Editor
             {
                 if (path.auto && i % 3 != 0 || (path.auto && i % 3 != 0 && path.smoothFactor == 0)) continue;
 
-                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, 15f * handle2DScaler, 15f * handle2DScaler, Handles.SphereCap))
+                float handleSize = 15f * handle2DScaler * (i % 3 == 0 ? 1 : 0.5f) * handleScaler;
+                Handles.color = i % 3 == 0 ? Color.white : Color.white * 0.75f;
+
+                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, handleSize, handleSize, Handles.SphereCap))
                 {
                     selectedPointID = i;
                     mouseClicked = true;
@@ -409,6 +417,26 @@ namespace TSS.Editor
 
         private void DrawPath()
         {
+            if (TSSPrefsEditor.drawAllPaths)
+            {
+                for (int i = 0; i < TSSItemBase.items.Count; i++)
+                {
+                    if (!TSSItemBase.items[i].gameObject.activeInHierarchy ||
+                        !TSSItemBase.items[i].enabled ||
+                         TSSItemBase.items[i].path == null ||
+                         TSSItemBase.items[i].path == path ||
+                        !TSSItemBase.items[i].path.enabled) continue;
+
+                    for (int j = 0; j < TSSItemBase.items[i].path.segmentsCount; j++)
+                    {
+                        Vector3[] segmentPoints = ToWorld(TSSItemBase.items[i].path, TSSItemBase.items[i].path.GetSegmentPoints(j));
+
+                        Handles.DrawBezier(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2], Color.white * 0.85f, null, 2);
+                    }
+                }
+            }
+
+
             for (int i = 0; i < path.segmentsCount; i++)
             {
                 Vector3[] segmentPoints = ToWorld(path.GetSegmentPoints(i));
@@ -421,7 +449,7 @@ namespace TSS.Editor
 
                 if (path.auto || !editMode) continue;
 
-                Handles.color = Color.gray;
+                Handles.color = Color.white * 0.9f;
                 Handles.DrawLine(segmentPoints[0], segmentPoints[1]);
                 Handles.DrawLine(segmentPoints[2], segmentPoints[3]);
             }
@@ -430,7 +458,8 @@ namespace TSS.Editor
 
             for (int i = 0; i < selection.Count; i++)
             {
-                Handles.color = Color.white;
+
+                Handles.color = Color.white;// selection[i] % 3 == 0 ? Color.white : Color.gray;
                 Vector3 pointPos = ToWorld(path[selection[i]]);
                 Vector3 newPos = Handles.PositionHandle(pointPos, Quaternion.identity);
                 Vector3 posDelta = newPos - pointPos;
@@ -441,7 +470,10 @@ namespace TSS.Editor
                 for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(newPos), syncJoints);
             }
 
+            path.gizmoSize = 0.3f * handleScaler;
+
         }
+
 
         public void DrawAttachPointsPanel()
         {

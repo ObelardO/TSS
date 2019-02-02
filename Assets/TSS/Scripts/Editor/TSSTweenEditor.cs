@@ -195,6 +195,14 @@ namespace TSS.Editor
                         EditorGUILayout.EndHorizontal();
                         break;
                     case MaterialPropertyType.color:
+                        TSSEditorUtils.useHDRcolors = false;
+                        EditorGUILayout.BeginHorizontal();
+                        TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[0], TSSEditorUtils.redColor, parent);
+                        TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[1], TSSEditorUtils.greenColor, parent);
+                        EditorGUILayout.EndHorizontal();
+                        break;
+                    case MaterialPropertyType.colorHDR:
+                        TSSEditorUtils.useHDRcolors = true;
                         EditorGUILayout.BeginHorizontal();
                         TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[0], TSSEditorUtils.redColor, parent);
                         TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[1], TSSEditorUtils.greenColor, parent);

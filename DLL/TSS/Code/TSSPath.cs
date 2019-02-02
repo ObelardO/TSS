@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,6 @@ namespace TSS
         public Vector3 itemWorldPosition { get { return item.transform.parent == null ? Vector3.zero : item.transform.parent.position; } }
         public Quaternion itemWorldRotation { get { return item.transform.parent == null ? Quaternion.identity : item.transform.parent.rotation; } }
         public Vector3 itemScale { get { return item.transform.parent == null ? Vector3.one : item.transform.parent.lossyScale; } }
-
 
         public float smoothFactor { get { return item.values.pathSmoothFactor; } set { item.values.pathSmoothFactor = value; AutoSetAllControls(); } }
         public int count { get { return points.Count; } }

@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
+// obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
+
+using System;
 using System.Reflection;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEditor.AnimatedValues;
+using UnityEditor.SceneManagement;
 using TSS.Base;
 
 namespace TSS.Editor

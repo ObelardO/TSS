@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin editor
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -14,6 +15,7 @@ namespace TSS.Editor
 {
     public static class TSSEditorUtils
     {
+
         #region Properties
 
         public static GUIContent addKeyButtonContent = new GUIContent("+", "Add a new element to list"),
@@ -31,6 +33,8 @@ namespace TSS.Editor
         public static Color greenColor = new Color(0.65f, 1, 0.65f, 1);
         public static Color cyanColor = new Color(0.65f, 1, 1, 1);
         public static Color halfBlack = new Color(0f, 0f, 0f, 0.5f);
+
+        public static bool useHDRcolors;
 
         #endregion
 
@@ -165,7 +169,7 @@ namespace TSS.Editor
             if (propertyType == typeof(float)) enteredValue = EditorGUILayout.FloatField((float)(object)displayedValue);
             else if (propertyType == typeof(bool)) enteredValue = EditorGUILayout.Toggle((bool)(object)displayedValue, propertyName == null ? max18pxWidth : max120pxWidth);
             else if (propertyType == typeof(int)) enteredValue = EditorGUILayout.IntField((int)(object)displayedValue);
-            else if (propertyType == typeof(Color)) enteredValue = EditorGUILayout.ColorField((Color)(object)displayedValue);
+            else if (propertyType == typeof(Color)) enteredValue = DrawColorProperty((Color)(object)displayedValue);
             else if (propertyType == typeof(string)) enteredValue = EditorGUILayout.TextArea((string)(object)displayedValue);
             else if (propertyType == typeof(char)) enteredValue = DrawCharProperty(((object)displayedValue).ToString());
             else if (propertyType == typeof(Vector2)) enteredValue = EditorGUILayout.Vector2Field(string.Empty, (Vector2)(object)displayedValue);
@@ -233,6 +237,15 @@ namespace TSS.Editor
 
             return (TweenType)((int)newTweenTypeBase < 4 ? (int)newTweenTypeBase : ((int)newTweenTypeBase - 3) * 4 + (int)newTweenTypeMode);
         }
+
+        private static Color DrawColorProperty(Color color)
+        {
+            if (!useHDRcolors)
+                return EditorGUILayout.ColorField(color);
+            else
+                return EditorGUILayout.ColorField(new GUIContent(string.Empty), color, true, true, true, max120pxWidth);
+        }
+
 
         public static void DrawEventProperty(SerializedProperty eventHolder, string eventName, int eventListenersCount)
         {
@@ -403,77 +416,6 @@ namespace TSS.Editor
             GUI.backgroundColor = TSSEditorUtils.halfBlack;
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             GUI.backgroundColor = Color.white;
-        }
-
-        #endregion
-    }
-
-    [CustomPropertyDrawer(typeof(TSSKeyCodeAttribute))]
-    public class TSSKeyCodeDrawer : PropertyDrawer
-    {
-        #region Properties
-
-        const float clearButtonWidth = 50;
-
-        #endregion
-
-        #region GUI
-
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
-            position = EditorGUI.PrefixLabel(position, label);
-
-            int id = GUIUtility.GetControlID((int)position.x, FocusType.Keyboard, position);
-
-            string propertyLabel = ((KeyCode)property.intValue).ToString();
-
-            if (GUIUtility.keyboardControl == id)
-            {
-                propertyLabel += " (press any key)";
-                GUI.color = new Color(0.4f, 0.65f, 1f, 1f);
-                position.width -= clearButtonWidth;
-            }
-
-            if (GUI.Button(position, propertyLabel, EditorStyles.popup))
-            {
-                GUIUtility.keyboardControl = id;
-                Event.current.Use();
-            }
-
-            GUI.color = Color.white;
-
-            position.x += position.width;
-            position.width = clearButtonWidth;
-
-            if (GUIUtility.keyboardControl == id && GUI.Button(position, "None"))
-            {
-                property.enumValueIndex = (int)KeyCode.None;
-                Event.current.Use();
-                GUIUtility.keyboardControl = -1;
-
-            }
-
-            if (GUIUtility.keyboardControl == id && Event.current.type == EventType.KeyUp)
-            {
-                if (Event.current.keyCode != KeyCode.None) property.enumValueIndex = KeyCodeToEnumIndex(property, Event.current.keyCode);
-                Event.current.Use();
-                GUIUtility.keyboardControl = -1;
-            }
-            else if (GUIUtility.keyboardControl == id && Event.current.isKey)
-                Event.current.Use();
-
-            GUI.color = Color.white;
-        }
-
-        public int KeyCodeToEnumIndex(SerializedProperty keyCodeProperty, KeyCode keyCode)
-        {
-            string[] keyCodeNames = keyCodeProperty.enumNames;
-            for (int i = 0; i < keyCodeNames.Length; i++)
-            {
-                if (keyCodeNames[i].CompareTo(keyCode.ToString()) == 0)
-                    return i;
-            }
-            return 0;
         }
 
         #endregion

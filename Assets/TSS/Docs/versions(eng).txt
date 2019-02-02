@@ -1,3 +1,11 @@
+1.5.4
++ New convertion types for tween "Property" effect - "ColorHDR"
++ Some changes in TSSPath editor
+
+1.5.3
+- Bugs in editor
++ Documentation
+
 1.5.2
 - Bugs in editor
 + Comment to code of components

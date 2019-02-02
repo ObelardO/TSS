@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using UnityEngine;
 

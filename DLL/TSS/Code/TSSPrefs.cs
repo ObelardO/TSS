@@ -1,4 +1,10 @@
-﻿namespace TSS
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
+// obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
+
+namespace TSS
 {
     public static class TSSPrefs
     {
@@ -51,7 +57,7 @@
     {
         #region Properties
 
-        public static string version { get { return @"1.5.2"; } }
+        public static string version { get { return @"1.5.3"; } }
         public static string author { get { return @"ObelardO"; } }
         public static string email { get { return @"obelardos@gmail.com"; } }
 

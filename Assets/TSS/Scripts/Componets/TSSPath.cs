@@ -20,7 +20,6 @@ namespace TSS
         public Quaternion itemWorldRotation { get { return item.transform.parent == null ? Quaternion.identity : item.transform.parent.rotation; } }
         public Vector3 itemScale { get { return item.transform.parent == null ? Vector3.one : item.transform.parent.lossyScale; } }
 
-
         public float smoothFactor { get { return item.values.pathSmoothFactor; } set { item.values.pathSmoothFactor = value; AutoSetAllControls(); } }
         public int count { get { return points.Count; } }
         public Vector3 last { get { return this[count - 1]; } set { this[count - 1] = value; } }

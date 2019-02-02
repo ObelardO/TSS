@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using System.Collections;
@@ -186,6 +187,11 @@ namespace TSS
             if (states.Contains(state)) states.Remove(state);
         }
 
+        public int GetStateID(TSSState state)
+        {
+            return states.FindIndex(s => s == state);
+        }
+
         #endregion
     }
     
@@ -198,6 +204,9 @@ namespace TSS
 
         /// <summary>State identifier</summary>
         public string name = "new state";
+
+        /// <summary>State index</summary>
+        public int ID { get { return core.GetStateID(this); } }
 
         /// <summary>State marked as default</summary>
         public bool isDefault;
@@ -321,7 +330,6 @@ namespace TSS
         {
             core.SetDefaultState(this);
         }
-
 
         public TSSState(TSSCore core)
         {

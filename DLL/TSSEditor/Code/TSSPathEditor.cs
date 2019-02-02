@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin editor
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,8 @@ namespace TSS.Editor
                                   editModeButtonContent,
                                   selectSegmentHelpContent = new GUIContent("LMB  -  Select point"),
                                   selectGroupSegmentHelpContent = new GUIContent("Ctrl + LMB  -  Select group of points"),
-                                  newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point");
+                                  newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point"),
+                                  handleSizeSliderContent = new GUIContent("Handles size");
 
         private static bool editMode;
 
@@ -47,6 +49,8 @@ namespace TSS.Editor
         private static bool backFocus = false;
 
         private static AnimBool foldOutAttachPoints;
+
+        private static float handleScaler = 1.0f;
 
         #endregion
 
@@ -59,7 +63,7 @@ namespace TSS.Editor
             selection.Clear();
             editModeButtonContent = EditorGUIUtility.IconContent("EditCollider");
             editMode = false;
-            path.gizmoSize = 0.033f;
+            path.gizmoSize = 0.033f * handleScaler;
 
             foldOutAttachPoints = new AnimBool(false);
             foldOutAttachPoints.valueChanged.AddListener(Repaint);
@@ -70,7 +74,7 @@ namespace TSS.Editor
             selection.Clear();
 
             editMode = false;
-           
+
         }
 
         #endregion
@@ -164,10 +168,10 @@ namespace TSS.Editor
             serializedPath.Update();
 
             EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.PrefixLabel(" ");
-                editMode = GUILayout.Toggle(editMode, editModeButtonContent, "Button", TSSEditorUtils.fixed35pxWidth, TSSEditorUtils.fixed25pxHeight);
-                EditorGUILayout.LabelField("Edit Item Path", EditorStyles.label, TSSEditorUtils.fixed25pxHeight);
-                path.showGizmos = editMode;
+            EditorGUILayout.PrefixLabel(" ");
+            editMode = GUILayout.Toggle(editMode, editModeButtonContent, "Button", TSSEditorUtils.fixed35pxWidth, TSSEditorUtils.fixed25pxHeight);
+            EditorGUILayout.LabelField("Edit Item Path", EditorStyles.label, TSSEditorUtils.fixed25pxHeight);
+            path.showGizmos = editMode;
             EditorGUILayout.EndHorizontal();
 
             EditorGUI.BeginChangeCheck();
@@ -176,105 +180,107 @@ namespace TSS.Editor
 
             EditorGUI.BeginDisabledGroup(!editMode);
 
-                TSSEditorUtils.DrawGenericProperty(ref syncJoints, syncJointsContent);
+            TSSEditorUtils.DrawGenericProperty(ref syncJoints, syncJointsContent);
 
-                bool loopMode = path.loop;
-                TSSEditorUtils.DrawGenericProperty(ref loopMode, loopModeContent, path.item);
-                if (loopMode != path.loop) { path.loop = loopMode; selection.Clear(); }
+            bool loopMode = path.loop;
+            TSSEditorUtils.DrawGenericProperty(ref loopMode, loopModeContent, path.item);
+            if (loopMode != path.loop) { path.loop = loopMode; selection.Clear(); }
 
-                bool autoMode = path.auto;
-                TSSEditorUtils.DrawGenericProperty(ref autoMode, autoModeContent, path.item);
-                if (autoMode != path.auto) { path.auto = autoMode; selection.Clear(); }
+            bool autoMode = path.auto;
+            TSSEditorUtils.DrawGenericProperty(ref autoMode, autoModeContent, path.item);
+            if (autoMode != path.auto) { path.auto = autoMode; selection.Clear(); }
 
-                if (path.auto)
-                {
-                    float pathSmooth = path.smoothFactor;
-                    TSSEditorUtils.DrawSliderProperty(ref pathSmooth, path.item, smoothFactorContent, 0, 1);
-                    if (pathSmooth != path.smoothFactor) path.smoothFactor = pathSmooth;
-                }
+            if (path.auto)
+            {
+                float pathSmooth = path.smoothFactor;
+                TSSEditorUtils.DrawSliderProperty(ref pathSmooth, path.item, smoothFactorContent, 0, 1);
+                if (pathSmooth != path.smoothFactor) path.smoothFactor = pathSmooth;
+            }
 
-                bool isLinearLerp = path.item.values.pathLerpMode == PathLerpMode.baked;
+            bool isLinearLerp = path.item.values.pathLerpMode == PathLerpMode.baked;
 
-                if (isLinearLerp) EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            if (isLinearLerp) EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-                EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginHorizontal();
 
-                    TSSEditorUtils.DrawGenericProperty(ref path.item.values.pathLerpMode, lerpModeContent, path.item);
+            TSSEditorUtils.DrawGenericProperty(ref path.item.values.pathLerpMode, lerpModeContent, path.item);
 
-                    if (isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.dynamic)
-                    {
-                        Undo.RecordObject(path.item, "[TSS Path] Delete segments");
-                        Undo.RecordObject(path, "[TSS Path] Split segment");
+            if (isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.dynamic)
+            {
+                Undo.RecordObject(path.item, "[TSS Path] Delete segments");
+                Undo.RecordObject(path, "[TSS Path] Split segment");
 
-                        path.pointsAttach = new List<Transform>();
-                        path.pointsAttach.AddRange(new Transform[path.segmentsCount + 1]);
-                    }
+                path.pointsAttach = new List<Transform>();
+                path.pointsAttach.AddRange(new Transform[path.segmentsCount + 1]);
+            }
 
-                    if (!isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.baked)
-                    {
-                        Undo.RecordObject(path.item, "[TSS Path] Delete segments");
-                        Undo.RecordObject(path, "[TSS Path] Split segment");
+            if (!isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.baked)
+            {
+                Undo.RecordObject(path.item, "[TSS Path] Delete segments");
+                Undo.RecordObject(path, "[TSS Path] Split segment");
 
-                        path.pointsAttach = null;
-                        path.UpdateSpacedPoints();
-                    }
+                path.pointsAttach = null;
+                path.UpdateSpacedPoints();
+            }
 
-                    if (isLinearLerp && GUILayout.Button(bakeButtonContent, TSSEditorUtils.max80pxWidth, TSSEditorUtils.fixedLineHeight))
-                    {
-                        path.UpdateSpacedPoints();
-                    }
+            if (isLinearLerp && GUILayout.Button(bakeButtonContent, TSSEditorUtils.max80pxWidth, TSSEditorUtils.fixedLineHeight))
+            {
+                path.UpdateSpacedPoints();
+            }
 
-                EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
 
-                if (isLinearLerp)
-                {
-                    GUILayout.Space(4);
-
-                    float pathSpacing = path.spacing;
-                    TSSEditorUtils.DrawSliderProperty(ref pathSpacing, path.item, qualitySpacingContent, 2, 100);
-                    if (pathSpacing != path.spacing) path.spacing = Mathf.CeilToInt(pathSpacing); ;
-
-                    float pathResolution = path.resolution;
-                    TSSEditorUtils.DrawSliderProperty(ref pathResolution, path.item, qualityResolutionContent, 1, 10);
-                    if (pathResolution != path.resolution) path.resolution = Mathf.CeilToInt(pathResolution);
-
-                }
-
-                if (isLinearLerp) EditorGUILayout.EndVertical();
-
+            if (isLinearLerp)
+            {
                 GUILayout.Space(4);
 
-                EditorGUILayout.BeginHorizontal();
+                float pathSpacing = path.spacing;
+                TSSEditorUtils.DrawSliderProperty(ref pathSpacing, path.item, qualitySpacingContent, 2, 100);
+                if (pathSpacing != path.spacing) path.spacing = Mathf.CeilToInt(pathSpacing); ;
 
-                    if (GUILayout.Button(addSegmentButtonContent)) AddPointToEnd();
+                float pathResolution = path.resolution;
+                TSSEditorUtils.DrawSliderProperty(ref pathResolution, path.item, qualityResolutionContent, 1, 10);
+                if (pathResolution != path.resolution) path.resolution = Mathf.CeilToInt(pathResolution);
 
-                    if (GUILayout.Button(selectAllButtonContent)) SelectAllPoints();
+            }
 
-                EditorGUILayout.EndHorizontal();
+            if (isLinearLerp) EditorGUILayout.EndVertical();
 
-                EditorGUILayout.BeginHorizontal();
+            GUILayout.Space(4);
 
-                    if (GUILayout.Button(deleteSelectedButtonContent)) DeleteSelectedPoints();
+            EditorGUILayout.BeginHorizontal();
 
-                    if (GUILayout.Button(resetPathButtonContent)) ResetPath();
+            if (GUILayout.Button(addSegmentButtonContent)) AddPointToEnd();
 
-                EditorGUILayout.EndHorizontal();
+            if (GUILayout.Button(selectAllButtonContent)) SelectAllPoints();
 
-                if (EditorGUI.EndChangeCheck()) SceneView.RepaintAll();
+            EditorGUILayout.EndHorizontal();
 
-                if (editMode)
-                {
-                    if (path.item.values.pathLerpMode == PathLerpMode.dynamic) DrawAttachPointsPanel();
+            EditorGUILayout.BeginHorizontal();
 
-                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            if (GUILayout.Button(deleteSelectedButtonContent)) DeleteSelectedPoints();
 
-                    GUI.color = Color.white * 0.9f;
-                    EditorGUILayout.LabelField(selectSegmentHelpContent, EditorStyles.miniLabel);
-                    EditorGUILayout.LabelField(selectGroupSegmentHelpContent, EditorStyles.miniLabel);
-                    EditorGUILayout.LabelField(newSegmentHelpContent, EditorStyles.miniLabel);
+            if (GUILayout.Button(resetPathButtonContent)) ResetPath();
 
-                    EditorGUILayout.EndVertical();
-                }
+            EditorGUILayout.EndHorizontal();
+
+            if (EditorGUI.EndChangeCheck()) SceneView.RepaintAll();
+
+            if (editMode)
+            {
+                if (path.item.values.pathLerpMode == PathLerpMode.dynamic) DrawAttachPointsPanel();
+
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+                GUI.color = Color.white * 0.9f;
+                EditorGUILayout.LabelField(selectSegmentHelpContent, EditorStyles.miniLabel);
+                EditorGUILayout.LabelField(selectGroupSegmentHelpContent, EditorStyles.miniLabel);
+                EditorGUILayout.LabelField(newSegmentHelpContent, EditorStyles.miniLabel);
+
+                handleScaler = EditorGUILayout.Slider(handleSizeSliderContent, handleScaler, 0.01f, 1.0f);
+
+                EditorGUILayout.EndVertical();
+            }
 
             EditorGUI.EndDisabledGroup();
 
@@ -307,7 +313,7 @@ namespace TSS.Editor
                 handle2DScaler = (SceneView.lastActiveSceneView.in2DMode ? 1.0f : 0.165f);
                 path.gizmoSize = (SceneView.lastActiveSceneView.in2DMode ? 1.0f : 0.33f);
             }
-            
+
             for (int i = 0; i < selection.Count; i++) if (selection[i] < 0 || selection[i] >= path.count) { selection.Clear(); break; }
 
             if (!editMode) return;
@@ -324,7 +330,10 @@ namespace TSS.Editor
             {
                 if (path.auto && i % 3 != 0 || (path.auto && i % 3 != 0 && path.smoothFactor == 0)) continue;
 
-                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, 15f * handle2DScaler, 15f * handle2DScaler, Handles.SphereCap))
+                float handleSize = 15f * handle2DScaler * (i % 3 == 0 ? 1 : 0.5f) * handleScaler;
+                Handles.color = i % 3 == 0 ? Color.white : Color.white * 0.75f;
+
+                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, handleSize, handleSize, Handles.SphereCap))
                 {
                     selectedPointID = i;
                     mouseClicked = true;
@@ -408,6 +417,26 @@ namespace TSS.Editor
 
         private void DrawPath()
         {
+            if (TSSPrefsEditor.drawAllPaths)
+            {
+                for (int i = 0; i < TSSItemBase.items.Count; i++)
+                {
+                    if (!TSSItemBase.items[i].gameObject.activeInHierarchy ||
+                        !TSSItemBase.items[i].enabled ||
+                         TSSItemBase.items[i].path == null ||
+                         TSSItemBase.items[i].path == path ||
+                        !TSSItemBase.items[i].path.enabled) continue;
+
+                    for (int j = 0; j < TSSItemBase.items[i].path.segmentsCount; j++)
+                    {
+                        Vector3[] segmentPoints = ToWorld(TSSItemBase.items[i].path, TSSItemBase.items[i].path.GetSegmentPoints(j));
+
+                        Handles.DrawBezier(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2], Color.white * 0.85f, null, 2);
+                    }
+                }
+            }
+
+
             for (int i = 0; i < path.segmentsCount; i++)
             {
                 Vector3[] segmentPoints = ToWorld(path.GetSegmentPoints(i));
@@ -420,7 +449,7 @@ namespace TSS.Editor
 
                 if (path.auto || !editMode) continue;
 
-                Handles.color = Color.gray;
+                Handles.color = Color.white * 0.9f;
                 Handles.DrawLine(segmentPoints[0], segmentPoints[1]);
                 Handles.DrawLine(segmentPoints[2], segmentPoints[3]);
             }
@@ -429,7 +458,8 @@ namespace TSS.Editor
 
             for (int i = 0; i < selection.Count; i++)
             {
-                Handles.color = Color.white;
+
+                Handles.color = Color.white;// selection[i] % 3 == 0 ? Color.white : Color.gray;
                 Vector3 pointPos = ToWorld(path[selection[i]]);
                 Vector3 newPos = Handles.PositionHandle(pointPos, Quaternion.identity);
                 Vector3 posDelta = newPos - pointPos;
@@ -440,7 +470,10 @@ namespace TSS.Editor
                 for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(newPos), syncJoints);
             }
 
+            path.gizmoSize = 0.3f * handleScaler;
+
         }
+
 
         public void DrawAttachPointsPanel()
         {
@@ -461,10 +494,10 @@ namespace TSS.Editor
                 {
                     EditorGUI.BeginDisabledGroup(!selection.Contains(i * 3));
 
-                        Transform editingTransform = path.pointsAttach[i];
-                        TSSEditorUtils.DrawGenericProperty(ref editingTransform, path);
-                        if (editingTransform != path.pointsAttach[i]) path.pointsAttach[i] = editingTransform;
-  
+                    Transform editingTransform = path.pointsAttach[i];
+                    TSSEditorUtils.DrawGenericProperty(ref editingTransform, path);
+                    if (editingTransform != path.pointsAttach[i]) path.pointsAttach[i] = editingTransform;
+
                     EditorGUI.EndDisabledGroup();
                 }
 

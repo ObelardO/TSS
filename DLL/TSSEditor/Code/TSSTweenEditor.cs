@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin editor
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -194,6 +195,14 @@ namespace TSS.Editor
                         EditorGUILayout.EndHorizontal();
                         break;
                     case MaterialPropertyType.color:
+                        TSSEditorUtils.useHDRcolors = false;
+                        EditorGUILayout.BeginHorizontal();
+                        TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[0], TSSEditorUtils.redColor, parent);
+                        TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[1], TSSEditorUtils.greenColor, parent);
+                        EditorGUILayout.EndHorizontal();
+                        break;
+                    case MaterialPropertyType.colorHDR:
+                        TSSEditorUtils.useHDRcolors = true;
                         EditorGUILayout.BeginHorizontal();
                         TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[0], TSSEditorUtils.redColor, parent);
                         TSSEditorUtils.DrawGenericProperty(ref tween.matProperty.colorValues[1], TSSEditorUtils.greenColor, parent);

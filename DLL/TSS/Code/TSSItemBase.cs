@@ -1,7 +1,8 @@
-﻿// Unity TSS tweener plugin
-// (С) 2018 Vlad Trubitsyn aka ObelardO 
-// https://obeldev.ru
+﻿// TSS - Unity visual tweener plugin
+// © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
+// https://obeldev.ru
+// MIT License
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,7 +56,7 @@ namespace TSS
 
     public enum ButtonDirection { open2Close, close2Open }
 
-    public enum MaterialPropertyType { single, integer, color, gradient, curve, vector2, vector3, vector4 }
+    public enum MaterialPropertyType { single, integer, color, colorHDR, gradient, curve, vector2, vector3, vector4 }
 
     #endregion
 }
@@ -140,13 +141,14 @@ namespace TSS.Base
             name = "_Property";
             switch (propertyType)
             {
-                case MaterialPropertyType.single:  singleValues  = new float[TSSItemBase.stateCount] { 0, 1 }; break;
-                case MaterialPropertyType.integer: integerValues = new int[TSSItemBase.stateCount] { 0, 1 } ; break;
-                case MaterialPropertyType.color:   colorValues   = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
-                case MaterialPropertyType.vector2: vector2values = new Vector2[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.vector3: vector3values = new Vector3[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.vector4: vector4values = new Vector4[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.curve: curve = AnimationCurve.EaseInOut(0, 0, 1, 1); break;
+                case MaterialPropertyType.single:   singleValues  = new float[TSSItemBase.stateCount] { 0, 1 }; break;
+                case MaterialPropertyType.integer:  integerValues = new int[TSSItemBase.stateCount] { 0, 1 } ; break;
+                case MaterialPropertyType.color:    colorValues   = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
+                case MaterialPropertyType.colorHDR: colorValues = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
+                case MaterialPropertyType.vector2:  vector2values = new Vector2[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.vector3:  vector3values = new Vector3[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.vector4:  vector4values = new Vector4[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.curve:    curve = AnimationCurve.EaseInOut(0, 0, 1, 1); break;
                 case MaterialPropertyType.gradient: gradient = new Gradient()
                 {
                     colorKeys = new GradientColorKey[] { new GradientColorKey(Color.black, 0), new GradientColorKey(Color.white, 1) }
@@ -715,6 +717,7 @@ namespace TSS.Base
             switch (property.type)
             {
                 case MaterialPropertyType.color: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
+                case MaterialPropertyType.colorHDR: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
                 case MaterialPropertyType.single: item.material.SetFloat(property.name, Mathf.LerpUnclamped(property.singleValues[0], property.singleValues[1], time)); break;
                 case MaterialPropertyType.integer: item.material.SetInt(property.name, Mathf.RoundToInt(Mathf.LerpUnclamped(property.integerValues[0], property.integerValues[1], time))); break;
                 case MaterialPropertyType.vector2: item.material.SetVector(property.name, Vector2.LerpUnclamped(property.vector2values[0], property.vector2values[1], time)); break;
