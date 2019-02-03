@@ -459,19 +459,17 @@ namespace TSS.Editor
             for (int i = 0; i < selection.Count; i++)
             {
 
-                Handles.color = Color.white;// selection[i] % 3 == 0 ? Color.white : Color.gray;
+                Handles.color = Color.white;
                 Vector3 pointPos = ToWorld(path[selection[i]]);
-                Vector3 newPos = Handles.PositionHandle(pointPos, Quaternion.identity);
-                Vector3 posDelta = newPos - pointPos;
+                Vector3 posDelta = Handles.PositionHandle(pointPos, Quaternion.identity) - pointPos;
 
                 if (posDelta == Vector3.zero) continue;
 
                 Undo.RecordObject(path.item, "[TSS Path] Point position");
-                for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(newPos), syncJoints);
+                for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(ToWorld(path[selection[j]]) + posDelta), syncJoints);
             }
 
             path.gizmoSize = 0.3f * handleScaler;
-
         }
 
 
