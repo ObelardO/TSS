@@ -1,3 +1,6 @@
+1.5.5
+- Bugs in path editing (with moving multiple points)
+
 1.5.4
 + New convertion types for tween "Property" effect - "ColorHDR"
 + Some changes in TSSPath editor
