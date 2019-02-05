@@ -5,6 +5,7 @@
 // MIT License
 
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
@@ -453,7 +454,7 @@ namespace TSS.Editor
                     EditorGUILayout.EndVertical();
                 }
 
-                if (item.button != null)
+                if (item.button != null || (item.parent != null && item.parent.button != null && item.tweens.Where(t => t.enabled && t.direction == TweenDirection.Button).ToArray().Length > 0))
                 {
                     TSSEditorUtils.BeginBlackVertical();
 

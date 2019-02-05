@@ -1,3 +1,6 @@
+1.5.6
++ Click animation time property now visible in childs
+
 1.5.4
 + New convertion types for tween "Property" effect - "ColorHDR"
 + Some changes in TSSPath editor

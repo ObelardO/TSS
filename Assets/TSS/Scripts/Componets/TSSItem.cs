@@ -592,7 +592,7 @@ namespace TSS
         private void OnClick()
         {
             if (buttonEvaluation <= 0) buttonEvaluation = buttonDuration;
-            for (int i = 0; i < childItems.Count; i++) if (childItems[i].buttonEvaluation <= 0) childItems[i].buttonEvaluation = buttonDuration;
+            for (int i = 0; i < childItems.Count; i++) if (childItems[i].buttonEvaluation <= 0) childItems[i].buttonEvaluation = childItems[i].buttonDuration;
         }
 
         private void UpdateInput()
