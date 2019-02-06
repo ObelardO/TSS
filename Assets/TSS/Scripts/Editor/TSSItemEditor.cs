@@ -463,7 +463,8 @@ namespace TSS.Editor
                     DrawItemProperty(item, "buttonDirection");
                     EditorGUILayout.EndHorizontal();
 
-                    if (Selection.transforms.Length == 1) TSSEditorUtils.DrawKeyCodeListProperty(item.values.onKeyboard, item, serializedItem.FindProperty("values").FindPropertyRelative("onKeyboard"), false);
+
+                    if (item.button != null && Selection.transforms.Length == 1) TSSEditorUtils.DrawKeyCodeListProperty(item.values.onKeyboard, item, serializedItem.FindProperty("values").FindPropertyRelative("onKeyboard"), false);
 
                     EditorGUILayout.EndVertical();
                 }

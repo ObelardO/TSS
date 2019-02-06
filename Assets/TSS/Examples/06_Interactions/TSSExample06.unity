@@ -292,7 +292,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _state: 0
-  childStateCounts: 00000000000000000000000000000000
+  childStateCounts: 01000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
   childItems:
@@ -388,9 +388,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -472,9 +469,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -556,9 +550,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1608531579}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -1285,9 +1276,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -1369,9 +1357,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1667754709}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -1937,9 +1922,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 0.108545005
@@ -2021,9 +2003,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1874826067}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -2576,9 +2555,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0.45753425
     endPoint: 0.61354196
@@ -2660,9 +2636,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1667754709}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -2994,9 +2967,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -3087,9 +3057,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 48330577}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -3634,9 +3601,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -3718,9 +3682,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -3802,9 +3763,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1838187023}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -4159,9 +4117,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -4252,9 +4207,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1789066386}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -4835,9 +4787,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1573814850}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -5430,9 +5379,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 0.25598085
@@ -5514,9 +5460,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -5598,9 +5541,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1874826067}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -6077,9 +6017,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -6365,9 +6302,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 0.031100504
@@ -6449,9 +6383,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1478372370}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -6855,9 +6786,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0.8439923
     endPoint: 1
@@ -6939,9 +6867,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1667754709}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -7344,9 +7269,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -7428,9 +7350,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -7512,9 +7431,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1838187023}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
@@ -7894,9 +7810,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 1838187024}
@@ -8212,9 +8125,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 1874826068}
@@ -8772,9 +8682,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -8865,9 +8772,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-    effectValue: 0
-    openValue: 0
-    closeValue: 0
   parent: {fileID: 1240828678}
   _profile: {fileID: 0}
   canvasGroup: {fileID: 0}
