@@ -717,7 +717,6 @@ namespace TSS.Base
             switch (property.type)
             {
                 case MaterialPropertyType.color: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
-                case MaterialPropertyType.colorHDR: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
                 case MaterialPropertyType.single: item.material.SetFloat(property.name, Mathf.LerpUnclamped(property.singleValues[0], property.singleValues[1], time)); break;
                 case MaterialPropertyType.integer: item.material.SetInt(property.name, Mathf.RoundToInt(Mathf.LerpUnclamped(property.integerValues[0], property.integerValues[1], time))); break;
                 case MaterialPropertyType.vector2: item.material.SetVector(property.name, Vector2.LerpUnclamped(property.vector2values[0], property.vector2values[1], time)); break;
@@ -725,6 +724,8 @@ namespace TSS.Base
                 case MaterialPropertyType.vector4: item.material.SetVector(property.name, Vector4.LerpUnclamped(property.vector4values[0], property.vector4values[1], time)); break;
                 case MaterialPropertyType.curve: item.material.SetFloat(property.name, property.curve.Evaluate(time)); break;
                 case MaterialPropertyType.gradient: item.material.SetColor(property.name, property.gradient.Evaluate(time)); break;
+                case MaterialPropertyType.colorHDR: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
+
             }
         }
 

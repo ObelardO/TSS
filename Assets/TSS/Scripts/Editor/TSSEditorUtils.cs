@@ -214,8 +214,12 @@ namespace TSS.Editor
 
         private static Gradient DrawGradientProperty(Gradient gradient)
         {
+#if UNITY_2018_3
+            return EditorGUILayout.GradientField(gradient);
+#else
             var method = typeof(EditorGUI).GetMethods(BindingFlags.NonPublic | BindingFlags.Static).First(t => t.Name == "GradientField");
             return (Gradient)method.Invoke(null, new object[] { EditorGUILayout.GetControlRect(), gradient });
+#endif
         }
 
         private static char DrawCharProperty(string srcStr)
