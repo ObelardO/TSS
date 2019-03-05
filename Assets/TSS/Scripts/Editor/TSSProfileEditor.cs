@@ -244,7 +244,7 @@ namespace TSS.Editor
             EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
             GUI.backgroundColor = Color.white;
 
-            EditorGUILayout.ObjectField(item, typeof(TSSItem));
+            EditorGUILayout.ObjectField(item, typeof(TSSItem), true);
 
             if (GUILayout.Button(applyProfileButton, TSSEditorUtils.fixedLineHeight))
             {

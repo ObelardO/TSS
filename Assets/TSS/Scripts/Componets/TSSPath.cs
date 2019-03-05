@@ -77,7 +77,12 @@ namespace TSS
                     AutoSetAllControls(); 
             }
         }
-
+        /*
+        [HideInInspector] [SerializeField] private Vector3 pathProjectionMask = Vector3.one;
+        public bool projectionMaskX { set { pathProjectionMask.x = value ? 1 : 0; } get { return pathProjectionMask.x == 1; } }
+        public bool projectionMaskY { set { pathProjectionMask.y = value ? 1 : 0; } get { return pathProjectionMask.y == 1; } }
+        public bool projectionMaskZ { set { pathProjectionMask.z = value ? 1 : 0; } get { return pathProjectionMask.z == 1; } }
+        */
         #endregion
 
         #region Evaluate methods
@@ -161,6 +166,18 @@ namespace TSS
             }
 
             AutoSetControl(anchorID * 3 + 3);
+            UpdateSpacedPoints();
+        }
+
+        /// <summary>
+        /// Project all path to vector
+        /// </summary>
+        /// <param name="projectionMask">project on vector</param>
+        public void Project(Vector3 projectionMask)
+        {
+            for (int i = 0; i < count; i++)
+                this[i] = new Vector3(this[i].x * projectionMask.x, this[i].y * projectionMask.y, this[i].z * projectionMask.z);
+
             UpdateSpacedPoints();
         }
 

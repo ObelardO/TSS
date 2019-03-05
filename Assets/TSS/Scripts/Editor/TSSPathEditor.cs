@@ -40,7 +40,8 @@ namespace TSS.Editor
                                   selectSegmentHelpContent = new GUIContent("LMB  -  Select point"),
                                   selectGroupSegmentHelpContent = new GUIContent("Ctrl + LMB  -  Select group of points"),
                                   newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point"),
-                                  handleSizeSliderContent = new GUIContent("Handles size");
+                                  handleSizeSliderContent = new GUIContent("Handles size"),
+                                  projectionMaskContent = new GUIContent("Projection", "Project all points on vector");
 
         private static bool editMode;
 
@@ -264,6 +265,30 @@ namespace TSS.Editor
 
             EditorGUILayout.EndHorizontal();
 
+
+            EditorGUILayout.BeginHorizontal();
+
+            EditorGUILayout.LabelField(projectionMaskContent, GUILayout.MaxWidth(98));
+
+            if (GUILayout.Button("X", EditorStyles.miniButtonLeft, TSSEditorUtils.max18pxWidth))
+            {
+                Undo.RecordObject(path.item, "[TSS Path] projection");
+                path.Project(new Vector3(0, 1, 1));
+            }
+            if (GUILayout.Button("Y", EditorStyles.miniButtonMid, TSSEditorUtils.max18pxWidth))
+            {
+                Undo.RecordObject(path.item, "[TSS Path] projection");
+                path.Project(new Vector3(1, 0, 1));
+            }
+            if (GUILayout.Button("Z", EditorStyles.miniButtonRight, TSSEditorUtils.max18pxWidth))
+            {
+                Undo.RecordObject(path.item, "[TSS Path] projection");
+                path.Project(new Vector3(1, 1, 0));
+            }
+
+
+            EditorGUILayout.EndHorizontal();
+
             if (EditorGUI.EndChangeCheck()) SceneView.RepaintAll();
 
             if (editMode)
@@ -333,7 +358,7 @@ namespace TSS.Editor
                 float handleSize = 15f * handle2DScaler * (i % 3 == 0 ? 1 : 0.5f) * handleScaler;
                 Handles.color = i % 3 == 0 ? Color.white : Color.white * 0.75f;
 
-                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, handleSize, handleSize, Handles.SphereCap))
+                if (Handles.Button(ToWorld(path[i]), Quaternion.identity, handleSize, handleSize, Handles.SphereHandleCap))
                 {
                     selectedPointID = i;
                     mouseClicked = true;

@@ -410,7 +410,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
+  _state: 0
   childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   - {x: 225.77916, y: -16.49027, z: 0}
   - {x: 249.77867, y: -0.16156194, z: 0}
   showGizmos: 0
-  gizmoSize: 0.033
+  gizmoSize: 0.33
 --- !u!114 &432422349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,7 +1732,7 @@ MonoBehaviour:
     firstChildDelay:
     - 0.2
     - 0.2
-    rotationMode: 0
+    rotationMode: 2
     rotationMask: {x: 1, y: 1, z: 1}
     materialMode: 0
     childChainMode: 0
@@ -3068,7 +3068,7 @@ MonoBehaviour:
   - {x: 82.39639, y: 64.197, z: -45.794445}
   - {x: 151.17581, y: 62.011906, z: -40.94896}
   showGizmos: 0
-  gizmoSize: 1
+  gizmoSize: 0.33
 --- !u!114 &881382247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,7 +5015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -679.1948, y: 0.000045776367}
+  m_AnchoredPosition: {x: -233.8269, y: -0.000015258789}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603189161
@@ -5989,7 +5989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 567.8667, y: 219.64684}
+  m_AnchoredPosition: {x: 195.5, y: 75.617966}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756004675

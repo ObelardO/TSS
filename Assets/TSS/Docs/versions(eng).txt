@@ -1,3 +1,8 @@
+1.5.7
++ English documentation
++ Path projection, allows to place a path on plane
+- Bug with tween "Property" effect - "Gradient" on 2018.3
+
 1.5.6
 + Click animation time property now visible in childs
 

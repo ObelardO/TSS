@@ -152,7 +152,7 @@ namespace TSS.Editor
         {
             System.Type propertyType = typeof(T);
 
-            EditorGUI.BeginChangeCheck();
+            if (recordingObject != null) EditorGUI.BeginChangeCheck();
             GUI.changed = false;
             if (propertyName != null)
             {
@@ -186,10 +186,10 @@ namespace TSS.Editor
             else if (propertyType == typeof(IncorrectStateAction)) enteredValue = EditorGUILayout.EnumPopup((IncorrectStateAction)(object)displayedValue);
             else if (propertyType == typeof(ActivationMode)) enteredValue = EditorGUILayout.EnumPopup((ActivationMode)(object)displayedValue);
             else if (propertyType == typeof(PathLerpMode)) enteredValue = EditorGUILayout.EnumPopup((PathLerpMode)(object)displayedValue);
-            else if (propertyType == typeof(TSSItem)) enteredValue = EditorGUILayout.ObjectField(string.Empty, (TSSItem)(object)propertyValue, typeof(TSSItem));
-            else if (propertyType == typeof(Transform)) enteredValue = EditorGUILayout.ObjectField(string.Empty, (Transform)(object)propertyValue, typeof(Transform));
+            else if (propertyType == typeof(TSSItem)) enteredValue = EditorGUILayout.ObjectField(string.Empty, (TSSItem)(object)propertyValue, typeof(TSSItem), true);
+            else if (propertyType == typeof(Transform)) enteredValue = EditorGUILayout.ObjectField(string.Empty, (Transform)(object)propertyValue, typeof(Transform), true);
 
-            if (EditorGUI.EndChangeCheck() || enteredValue != (object)displayedValue)
+            if ((recordingObject != null && EditorGUI.EndChangeCheck()) || enteredValue != (object)displayedValue)
             {
                 if (recordingObject != null) Undo.RecordObject(recordingObject, "[TSS Editor] property");
                 propertyValue = (T)enteredValue;

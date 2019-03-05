@@ -76,7 +76,7 @@ namespace TSS.Editor
 
             if (!itemConnected)
             {
-                EditorApplication.hierarchyWindowChanged += item.Refresh;
+                EditorApplication.hierarchyChanged += item.Refresh;
                 itemConnected = true;
             }
 
@@ -94,7 +94,7 @@ namespace TSS.Editor
         {
             if (itemConnected)
             {
-                EditorApplication.hierarchyWindowChanged -= item.Refresh;
+                EditorApplication.hierarchyChanged -= item.Refresh;
                 itemConnected = false;
             }
         }
