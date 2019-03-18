@@ -18,7 +18,7 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0
+    - 2
     - 0
     durations:
     - 1

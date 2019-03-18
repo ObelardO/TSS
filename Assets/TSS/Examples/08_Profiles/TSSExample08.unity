@@ -2859,7 +2859,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _state: 0
-  childStateCounts: 02000000000000000000000000000000
+  childStateCounts: 00000000000000000000000000000000
   stateChgTime: 0
   stateChgBranchMode: 0
   childItems:

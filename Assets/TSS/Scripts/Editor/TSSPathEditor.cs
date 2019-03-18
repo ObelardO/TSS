@@ -47,8 +47,6 @@ namespace TSS.Editor
 
         private static float handle2DScaler = 1.0f;
 
-        private static bool backFocus = false;
-
         private static AnimBool foldOutAttachPoints;
 
         private static float handleScaler = 1.0f;
@@ -104,8 +102,6 @@ namespace TSS.Editor
 
             selection.Clear();
             selection.Add(path.count - 1);
-
-            backFocus = true;
         }
 
         private void AddSplitPoint()
@@ -320,15 +316,10 @@ namespace TSS.Editor
         {
             if (!path.enabled) return;
 
-            if (backFocus)
-            {
-                backFocus = false;
-                Selection.objects = new Object[0] { };
-                Selection.SetActiveObjectWithContext(path.gameObject, path);
-            }
-
             Input();
             DrawPath();
+
+            if (editMode && Event.current.type == EventType.Layout) HandleUtility.AddDefaultControl(0);
         }
 
         private void Input()
