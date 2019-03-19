@@ -4,12 +4,16 @@
 // https://obeldev.ru
 // MIT License
 
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+
+using Object = UnityEngine.Object;
+using Editor = UnityEditor.Editor;
 
 namespace TSS.Editor
 {
@@ -21,12 +25,18 @@ namespace TSS.Editor
         public static GUIContent addKeyButtonContent = new GUIContent("+", "Add a new element to list"),
                                   delKeyButtonContent = new GUIContent("-", "Delete this element from list");
 
-        public static GUILayoutOption max18pxWidth = GUILayout.MaxWidth(18),
+        public static GUILayoutOption max12pxWidth = GUILayout.MaxWidth(12),
+                                      max18pxWidth = GUILayout.MaxWidth(18),
                                       max80pxWidth = GUILayout.MaxWidth(80),
+                                      max90pxWidth = GUILayout.MaxWidth(90),
+                                      max100pxWidth = GUILayout.MaxWidth(100),
+                                      min80pxWidth = GUILayout.MinWidth(80),
                                       fixedLineHeight = GUILayout.MaxHeight(EditorGUIUtility.singleLineHeight),
                                       max120pxWidth = GUILayout.MaxWidth(120),
                                       fixed35pxWidth = GUILayout.Width(35),
                                       fixed25pxHeight = GUILayout.Height(25),
+                                      fixed100pxWidth = GUILayout.Width(100),
+                                      fixed110pxWidth = GUILayout.Width(110),
                                       fixed120pxWidth = GUILayout.Width(120);
 
         public static Color redColor = new Color(1, 0.65f, 0.65f, 1);
@@ -268,7 +278,7 @@ namespace TSS.Editor
             GUILayout.Space(2);
         }
 
-        public static void DrawKeyCodeListProperty(List<KeyCode> keys, UnityEngine.Object recordingObject, SerializedProperty list, bool drawBack = true)
+        public static void DrawKeyCodeListProperty(List<KeyCode> keys, Object recordingObject, SerializedProperty list, bool drawBack = true)
         {
             if (drawBack)
             {
@@ -324,7 +334,7 @@ namespace TSS.Editor
 
         }
         
-        public static void DrawKeyCodeListProperty(List<KeyCode> keys, UnityEngine.Object recordingObject, bool drawBack = true)
+        public static void DrawKeyCodeListProperty(List<KeyCode> keys, Object recordingObject, bool drawBack = true)
         {
             if (drawBack)
             {
@@ -397,7 +407,7 @@ namespace TSS.Editor
             }
         }
 
-        public static void DrawSliderProperty(ref float propertyValue, UnityEngine.Object recordingObject, GUIContent propertyName = null, float clampMin = 0.01f, float clampMax = 5)
+        public static void DrawSliderProperty(ref float propertyValue, Object recordingObject, GUIContent propertyName = null, float clampMin = 0.01f, float clampMax = 5)
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -423,5 +433,66 @@ namespace TSS.Editor
         }
 
         #endregion
+    }
+
+    public static class AnnotationUtiltyWrapper
+    {
+        static Type m_annotationUtilityType;
+        static PropertyInfo m_iconSize;
+        static PropertyInfo m_use3dGizmos;
+        static AnnotationUtiltyWrapper()
+        {
+            m_annotationUtilityType = typeof(UnityEditor.Editor).Assembly.GetTypes().Where(t => t.Name == "AnnotationUtility").FirstOrDefault();
+            if (m_annotationUtilityType == null)
+            {
+                Debug.LogWarning("The internal type 'AnnotationUtility' could not be found. Maybe something changed inside Unity");
+                return;
+            }
+            m_iconSize = m_annotationUtilityType.GetProperty("iconSize", BindingFlags.Static | BindingFlags.NonPublic);
+            if (m_iconSize == null)
+            {
+                Debug.LogWarning("The internal class 'AnnotationUtility' doesn't have a property called 'iconSize'");
+            }
+            m_use3dGizmos = m_annotationUtilityType.GetProperty("use3dGizmos", BindingFlags.Static | BindingFlags.NonPublic);
+            if (m_use3dGizmos == null)
+            {
+                Debug.LogWarning("The internal class 'AnnotationUtility' doesn't have a property called 'use3dGizmos'");
+            }
+        }
+        public static bool use3dGizmos
+        {
+            get { return (m_use3dGizmos == null) ? true : (bool)m_use3dGizmos.GetValue(null, null); }
+            set { if (m_use3dGizmos != null) m_use3dGizmos.SetValue(null, value, null); }
+        }
+        public static float iconSize
+        {
+            get { return (m_iconSize == null) ? 1f : (float)m_iconSize.GetValue(null, null); }
+            set { if (m_iconSize != null) m_iconSize.SetValue(null, value, null); }
+        }
+        public static float IconSizeLinear
+        {
+            get { return ConvertTexelWorldSizeTo01(iconSize); }
+            set { iconSize = Convert01ToTexelWorldSize(value); }
+        }
+        public static float Convert01ToTexelWorldSize(float value01)
+        {
+            if (value01 <= 0f)
+            {
+                return 0f;
+            }
+            return Mathf.Pow(10f, -3f + 3f * value01);
+        }
+        public static float ConvertTexelWorldSizeTo01(float texelWorldSize)
+        {
+            if (texelWorldSize == -1f)
+            {
+                return 1f;
+            }
+            if (texelWorldSize == 0f)
+            {
+                return 0f;
+            }
+            return (Mathf.Log10(texelWorldSize) - -3f) / 3f;
+        }
     }
 }

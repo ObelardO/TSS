@@ -22,7 +22,8 @@ namespace TSS
 
         public float smoothFactor { get { return item.values.pathSmoothFactor; } set { item.values.pathSmoothFactor = value; AutoSetAllControls(); } }
         public int count { get { return points.Count; } }
-        public Vector3 last { get { return this[count - 1]; } set { this[count - 1] = value; } }
+        public Vector3 last { get { return points[count - 1]; } set { points[count - 1] = value; } }
+        public Vector3 first { get { return points[0]; } set { points[0] = value; } }
         public int segmentsCount { get { return count / 3; } }
         public List<Vector3> points { get { return item.values.path; } set { item.values.path = value; } }
         public Vector3 this[int i] { get { return points[i]; } set { points[i] = value; } }
@@ -59,8 +60,8 @@ namespace TSS
                     return;
                 }
 
-                points.Add(last * 2 - this[count - 2]);
-                points.Add(this[0] * 2 - this[1]);
+                points.Add(last * 2 - points[count - 2]);
+                points.Add(points[0] * 2 - points[1]);
 
                 if (auto) { AutoSetControl(0); AutoSetControl(count - 3); }
                 UpdateSpacedPoints();
@@ -77,12 +78,7 @@ namespace TSS
                     AutoSetAllControls(); 
             }
         }
-        /*
-        [HideInInspector] [SerializeField] private Vector3 pathProjectionMask = Vector3.one;
-        public bool projectionMaskX { set { pathProjectionMask.x = value ? 1 : 0; } get { return pathProjectionMask.x == 1; } }
-        public bool projectionMaskY { set { pathProjectionMask.y = value ? 1 : 0; } get { return pathProjectionMask.y == 1; } }
-        public bool projectionMaskZ { set { pathProjectionMask.z = value ? 1 : 0; } get { return pathProjectionMask.z == 1; } }
-        */
+
         #endregion
 
         #region Evaluate methods
@@ -125,16 +121,30 @@ namespace TSS
         #region Segments
 
         /// <summary>
-        /// Add a new segment to path end
+        /// Add a new segment to path
         /// </summary>
         /// <param name="newPos">new path's end position</param>
-        public void AddSegment(Vector3 newPos)
+        /// <param name="toStart">if true new segment will be added to start</param>
+        public void AddSegment(Vector3 newPos, bool toStart = false)
         {
-            points.Add(last * 2 - this[count - 2]);
-            points.Add((last + newPos) * 0.5f);
-            points.Add(newPos);
+            if (toStart)
+            {
+                points.Insert(0,points[0] * 2 - points[1]);
+                points.Insert(0,(points[0] + newPos) * 0.5f);
+                points.Insert(0,newPos);
 
-            SetPointPos(count - 1, newPos, true);
+
+                SetPointPos(0, newPos, true);
+            }
+            else
+            {
+                points.Add(last * 2 - points[count - 2]);
+                points.Add((last + newPos) * 0.5f);
+                points.Add(newPos);
+
+                SetPointPos(count - 1, newPos, true);
+            }
+
             UpdateSpacedPoints();
 
             if (item.values.pathLerpMode == PathLerpMode.dynamic)
@@ -176,7 +186,7 @@ namespace TSS
         public void Project(Vector3 projectionMask)
         {
             for (int i = 0; i < count; i++)
-                this[i] = new Vector3(this[i].x * projectionMask.x, this[i].y * projectionMask.y, this[i].z * projectionMask.z);
+                points[i] = new Vector3(points[i].x * projectionMask.x, points[i].y * projectionMask.y, points[i].z * projectionMask.z);
 
             UpdateSpacedPoints();
         }
@@ -191,7 +201,7 @@ namespace TSS
 
             if (anchorID == 0)
             {
-                if (loop) last = this[2];
+                if (loop) last = points[2];
 
                 points.RemoveRange(0, 3);
 
@@ -220,7 +230,7 @@ namespace TSS
         /// <returns>4 segment points: start, start tangent, end tangent, end</returns>
         public Vector3[] GetSegmentPoints(int i)
         {
-            return new Vector3[] { this[i * 3], this[i * 3 + 1], this[i * 3 + 2], this[loopID(i * 3 + 3)] };
+            return new Vector3[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[loopID(i * 3 + 3)] };
         }
 
         /// <summary>
@@ -233,19 +243,19 @@ namespace TSS
         {
             if (auto && pointID % 3 != 0) return;
 
-            Vector3 deltaPos = newPos - this[pointID];
+            Vector3 deltaPos = newPos - points[pointID];
 
-            this[pointID] = newPos;
+            points[pointID] = newPos;
 
-            if (pointID == 0 && item != null) item.values.positions[0] = this[0];
+            if (pointID == 0 && item != null) item.values.positions[0] = points[0];
             if (pointID == count - 1 && item != null) item.values.positions[1] = last;
 
             if (!updateOthers) return;
 
             if (pointID % 3 == 0)
             {
-                if (pointID + 1 < count || loop) this[loopID(pointID + 1)] += deltaPos;
-                if (pointID - 1 >= 0 || loop) this[loopID(pointID - 1)] += deltaPos;
+                if (pointID + 1 < count || loop) points[loopID(pointID + 1)] += deltaPos;
+                if (pointID - 1 >= 0 || loop) points[loopID(pointID - 1)] += deltaPos;
 
                 if (auto && ((loop && segmentsCount > 2) || (!loop && segmentsCount > 1)))
                 {
@@ -264,9 +274,9 @@ namespace TSS
                 opositeID = loopID(opositeID);
                 anchorID = loopID(anchorID);
 
-                float distance = (ToWorld(this[anchorID]) - ToWorld(this[opositeID])).magnitude;
-                Vector3 direction = (ToWorld(this[anchorID]) - ToWorld(newPos)).normalized;
-                this[opositeID] = this[anchorID] + direction * distance;
+                float distance = (ToWorld(points[anchorID]) - ToWorld(points[opositeID])).magnitude;
+                Vector3 direction = (ToWorld(points[anchorID]) - ToWorld(newPos)).normalized;
+                points[opositeID] = points[anchorID] + direction * distance;
             }
         }
 
@@ -299,20 +309,20 @@ namespace TSS
 
         private void AutoSetControl(int anchorID)
         {
-            Vector3 anchorPos = this[anchorID];
+            Vector3 anchorPos = points[anchorID];
             Vector3 direction = Vector3.zero;
             float[] distances = new float[2];
             
             if (anchorID - 3 >= 0 || loop)
             {
-                Vector3 offset = this[loopID(anchorID - 3)] - anchorPos;
+                Vector3 offset = points[loopID(anchorID - 3)] - anchorPos;
                 direction += offset.normalized;
                 distances[0] = offset.magnitude;
             }
 
             if (anchorID + 3 >= 0 || loop)
             {
-                Vector3 offset = this[loopID(anchorID + 3)] - anchorPos;
+                Vector3 offset = points[loopID(anchorID + 3)] - anchorPos;
                 direction -= offset.normalized;
                 distances[1] =-offset.magnitude;
             }
@@ -322,7 +332,7 @@ namespace TSS
             for (int i = 0; i < 2; i++)
             {
                 int pointID = anchorID + i * 2 - 1;
-                if (pointID >= 0 && pointID < count || loop) this[loopID(pointID)] = anchorPos + direction * distances[i] * smoothFactor;
+                if (pointID >= 0 && pointID < count || loop) points[loopID(pointID)] = anchorPos + direction * distances[i] * smoothFactor;
             }
 
         }
@@ -331,8 +341,8 @@ namespace TSS
         {
             if (loop) return;
 
-            this[1] = (this[0] + this[2]) * 0.5f;
-            this[count - 2] = (last + this[count - 3]) * 0.5f;
+            points[1] = (points[0] + points[2]) * 0.5f;
+            points[count - 2] = (last + points[count - 3]) * 0.5f;
 
         }
 
@@ -407,9 +417,9 @@ namespace TSS
 
                 Vector3 newPointPosition = ToLocal(pointsAttach[i].position);
 
-                if (this[i * 3] == newPointPosition) continue;
+                if (points[i * 3] == newPointPosition) continue;
 
-                this[i * 3] = newPointPosition;
+                points[i * 3] = newPointPosition;
                 if (auto) AutoSetAllEffectedControls(i * 3);
             }
         }

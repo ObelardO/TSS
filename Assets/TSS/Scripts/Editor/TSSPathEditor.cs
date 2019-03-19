@@ -21,7 +21,7 @@ namespace TSS.Editor
         private SerializedObject serializedPath;
         private static bool syncJoints = true;
         private static List<int> selection = new List<int>();
-        private const float segmentSelectTreshold = 500.1f;
+        private const float segmentSelectTreshold = 1000.1f;
         private static int selectedSegmentID = -1;
 
         private static GUIContent syncJointsContent = new GUIContent("Sync Joints", "Nearest points are affected by the moving point"),
@@ -31,8 +31,10 @@ namespace TSS.Editor
                                   qualitySpacingContent = new GUIContent("Spacing", "Count of travel points on path\n\nDirectly affects performance!"),
                                   qualityResolutionContent = new GUIContent("Resolution", "Threshold for placing travel points on path\n\nDirectly affects performance!"),
                                   lerpModeContent = new GUIContent("Interpolation", "Linear:\nInterpolation by item position tween (Much faster than cubic)\n\nCubic:\ninterpolation by item position tween and bezier effect (Affecting on performance!)"),
-                                  addSegmentButtonContent = new GUIContent("Add Segment", "Add new segment to the path"),
+                                  addSegmentStartButtonContent = new GUIContent("Add point to start", "Add new segment to the path start"),
+                                  addSegmentEndButtonContent = new GUIContent("Add point to end", "Add new segment to the path end"),
                                   selectAllButtonContent = new GUIContent("Select All", "Select all anchor points of the path"),
+                                  selectPathButtonContent = new GUIContent("Select path", "Select all anchor points of the path"),
                                   deleteSelectedButtonContent = new GUIContent("Delete Selected", "Delete all selected points of the path"),
                                   resetPathButtonContent = new GUIContent("Reset Path", "Reset all path values to default"),
                                   bakeButtonContent = new GUIContent("Bake", "Recalculate baked path"),
@@ -40,16 +42,14 @@ namespace TSS.Editor
                                   selectSegmentHelpContent = new GUIContent("LMB  -  Select point"),
                                   selectGroupSegmentHelpContent = new GUIContent("Ctrl + LMB  -  Select group of points"),
                                   newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point"),
-                                  handleSizeSliderContent = new GUIContent("Handles size"),
-                                  projectionMaskContent = new GUIContent("Projection", "Project all points on vector");
+                                  handleSizeSliderContent = new GUIContent("Handles size", "Scales handle points size"),
+                                  handleSizeFixedContent = new GUIContent("Fixed size", "Handle points size fixed in screen space"),
+                                  projectionMaskContent = new GUIContent("Projection", "Project all points on vector"),
+                                  editPointPositionContent = new GUIContent("Selected points position", "Manualy set selected point positions");
 
         private static bool editMode;
 
-        private static float handle2DScaler = 1.0f;
-
         private static AnimBool foldOutAttachPoints;
-
-        private static float handleScaler = 1.0f;
 
         #endregion
 
@@ -62,7 +62,6 @@ namespace TSS.Editor
             selection.Clear();
             editModeButtonContent = EditorGUIUtility.IconContent("EditCollider");
             editMode = false;
-            path.gizmoSize = 0.033f * handleScaler;
 
             foldOutAttachPoints = new AnimBool(false);
             foldOutAttachPoints.valueChanged.AddListener(Repaint);
@@ -84,24 +83,36 @@ namespace TSS.Editor
         {
             if (selectedSegmentID != -1) { AddSplitPoint(); return; }
 
-            AddPoint(path.last - (path.last - path[path.count - 3]));
+            AddPoint(false);
         }
 
-        private void AddPoint(Vector3 position)
+        private void AddPoint(/*Vector3 position, */bool toStart = true)
         {
             Undo.RecordObject(path.item, "[TSS Path] Add segment");
             Undo.RecordObject(path, "[TSS Path] Split segment");
 
+
+            Vector3 position = toStart ?
+                    path[0] - (path[1] - path[0]) * 3 :
+                    path.last + (path.last - path[path.count - 2]) * 3;// (path.last - path[path.count - 3]);
+
+            /*
             if (selectedSegmentID != -1)
             {
                 Vector3[] segmentPoints = ToWorld(path.GetSegmentPoints(selectedSegmentID));
                 position = ToLocal(TSSPathBase.EvaluateSegment(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2], 0.5f));
-            }
 
-            path.AddSegment(position);
+                AddSplitPoint(position);
+                return;
+            }
+            */
+
+
+            path.AddSegment(position, toStart);
+
 
             selection.Clear();
-            selection.Add(path.count - 1);
+            selection.Add(toStart ? 0 : path.count - 1);
         }
 
         private void AddSplitPoint()
@@ -121,14 +132,16 @@ namespace TSS.Editor
             selection.Add(selectedSegmentID);
         }
 
-        private void SelectAllPoints()
+        private void SelectAllPoints(int step = 3)
         {
             Undo.RecordObject(this, "[TSS Path] Selection");
 
             selection.Clear();
 
-            for (int i = 0; i < path.count; i += 3) selection.Add(i);
+            for (int i = 0; i < path.count; i += step) selection.Add(i);
         }
+
+
 
         private void ResetPath()
         {
@@ -164,18 +177,37 @@ namespace TSS.Editor
         {
             serializedPath.Update();
 
+            DrawEditModeButtonGUI();
+
+            EditorGUI.BeginDisabledGroup(!editMode);
+
+            DrawModesGUI();
+            DrawLerpGUI();
+            DrawControlButtonsGUI();
+            /*DrawProjectionToolBarGUI(); <-- !DISABLED (DrawSelectedPointsGUI() functionality cover this feature)*/
+            DrawSelectedPointsGUI();
+            DrawHelpboxGUI();
+
+            EditorGUI.EndDisabledGroup();
+
+            serializedPath.ApplyModifiedProperties();
+        }
+
+        private void DrawEditModeButtonGUI()
+        {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel(" ");
             editMode = GUILayout.Toggle(editMode, editModeButtonContent, "Button", TSSEditorUtils.fixed35pxWidth, TSSEditorUtils.fixed25pxHeight);
             EditorGUILayout.LabelField("Edit Item Path", EditorStyles.label, TSSEditorUtils.fixed25pxHeight);
             path.showGizmos = editMode;
             EditorGUILayout.EndHorizontal();
+        }
 
+        private void DrawModesGUI()
+        {
             EditorGUI.BeginChangeCheck();
 
             GUILayout.Space(4);
-
-            EditorGUI.BeginDisabledGroup(!editMode);
 
             TSSEditorUtils.DrawGenericProperty(ref syncJoints, syncJointsContent);
 
@@ -193,7 +225,10 @@ namespace TSS.Editor
                 TSSEditorUtils.DrawSliderProperty(ref pathSmooth, path.item, smoothFactorContent, 0, 1);
                 if (pathSmooth != path.smoothFactor) path.smoothFactor = pathSmooth;
             }
+        }
 
+        private void DrawLerpGUI()
+        {
             bool isLinearLerp = path.item.values.pathLerpMode == PathLerpMode.baked;
 
             if (isLinearLerp) EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -242,26 +277,32 @@ namespace TSS.Editor
             }
 
             if (isLinearLerp) EditorGUILayout.EndVertical();
+        }
+
+        private void DrawControlButtonsGUI()
+        {
+            GUILayoutOption buttonOption = GUILayout.Width((EditorGUIUtility.currentViewWidth - 42) / 2);
 
             GUILayout.Space(4);
 
             EditorGUILayout.BeginHorizontal();
-
-            if (GUILayout.Button(addSegmentButtonContent)) AddPointToEnd();
-
-            if (GUILayout.Button(selectAllButtonContent)) SelectAllPoints();
-
+                if (GUILayout.Button(addSegmentStartButtonContent, buttonOption)) AddPoint(true);
+                if (GUILayout.Button(addSegmentEndButtonContent, buttonOption)) AddPoint(false);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-
-            if (GUILayout.Button(deleteSelectedButtonContent)) DeleteSelectedPoints();
-
-            if (GUILayout.Button(resetPathButtonContent)) ResetPath();
-
+                if (GUILayout.Button(selectAllButtonContent, buttonOption)) SelectAllPoints();
+                if (GUILayout.Button(selectPathButtonContent, buttonOption)) SelectAllPoints(1);
             EditorGUILayout.EndHorizontal();
 
+            EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button(deleteSelectedButtonContent, buttonOption)) DeleteSelectedPoints();
+                if (GUILayout.Button(resetPathButtonContent, buttonOption)) ResetPath();
+            EditorGUILayout.EndHorizontal();
+        }
 
+        private void DrawProjectionToolBarGUI()
+        {
             EditorGUILayout.BeginHorizontal();
 
             EditorGUILayout.LabelField(projectionMaskContent, GUILayout.MaxWidth(98));
@@ -282,11 +323,97 @@ namespace TSS.Editor
                 path.Project(new Vector3(1, 1, 0));
             }
 
-
             EditorGUILayout.EndHorizontal();
+        }
 
-            if (EditorGUI.EndChangeCheck()) SceneView.RepaintAll();
+        private void DrawSelectedPointsGUI()
+        {
+            if (selection.Count == 0) return;
 
+            if (selection.Count == 1)
+            {
+                Vector3 newPos = path[selection[0]];
+
+                EditorGUI.BeginChangeCheck();
+
+                newPos = EditorGUILayout.Vector3Field(editPointPositionContent, newPos);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(path.item, "[TSS Path] point position");
+
+                    path.SetPointPos(selection[0], newPos, syncJoints);
+                    path.UpdateSpacedPoints();
+                }
+            }
+            else if (selection.Count > 0)
+            {
+                bool xMixed = false;
+                bool yMixed = false;
+                bool zMixed = false;
+
+                Vector3 oldPos = path[selection[0]];
+                Vector3 newPos = Vector3.zero;
+
+                for (int i = 1; i < selection.Count; i++)
+                {
+                    if (!xMixed) xMixed = !Mathf.Approximately(path[selection[i]].x, oldPos.x);
+                    if (!yMixed) yMixed = !Mathf.Approximately(path[selection[i]].y, oldPos.y);
+                    if (!zMixed) zMixed = !Mathf.Approximately(path[selection[i]].z, oldPos.z);
+                }
+
+                EditorGUI.BeginChangeCheck();
+
+                EditorGUILayout.BeginHorizontal();
+
+                EditorGUILayout.PrefixLabel(editPointPositionContent);
+
+                EditorGUIUtility.labelWidth = 12;
+
+                //EditorGUILayout.LabelField("X", TSSEditorUtils.max12pxWidth);
+                EditorGUI.showMixedValue = xMixed;
+                newPos.x = EditorGUILayout.FloatField("X", oldPos.x);
+                EditorGUI.showMixedValue = false;
+
+                //EditorGUILayout.LabelField("Y", TSSEditorUtils.max12pxWidth);
+                EditorGUI.showMixedValue = yMixed;
+                newPos.y = EditorGUILayout.FloatField("Y", oldPos.y);
+                EditorGUI.showMixedValue = false;
+
+                //EditorGUILayout.LabelField("Z", TSSEditorUtils.max12pxWidth);
+                EditorGUI.showMixedValue = zMixed;
+                newPos.z = EditorGUILayout.FloatField("Z", oldPos.z);
+                EditorGUI.showMixedValue = false;
+
+                EditorGUIUtility.labelWidth = 0;
+
+                EditorGUILayout.EndHorizontal();
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(path.item, "[TSS Path] points position");
+
+                    bool xChg = !Mathf.Approximately(oldPos.x, newPos.x);
+                    bool yChg = !Mathf.Approximately(oldPos.y, newPos.y);
+                    bool zChg = !Mathf.Approximately(oldPos.z, newPos.z);
+
+                    for (int i = 0; i < selection.Count; i++)
+                    {
+                        path.SetPointPos(selection[i], new Vector3
+                            (
+                                xChg ? newPos.x : path[selection[i]].x,
+                                yChg ? newPos.y : path[selection[i]].y,
+                                zChg ? newPos.z : path[selection[i]].z
+                            ),
+                        syncJoints);
+                    }
+
+                    path.UpdateSpacedPoints();
+                }
+            }
+        }
+
+        private void DrawHelpboxGUI()
+        {
             if (editMode)
             {
                 if (path.item.values.pathLerpMode == PathLerpMode.dynamic) DrawAttachPointsPanel();
@@ -298,14 +425,9 @@ namespace TSS.Editor
                 EditorGUILayout.LabelField(selectGroupSegmentHelpContent, EditorStyles.miniLabel);
                 EditorGUILayout.LabelField(newSegmentHelpContent, EditorStyles.miniLabel);
 
-                handleScaler = EditorGUILayout.Slider(handleSizeSliderContent, handleScaler, 0.01f, 1.0f);
-
                 EditorGUILayout.EndVertical();
             }
 
-            EditorGUI.EndDisabledGroup();
-
-            serializedPath.ApplyModifiedProperties();
         }
 
         #endregion
@@ -324,17 +446,18 @@ namespace TSS.Editor
 
         private void Input()
         {
-            if (SceneView.lastActiveSceneView != null)
-            {
-                handle2DScaler = (SceneView.lastActiveSceneView.in2DMode ? 1.0f : 0.165f);
-                path.gizmoSize = (SceneView.lastActiveSceneView.in2DMode ? 1.0f : 0.33f);
-            }
+            path.gizmoSize = GetHandleScale(path.transform.position) * 0.25f;
 
             for (int i = 0; i < selection.Count; i++) if (selection[i] < 0 || selection[i] >= path.count) { selection.Clear(); break; }
 
             if (!editMode) return;
 
             Event guiEvent = Event.current;
+
+            if (guiEvent.type == EventType.ValidateCommand && guiEvent.commandName == "UndoRedoPerformed")
+            {
+                path.UpdateSpacedPoints();
+            }
 
             Vector3 newPosition = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin;
 
@@ -346,7 +469,7 @@ namespace TSS.Editor
             {
                 if (path.auto && i % 3 != 0 || (path.auto && i % 3 != 0 && path.smoothFactor == 0)) continue;
 
-                float handleSize = 15f * handle2DScaler * (i % 3 == 0 ? 1 : 0.5f) * handleScaler;
+                float handleSize = (i % 3 == 0 ? 1 : 0.5f) * GetHandleScale(ToWorld(path[i]));
                 Handles.color = i % 3 == 0 ? Color.white : Color.white * 0.75f;
 
                 if (Handles.Button(ToWorld(path[i]), Quaternion.identity, handleSize, handleSize, Handles.SphereHandleCap))
@@ -355,6 +478,11 @@ namespace TSS.Editor
                     mouseClicked = true;
                     Repaint();
                 }
+            }
+
+            if (guiEvent.keyCode == KeyCode.Escape)
+            {
+                selection.Clear();
             }
 
             if (!mouseClicked)
@@ -368,6 +496,7 @@ namespace TSS.Editor
                     {
                         Vector3[] points = ToWorld(path.GetSegmentPoints(i));
                         float distance = HandleUtility.DistancePointBezier(newPosition, points[0], points[3], points[1], points[2]);
+
 
                         if (distance < minDistane)
                         {
@@ -402,7 +531,7 @@ namespace TSS.Editor
                     if (path.loop) return;
 
                     newPosition.z = path.last.z + (path.last.z - path[path.count - 1].z) * 0.5f;
-                    AddPoint(ToLocal(newPosition));
+                    /*AddPoint(ToLocal(newPosition)); <-- !DISABLED*/
                 }
 
                 return;
@@ -423,8 +552,20 @@ namespace TSS.Editor
                 return;
             }
 
+
+
+
+
             selection.Clear();
             selection.Add(selectedPointID);
+        }
+
+        private static float GetHandleScale(Vector3 handlePosition)
+        {
+            float scale = AnnotationUtiltyWrapper.IconSizeLinear;
+            if (!AnnotationUtiltyWrapper.use3dGizmos) scale *= HandleUtility.GetHandleSize(handlePosition) * 0.25f;
+            else if (SceneView.lastActiveSceneView != null && SceneView.lastActiveSceneView.in2DMode) scale *= 10;
+            return scale;
         }
 
         #endregion
@@ -451,7 +592,6 @@ namespace TSS.Editor
                     }
                 }
             }
-
 
             for (int i = 0; i < path.segmentsCount; i++)
             {
@@ -485,7 +625,7 @@ namespace TSS.Editor
                 for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(ToWorld(path[selection[j]]) + posDelta), syncJoints);
             }
 
-            path.gizmoSize = 0.3f * handleScaler;
+            path.gizmoSize = GetHandleScale(path.transform.position) * 0.25f;
         }
 
 

@@ -28,7 +28,6 @@ namespace TSS.Editor
         {
             showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", showTweenProperties);
 
-
             drawAllPaths = EditorPrefs.GetBool("TSS_drawAllPaths", drawAllPaths);
 
             prefsLoaded = true;
@@ -49,38 +48,11 @@ namespace TSS.Editor
         {
             if (!prefsLoaded) Load();
 
-            //foldOutEditor = EditorGUILayout.Foldout(foldOutEditor, "Editor", true);
-
-            //if (foldOutEditor)
-            //{
-            //EditorGUI.indentLevel += 1;
-
             EditorGUILayout.LabelField("Version: " + TSSInfo.version);
 
-                TSSEditorUtils.DrawGenericProperty(ref showTweenProperties, "showTweenProperties");
+            TSSEditorUtils.DrawGenericProperty(ref showTweenProperties, "showTweenProperties");
 
-
-                TSSEditorUtils.DrawGenericProperty(ref drawAllPaths, "showAllPaths");
-
-                //EditorGUI.indentLevel -= 1;
-            //}
-
-            /*
-            foldOutRuntime = EditorGUILayout.Foldout(foldOutRuntime, "Runtime", true);
-
-            if (foldOutRuntime)
-            {
-                EditorGUI.indentLevel += 1;
-
-                TSSEditorUtils.DrawGenericProperty(ref TSSPrefs.dynamicPathSampling, "dynamicPathSampling");
-
-                TSSEditorUtils.DrawGenericProperty(ref TSSPrefs.Symbols.percent, "textLerpPercentSymbol");
-                TSSEditorUtils.DrawGenericProperty(ref TSSPrefs.Symbols.space, "textLerpSpaceSymbol");
-                TSSEditorUtils.DrawGenericProperty(ref TSSPrefs.Symbols.dot, "floatFormatDotSymbol");
-
-                EditorGUI.indentLevel -= 1;
-            }
-            */
+            TSSEditorUtils.DrawGenericProperty(ref drawAllPaths, "showAllPaths");
 
             if (GUI.changed) 
             {

@@ -35,8 +35,8 @@ namespace TSS.Editor
         private bool itemConnected;
 
         private static GUIContent invalidPropertyName = new GUIContent("Invalid property \"{0}\""),
-                                    openOnTimeLineButton = new GUIContent("Show on timeLine"),
-                                    takeOfTimeLineButton = new GUIContent("Take off from timeLine"),
+                                    openOnTimeLineButton = new GUIContent("timeLine"),
+                                    takeOfTimeLineButton = new GUIContent("no timeline"),
                                     applyProfileButton = new GUIContent("Apply to", "Update profile values by this item"),
                                     revertProfileButton = new GUIContent("Revert from", "Update item values by this profile"),
 
@@ -208,28 +208,28 @@ namespace TSS.Editor
             }
 
             GUI.color = TSSEditorUtils.redColor;
-            if (GUILayout.Button(TSSEditorTextures.itemRecordClose, TSSEditorUtils.fixedLineHeight))
+            if (GUILayout.Button(TSSEditorTextures.itemRecordClose, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight))
             {
                 Undo.RecordObject(item, "[TSS Item] recording closed state");
                 item.Capture(ItemKey.closed); InvokeItemMethod("CloseImmediately");
             }
 
             GUI.color = TSSEditorUtils.greenColor;
-            if (GUILayout.Button(TSSEditorTextures.itemRecordOpen, TSSEditorUtils.fixedLineHeight))
+            if (GUILayout.Button(TSSEditorTextures.itemRecordOpen, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight))
             {
                 Undo.RecordObject(item, "[TSS Item] recording closed state");
                 item.Capture(ItemKey.opened); InvokeItemMethod("OpenImmediately");
             }
 
             GUI.color = TSSEditorUtils.redColor;
-            if (GUILayout.Button(TSSEditorTextures.itemClose, TSSEditorUtils.fixedLineHeight))
+            if (GUILayout.Button(TSSEditorTextures.itemClose, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight))
             {
                 Undo.RecordObject(item, "[TSS Item] to closed state");
                 if (Application.isPlaying) InvokeItemMethod("CloseBranch"); else InvokeItemMethod("CloseBranchImmediately");
             }
 
             GUI.color = TSSEditorUtils.greenColor;
-            if (GUILayout.Button(TSSEditorTextures.itemOpen, TSSEditorUtils.fixedLineHeight))
+            if (GUILayout.Button(TSSEditorTextures.itemOpen, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight))
             {
                 Undo.RecordObject(item, "[TSS Item] to opened state");
                 if (Application.isPlaying) InvokeItemMethod("OpenBranch"); else InvokeItemMethod("OpenBranchImmediately");
@@ -502,7 +502,7 @@ namespace TSS.Editor
             }
 
             if (string.IsNullOrEmpty(displayPropertyName)) displayPropertyName = propertyName;
-            if (displayPropertyOption == null) displayPropertyOption = TSSEditorUtils.max120pxWidth;
+            if (displayPropertyOption == null) displayPropertyOption =  TSSEditorUtils.max100pxWidth;
 
             Type propertyType = GetItemPropertyType(propertyName);
 
