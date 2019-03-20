@@ -20,7 +20,9 @@ namespace TSS
         public Quaternion itemWorldRotation { get { return item.transform.parent == null ? Quaternion.identity : item.transform.parent.rotation; } }
         public Vector3 itemScale { get { return item.transform.parent == null ? Vector3.one : item.transform.parent.localScale; } }
 
+        public PathLerpMode lerpMode { get { return item.values.pathLerpMode; } set { item.values.pathLerpMode = value; } }
         public float smoothFactor { get { return item.values.pathSmoothFactor; } set { item.values.pathSmoothFactor = value; AutoSetAllControls(); } }
+
         public int count { get { return points.Count; } }
         public Vector3 last { get { return points[count - 1]; } set { points[count - 1] = value; } }
         public Vector3 first { get { return points[0]; } set { points[0] = value; } }
@@ -41,9 +43,6 @@ namespace TSS
             get { return item.values.pathResolution; }
             set { item.values.pathResolution = value; item.values.pathResolution = Mathf.Clamp(item.values.pathResolution, 1, 10); UpdateSpacedPoints(); }
         }
-
-        [HideInInspector] public bool showGizmos;
-        [HideInInspector] public float gizmoSize;
 
         public bool loop { get { return item.values.pathIsLooped; }
             set
@@ -354,18 +353,6 @@ namespace TSS
         private void OnDrawGizmos()
         {
             
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            /*
-            if (spacedPoints == null || !showGizmos || !enabled || item.values.pathLerpMode == PathLerpMode.dynamic) return;
-
-            for (int i = 0; i < spacedPoints.Length; i++)
-            {
-                Gizmos.DrawWireSphere(ToWorld(spacedPoints[i]), gizmoSize);
-            }
-            */
         }
 
         #endregion

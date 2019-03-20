@@ -22,8 +22,8 @@ namespace TSS
         /// <summary>Values container</summary>
         [HideInInspector] public TSSItemValues values;
 
-        [HideInInspector] public int ID = 0;
-        [HideInInspector] public float time = 0;
+        [HideInInspector, NonSerialized] public int ID = 0;
+        [HideInInspector, NonSerialized] public float time = 0;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
         [HideInInspector] public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
@@ -133,9 +133,9 @@ namespace TSS
         [HideInInspector] public ButtonDirection buttonDirection { set { values.buttonDirection = value; } get { return values.buttonDirection; } }
 
         /// <summary>Item evaluation</summary>
-        [HideInInspector] public float evaluation;
+        [HideInInspector, NonSerialized] public float evaluation;
         /// <summary>Item delteTime affected by updating type and time scaling</summary>
-        [HideInInspector] public float deltaTime;
+        [HideInInspector, NonSerialized] public float deltaTime;
 
         /// <summary>Count of item loops. Loop activation will start after every opening (-1 as infinity loop)</summary>
         [HideInInspector] public int loops { set { values.loops = value; Refresh(); } get { return values.loops; } }
@@ -158,7 +158,7 @@ namespace TSS
         [HideInInspector] public UnityEvent OnClosing;
 
         /// <summary>Item current state</summary>
-        [HideInInspector, SerializeField] public ItemState _state;
+        [HideInInspector, NonSerialized] public ItemState _state;
         public ItemState state
         {
             set
@@ -233,9 +233,9 @@ namespace TSS
         [HideInInspector] public bool isSlave { get { return (_state == ItemState.slave); } }
 
         /// <summary>Item's child states</summary>
-        [HideInInspector] public int[] childStateCounts = new int[4];
-        [HideInInspector] public float stateChgTime;
-        [HideInInspector] public bool stateChgBranchMode;
+        [HideInInspector, NonSerialized] public int[] childStateCounts = new int[4];
+        [HideInInspector, NonSerialized] public float stateChgTime;
+        [HideInInspector, NonSerialized] public bool stateChgBranchMode;
 
         /// <summary>List of child</summary>
         [HideInInspector] public List<TSSItem> childItems = new List<TSSItem>();

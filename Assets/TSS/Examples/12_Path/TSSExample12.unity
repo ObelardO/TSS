@@ -370,10 +370,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -419,10 +415,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 881382247}
   tweens: []
@@ -615,7 +607,7 @@ MonoBehaviour:
   - {x: -68.21435, y: -56.182728, z: 10.112153}
   - {x: -63.99722, y: -48.0934, z: 1.7054846}
   showGizmos: 1
-  gizmoSize: 24.439142
+  gizmoSize: 6.7976103
 --- !u!114 &258275877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,10 +728,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -763,10 +751,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -1240,10 +1224,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
-  time: 1
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1289,10 +1269,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 1603189162}
   tweens: []
@@ -1463,10 +1439,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
-  time: 1
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1512,10 +1484,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 1756004676}
   tweens: []
@@ -1860,10 +1828,6 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 0
-  ID: 1
-  time: 1
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1887,10 +1851,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -2038,7 +1998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72}
+  m_AnchoredPosition: {x: 0, y: -71.999985}
   m_SizeDelta: {x: 0, y: -144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438472919
@@ -2327,10 +2287,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -2354,10 +2310,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 258275877}
   tweens:
@@ -3152,21 +3104,18 @@ MonoBehaviour:
   pointsAttach: []
   spacedPoints:
   - {x: -252.86667, y: 5.9956055, z: -314.25232}
-  - {x: -247.94884, y: 7.425786, z: -267.12003}
-  - {x: -233.7718, y: 11.691107, z: -222.09682}
-  - {x: -210.63042, y: 18.351656, z: -181.26852}
-  - {x: -180.09447, y: 26.584696, z: -145.93318}
-  - {x: -144.13821, y: 35.5328, z: -116.30329}
-  - {x: -104.43204, y: 44.521973, z: -91.912125}
-  - {x: -62.162838, y: 53.080654, z: -72.0805}
-  - {x: -18.123205, y: 60.88069, z: -56.160603}
-  - {x: 27.158665, y: 67.678955, z: -43.613262}
-  - {x: 73.319214, y: 73.277176, z: -34.013584}
-  - {x: 120.09406, y: 77.49686, z: -27.034422}
-  - {x: 167.27573, y: 80.16364, z: -22.426888}
-  - {x: 214.68584, y: 81.097466, z: -20.003227}
+  - {x: -244.6846, y: 8.4173765, z: -253.29062}
+  - {x: -220.88205, y: 15.448088, z: -196.98767}
+  - {x: -183.42351, y: 25.716194, z: -149.20627}
+  - {x: -136.45216, y: 37.34506, z: -111.02681}
+  - {x: -83.56062, y: 48.878235, z: -81.46901}
+  - {x: -27.044464, y: 59.393898, z: -59.05922}
+  - {x: 31.740215, y: 68.29583, z: -42.526733}
+  - {x: 91.96805, y: 75.14021, z: -30.922937}
+  - {x: 153.08951, y: 79.537186, z: -23.572317}
+  - {x: 214.68588, y: 81.097466, z: -20.003225}
   showGizmos: 0
-  gizmoSize: 8.861739
+  gizmoSize: 0.25
 --- !u!114 &881382247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3276,13 +3225,9 @@ MonoBehaviour:
     pathAutoControl: 0
     pathSmoothFactor: 0.389
     pathResolution: 1
-    pathSpacing: 13
+    pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 2
@@ -3306,10 +3251,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 504019002}
   - {fileID: 1981151018}
@@ -5464,10 +5405,6 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 0
-  ID: 1
-  time: 1
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5491,10 +5428,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -5753,10 +5686,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
-  time: 1
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5802,10 +5731,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems:
   - {fileID: 432422349}
   tweens: []
@@ -6454,10 +6379,6 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 1
-  ID: 1
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6481,10 +6402,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 0
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -7112,10 +7029,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
-  time: 0
-  evaluation: 0
-  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7139,10 +7052,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _state: 4
-  childStateCounts: 00000000000000000000000000000000
-  stateChgTime: 0
-  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1

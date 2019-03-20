@@ -86,10 +86,10 @@ namespace TSS.Editor
             AddPoint(false);
         }
 
-        private void AddPoint(/*Vector3 position, */bool toStart = true)
+        private void AddPoint(bool toStart = true)
         {
-            Undo.RecordObject(path.item, "[TSS Path] Add segment");
-            Undo.RecordObject(path, "[TSS Path] Split segment");
+            Undo.RecordObjects(new Object[] { path, path.item }, "[TSS Path] Split segment");
+
 
             Vector3 position = toStart ?
                     path[0] - (path[1] - path[0]) * 3 :
@@ -111,8 +111,8 @@ namespace TSS.Editor
 
         private void AddSplitPoint(Vector3 position)
         {
-            Undo.RecordObject(path.item, "[TSS Path] Split segment");
-            Undo.RecordObject(path, "[TSS Path] Split segment");
+            Undo.RecordObjects(new Object[] { path, path.item }, "[TSS Path] Split segment");
+
             path.SplitSegment(position, selectedSegmentID);
 
             selection.Clear();
@@ -140,8 +140,7 @@ namespace TSS.Editor
 
         private void DeleteSelectedPoints()
         {
-            Undo.RecordObject(path.item, "[TSS Path] Delete segments");
-            Undo.RecordObject(path, "[TSS Path] Split segment");
+            Undo.RecordObjects(new Object[] { path, path.item }, "[TSS Path] Delete segments");
 
             List<Vector3> positionSelection = new List<Vector3>();
 
@@ -186,7 +185,6 @@ namespace TSS.Editor
             EditorGUILayout.PrefixLabel(" ");
             editMode = GUILayout.Toggle(editMode, editModeButtonContent, "Button", TSSEditorUtils.fixed35pxWidth, TSSEditorUtils.fixed25pxHeight);
             EditorGUILayout.LabelField("Edit Item Path", EditorStyles.label, TSSEditorUtils.fixed25pxHeight);
-            path.showGizmos = editMode;
             EditorGUILayout.EndHorizontal();
         }
 
@@ -226,8 +224,7 @@ namespace TSS.Editor
 
             if (isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.dynamic)
             {
-                Undo.RecordObject(path.item, "[TSS Path] Delete segments");
-                Undo.RecordObject(path, "[TSS Path] Split segment");
+                Undo.RecordObjects(new Object[] { path, path.item }, "[TSS Path] Delete segments");
 
                 path.pointsAttach = new List<Transform>();
                 path.pointsAttach.AddRange(new Transform[path.segmentsCount + 1]);
@@ -235,8 +232,7 @@ namespace TSS.Editor
 
             if (!isLinearLerp && path.item.values.pathLerpMode == PathLerpMode.baked)
             {
-                Undo.RecordObject(path.item, "[TSS Path] Delete segments");
-                Undo.RecordObject(path, "[TSS Path] Split segment");
+                Undo.RecordObjects(new Object[] { path, path.item }, "[TSS Path] Split segment");
 
                 path.pointsAttach = null;
                 path.UpdateSpacedPoints();
@@ -430,7 +426,6 @@ namespace TSS.Editor
 
         private void Input()
         {
-            path.gizmoSize = GetHandleScale(path.transform.position) * 0.25f;
 
             for (int i = 0; i < selection.Count; i++) if (selection[i] < 0 || selection[i] >= path.count) { selection.Clear(); break; }
 
@@ -448,6 +443,7 @@ namespace TSS.Editor
             int selectedPointID = -1;
 
             bool mouseClicked = false;
+
 
             for (int i = 0; i < path.count; i++)
             {
@@ -511,11 +507,6 @@ namespace TSS.Editor
                         AddSplitPoint();
                         return;
                     }
-
-                    if (path.loop) return;
-
-                    newPosition.z = path.last.z + (path.last.z - path[path.count - 1].z) * 0.5f;
-                    /*AddPoint(ToLocal(newPosition)); <-- !DISABLED*/
                 }
 
                 return;
@@ -535,10 +526,6 @@ namespace TSS.Editor
                 else selection.Remove(selectedPointID);
                 return;
             }
-
-
-
-
 
             selection.Clear();
             selection.Add(selectedPointID);
@@ -577,6 +564,19 @@ namespace TSS.Editor
                 }
             }
 
+            if (editMode && path.lerpMode == PathLerpMode.baked)
+            {
+                Handles.color = Color.white * 0.6f;
+                Handles.DrawPolyLine(ToWorld(path.spacedPoints));
+                Handles.color = Color.white;
+
+                for (int i = 0; i < path.spacedPoints.Length; i++)
+                {
+                    Vector3 worldPointPos = ToWorld(path.spacedPoints[i]);
+                    Handles.DrawWireCube(worldPointPos, Vector3.one * GetHandleScale(worldPointPos) * 0.5f);
+                }
+            }
+           
             for (int i = 0; i < path.segmentsCount; i++)
             {
                 Vector3[] segmentPoints = ToWorld(path.GetSegmentPoints(i));
@@ -593,6 +593,7 @@ namespace TSS.Editor
                 Handles.DrawLine(segmentPoints[0], segmentPoints[1]);
                 Handles.DrawLine(segmentPoints[2], segmentPoints[3]);
             }
+          
 
             if (!editMode) return;
 
@@ -608,8 +609,6 @@ namespace TSS.Editor
                 Undo.RecordObject(path.item, "[TSS Path] Point position");
                 for (int j = 0; j < selection.Count; j++) path.SetPointPos(selection[j], ToLocal(ToWorld(path[selection[j]]) + posDelta), syncJoints);
             }
-
-            path.gizmoSize = GetHandleScale(path.transform.position) * 0.25f;
         }
 
 
