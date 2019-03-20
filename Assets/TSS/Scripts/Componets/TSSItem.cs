@@ -440,6 +440,9 @@ namespace TSS
                     {
                         time = 1;
                         state = ItemState.opened;
+
+
+
                     }
 
                     UpdateInput();
@@ -503,7 +506,7 @@ namespace TSS
                         loopActivated = true;
                         if (loops > 0) currentLoops--;
                         if (loopMode == ActivationMode.closeImmediately ||
-                            loopMode == ActivationMode.closeBranchImmediately) { UpdateItem(0); UpdateItem(deltaTime * 2); }
+                            loopMode == ActivationMode.closeBranchImmediately) { UpdateItem(deltaTime); }
                     }
 
                     break;

@@ -1,3 +1,6 @@
+1.5.8
++ Path improvements
+
 1.5.7
 + English documentation
 + Path projection, allows to place a path on plane

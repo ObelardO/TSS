@@ -28,7 +28,7 @@ namespace TSS.Base
 
         public static Vector3 ToLocal(TSSPath path, Vector3 worldPoint)
         {
-            return (Quaternion.Inverse(path.itemWorldRotation) * worldPoint) - path.itemWorldPosition;
+            return Quaternion.Inverse(path.itemWorldRotation) * (worldPoint - path.itemWorldPosition);
         }
 
         public static Vector3 ToWorld(TSSPath path, Vector3 localPoint)

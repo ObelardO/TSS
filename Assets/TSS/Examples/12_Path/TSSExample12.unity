@@ -371,9 +371,9 @@ MonoBehaviour:
     pathNormal: 0
     pathLerpMode: 0
   ID: 0
-  time: 1
+  time: 0
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -551,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258275873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.559821, y: -8.295675, z: -2.1613798}
+  m_LocalPosition: {x: -5.982542, y: -4.4931245, z: 0.15400958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 896042290}
@@ -614,8 +614,8 @@ MonoBehaviour:
   - {x: -71.25246, y: -64.83045, z: 18.472672}
   - {x: -68.21435, y: -56.182728, z: 10.112153}
   - {x: -63.99722, y: -48.0934, z: 1.7054846}
-  showGizmos: 0
-  gizmoSize: 31.76629
+  showGizmos: 1
+  gizmoSize: 24.439142
 --- !u!114 &258275877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,9 +737,9 @@ MonoBehaviour:
     pathNormal: 0
     pathLerpMode: 0
   ID: 1
-  time: 1
+  time: 0
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   ID: 0
   time: 1
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   ID: 0
   time: 1
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   ID: 1
   time: 1
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2207,14 +2207,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504019000}
-  m_LocalRotation: {x: 0, y: 0, z: 0.83315766, w: -0.5530355}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0024293517, y: 0.003640747, z: 0.001047058}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 480224204}
   m_Father: {fileID: 881382245}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.252, y: -0.272, z: 0.367}
 --- !u!114 &504019002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,9 +2328,9 @@ MonoBehaviour:
     pathNormal: 0
     pathLerpMode: 0
   ID: 1
-  time: 1
+  time: 0
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -3127,11 +3127,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881382244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -152.89146, y: 28.735214, z: -123.67649}
+  m_LocalPosition: {x: -236.50807, y: 5.6077423, z: -293.92255}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 504019001}
   - {fileID: 963123897}
+  - {fileID: 1981151016}
   m_Father: {fileID: 182610591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3165,7 +3166,7 @@ MonoBehaviour:
   - {x: 167.27573, y: 80.16364, z: -22.426888}
   - {x: 214.68584, y: 81.097466, z: -20.003227}
   showGizmos: 0
-  gizmoSize: 7.7748995
+  gizmoSize: 8.861739
 --- !u!114 &881382247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3279,12 +3280,12 @@ MonoBehaviour:
     pathNormal: 0
     pathLerpMode: 0
   ID: 1
-  time: 1
+  time: 0
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
-  childCountWithoutLoops: 1
+  childCountWithoutLoops: 2
   OnClosed:
     m_PersistentCalls:
       m_Calls: []
@@ -3311,6 +3312,7 @@ MonoBehaviour:
   stateChgBranchMode: 0
   childItems:
   - {fileID: 504019002}
+  - {fileID: 1981151018}
   tweens:
   - enabled: 1
     startPoint: 0
@@ -5465,7 +5467,7 @@ MonoBehaviour:
   ID: 1
   time: 1
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5754,7 +5756,7 @@ MonoBehaviour:
   ID: 0
   time: 1
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6455,7 +6457,7 @@ MonoBehaviour:
   ID: 1
   time: 0
   evaluation: 0
-  deltaTime: 0.1
+  deltaTime: 0.016431786
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6936,6 +6938,357 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931113210}
   m_CullTransparentMesh: 0
+--- !u!1 &1981151015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981151016}
+  - component: {fileID: 1981151020}
+  - component: {fileID: 1981151019}
+  - component: {fileID: 1981151018}
+  - component: {fileID: 1981151017}
+  m_Layer: 5
+  m_Name: Path Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1981151016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981151015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0516112, y: 0.43866393, z: -0.80062467}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 881382245}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1981151017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981151015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55458fb72dadfbe4a89b5e41ad5302b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1981151018}
+  pointsAttach: []
+  spacedPoints:
+  - {x: 112.43481, y: 46.900513, z: -85.60016}
+  - {x: 64.25581, y: -6.86553, z: -145.71043}
+  - {x: -1.428135, y: -10.474855, z: -214.76654}
+  - {x: -67.846596, y: 5.364027, z: -282.05316}
+  - {x: -133.60797, y: 26.513105, z: -348.57178}
+  - {x: -198.93372, y: 48.938793, z: -415.10562}
+  - {x: -263.98987, y: 71.19776, z: -481.95868}
+  - {x: -328.86447, y: 92.694626, z: -549.2359}
+  - {x: -393.6031, y: 113.17274, z: -616.9604}
+  - {x: -458.22934, y: 132.52875, z: -685.1206}
+  - {x: -522.7556, y: 150.7342, z: -753.6913}
+  showGizmos: 0
+  gizmoSize: 1.4806498
+--- !u!114 &1981151018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981151015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed90a8e541113f47b99f22448383c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  values:
+    inited: 1
+    startAction: 11
+    activations: 0500000004000000
+    delays:
+    - 0
+    - 0
+    durations:
+    - 1
+    - 1
+    childBefore: 0000
+    chainDirections: 0000000000000000
+    chainDelays:
+    - 0.2
+    - 0.2
+    firstChildDelay:
+    - 0.2
+    - 0.2
+    rotationMode: 0
+    rotationMask: {x: 1, y: 1, z: 1}
+    materialMode: 0
+    childChainMode: 0
+    brakeChainDelay: 1
+    interactions: 0
+    blockRaycasting: 0
+    soundControl: 0
+    soundRestart: 0
+    videoControl: 0
+    videoRestart: 0
+    randomWaveLength: 0
+    floatFormat: 0
+    ignoreChilds: 0
+    ignoreParent: 0
+    buttonDuration: 0.5
+    buttonDirection: 0
+    onKeyboard: 
+    loops: 0
+    loopMode: 0
+    positions:
+    - {x: 112.43481, y: 46.900513, z: -85.60016}
+    - {x: -522.8227, y: 150.75256, z: -753.7628}
+    rotations:
+    - {x: 0, y: 0, z: 0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
+    eulerRotations:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    scales:
+    - {x: 0.5, y: 0.5, z: 0.5}
+    - {x: 0.5, y: 0.5, z: 0.5}
+    colors:
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
+    alphas:
+    - 0
+    - 1
+    imageFills:
+    - 0
+    - 1
+    numbers:
+    - 0
+    - 100
+    texts:
+    - 
+    - 
+    rects:
+    - {x: 0, y: 0, z: 0, w: 0}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchors:
+    - {x: 0, y: 0, z: 0, w: 0}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchorPositions:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    intensities:
+    - 0
+    - 1
+    lightRange:
+    - 0
+    - 1
+    soundRange:
+    - 0
+    - 1
+    sphereRange:
+    - 0
+    - 1
+    updatingType: 0
+    timeScaled: 1
+    path:
+    - {x: 112.43481, y: 46.900513, z: -85.60016}
+    - {x: 56.380997, y: -87.259186, z: -170.2464}
+    - {x: -78.27667, y: 29.20224, z: -279.65552}
+    - {x: -522.8227, y: 150.75256, z: -753.7628}
+    pathIsLooped: 0
+    pathAutoControl: 0
+    pathSmoothFactor: 0.5
+    pathResolution: 1
+    pathSpacing: 10
+    pathNormal: 0
+    pathLerpMode: 0
+  ID: 2
+  time: 0
+  evaluation: 0
+  deltaTime: 0.016431786
+  loopActivated: 0
+  currentLoops: 0
+  childCountWithoutLoops: 0
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpening:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClosing:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _state: 4
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
+  childItems: []
+  tweens:
+  - enabled: 1
+    startPoint: 0
+    endPoint: 1
+    item: {fileID: 1981151018}
+    customEase:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    mode: 0
+    type: 6
+    closingType: 0
+    direction: 0
+    effect: 1
+    matPropertyType: 0
+    matProperty:
+      enabled: 0
+      name: 
+      type: 0
+      singleValues: []
+      integerValues: 
+      colorValues: []
+      vector2values: []
+      vector3values: []
+      vector4values: []
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    blendFactor: 0.25
+    blendTime: 0
+  parent: {fileID: 881382247}
+  _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 1981151019}
+  itemLight: {fileID: 0}
+  path: {fileID: 1981151017}
+  stringPart: 
+--- !u!23 &1981151019
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981151015}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1981151020
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981151015}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2053394943
 GameObject:
   m_ObjectHideFlags: 0

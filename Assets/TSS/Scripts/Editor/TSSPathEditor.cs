@@ -91,22 +91,9 @@ namespace TSS.Editor
             Undo.RecordObject(path.item, "[TSS Path] Add segment");
             Undo.RecordObject(path, "[TSS Path] Split segment");
 
-
             Vector3 position = toStart ?
                     path[0] - (path[1] - path[0]) * 3 :
-                    path.last + (path.last - path[path.count - 2]) * 3;// (path.last - path[path.count - 3]);
-
-            /*
-            if (selectedSegmentID != -1)
-            {
-                Vector3[] segmentPoints = ToWorld(path.GetSegmentPoints(selectedSegmentID));
-                position = ToLocal(TSSPathBase.EvaluateSegment(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2], 0.5f));
-
-                AddSplitPoint(position);
-                return;
-            }
-            */
-
+                    path.last + (path.last - path[path.count - 2]) * 3;
 
             path.AddSegment(position, toStart);
 
@@ -370,17 +357,14 @@ namespace TSS.Editor
 
                 EditorGUIUtility.labelWidth = 12;
 
-                //EditorGUILayout.LabelField("X", TSSEditorUtils.max12pxWidth);
                 EditorGUI.showMixedValue = xMixed;
                 newPos.x = EditorGUILayout.FloatField("X", oldPos.x);
                 EditorGUI.showMixedValue = false;
 
-                //EditorGUILayout.LabelField("Y", TSSEditorUtils.max12pxWidth);
                 EditorGUI.showMixedValue = yMixed;
                 newPos.y = EditorGUILayout.FloatField("Y", oldPos.y);
                 EditorGUI.showMixedValue = false;
 
-                //EditorGUILayout.LabelField("Z", TSSEditorUtils.max12pxWidth);
                 EditorGUI.showMixedValue = zMixed;
                 newPos.z = EditorGUILayout.FloatField("Z", oldPos.z);
                 EditorGUI.showMixedValue = false;

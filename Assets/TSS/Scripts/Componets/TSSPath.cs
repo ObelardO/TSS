@@ -18,7 +18,7 @@ namespace TSS
         [HideInInspector] public TSSItem item;
         public Vector3 itemWorldPosition { get { return item.transform.parent == null ? Vector3.zero : item.transform.parent.position; } }
         public Quaternion itemWorldRotation { get { return item.transform.parent == null ? Quaternion.identity : item.transform.parent.rotation; } }
-        public Vector3 itemScale { get { return item.transform.parent == null ? Vector3.one : item.transform.parent.lossyScale; } }
+        public Vector3 itemScale { get { return item.transform.parent == null ? Vector3.one : item.transform.parent.localScale; } }
 
         public float smoothFactor { get { return item.values.pathSmoothFactor; } set { item.values.pathSmoothFactor = value; AutoSetAllControls(); } }
         public int count { get { return points.Count; } }
@@ -358,12 +358,14 @@ namespace TSS
 
         private void OnDrawGizmosSelected()
         {
+            /*
             if (spacedPoints == null || !showGizmos || !enabled || item.values.pathLerpMode == PathLerpMode.dynamic) return;
 
             for (int i = 0; i < spacedPoints.Length; i++)
             {
                 Gizmos.DrawWireSphere(ToWorld(spacedPoints[i]), gizmoSize);
             }
+            */
         }
 
         #endregion
