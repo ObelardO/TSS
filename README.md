@@ -1,5 +1,6 @@
 # TSS
 A visual tweener plugin for Unity. More details at http://obeldev.ru/tss/
+If you want to support me, please buy this plugin at https://assetstore.unity.com/packages/slug/138944
 
 # Features
 • Simple and friendly user interface for quick animating
