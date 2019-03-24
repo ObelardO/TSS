@@ -22,8 +22,8 @@ namespace TSS
         /// <summary>Values container</summary>
         [HideInInspector] public TSSItemValues values;
 
-        [HideInInspector, NonSerialized] public int ID = 0;
-        [HideInInspector, NonSerialized] public float time = 0;
+        [HideInInspector] public int ID = 0;
+        [HideInInspector] public float time = 0;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
         [HideInInspector] public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }

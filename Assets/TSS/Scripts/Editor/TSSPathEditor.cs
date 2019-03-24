@@ -42,8 +42,6 @@ namespace TSS.Editor
                                   selectSegmentHelpContent = new GUIContent("LMB  -  Select point"),
                                   selectGroupSegmentHelpContent = new GUIContent("Ctrl + LMB  -  Select group of points"),
                                   newSegmentHelpContent = new GUIContent("Shift + LMB  -  New segment or delete point"),
-                                  handleSizeSliderContent = new GUIContent("Handles size", "Scales handle points size"),
-                                  handleSizeFixedContent = new GUIContent("Fixed size", "Handle points size fixed in screen space"),
                                   projectionMaskContent = new GUIContent("Projection", "Project all points on vector"),
                                   editPointPositionContent = new GUIContent("Selected points position", "Manualy set selected point positions");
 
