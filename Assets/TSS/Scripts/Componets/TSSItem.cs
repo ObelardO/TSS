@@ -243,7 +243,7 @@ namespace TSS
         [HideInInspector] public List<TSSTween> tweens = new List<TSSTween>();
         /// <summary>parent item</summary>
         [HideInInspector] public TSSItem parent;
-
+        
         [HideInInspector, SerializeField] private TSSProfile _profile;
         /// <summary>Attached profile</summary>
         [HideInInspector, SerializeField] public TSSProfile profile { set { _profile = value; } get { return _profile; } }
@@ -349,22 +349,28 @@ namespace TSS
 
             childItems.Clear();
             childCountWithoutLoops = 0;
-            childStateCounts = new int[4];
 
-            if (!ignoreChilds)
+            for (int i = 0; i < childs.Length; i++)
             {
-                for (int i = 0; i < childs.Length; i++)
+                if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != transform || !childs[i].enabled) continue;
+
+                if (!ignoreChilds)
                 {
-                    if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != transform || !childs[i].enabled) continue;
                     childItems.Add(childs[i]);
                     childs[i].ID = childItems.Count;
                     childs[i].parent = this;
                     if (childs[i].loops == 0) childCountWithoutLoops++;
                 }
+                else
+                {
+                    childs[i].ID = 1;
+                    childs[i].parent = null;
+                }
             }
 
-            TSSItem parentItem = GetComponentInParent<TSSItem>();
-            if (parentItem != null && parentItem.transform != transform) parentItem.Refresh();
+            Transform parentTransform = TSSItemBase.GetItemParentTransform(this);
+            if (ignoreParent) parent = null; else parent = parentTransform == null ? null : parentTransform.GetComponent<TSSItem>();
+            if (parent != null) parent.Refresh();
 
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();

@@ -208,28 +208,28 @@ namespace TSS.Editor
             }
 
             GUI.color = TSSEditorUtils.redColor;
-            if (GUILayout.Button(TSSEditorTextures.itemRecordClose, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
+            if (GUILayout.Button(TSSEditorTextures.itemRecordClose, EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
             {
                 Undo.RecordObject(item, "[TSS Item] recording closed state");
                 item.Capture(ItemKey.closed); InvokeItemMethod("CloseImmediately");
             }
 
             GUI.color = TSSEditorUtils.greenColor;
-            if (GUILayout.Button(TSSEditorTextures.itemRecordOpen, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
+            if (GUILayout.Button(TSSEditorTextures.itemRecordOpen, EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
             {
                 Undo.RecordObject(item, "[TSS Item] recording closed state");
                 item.Capture(ItemKey.opened); InvokeItemMethod("OpenImmediately");
             }
 
             GUI.color = TSSEditorUtils.redColor;
-            if (GUILayout.Button(TSSEditorTextures.itemClose, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
+            if (GUILayout.Button(TSSEditorTextures.itemClose, EditorStyles.miniButtonLeft, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
             {
                 Undo.RecordObject(item, "[TSS Item] to closed state");
                 if (Application.isPlaying) InvokeItemMethod("CloseBranch"); else InvokeItemMethod("CloseBranchImmediately");
             }
 
             GUI.color = TSSEditorUtils.greenColor;
-            if (GUILayout.Button(TSSEditorTextures.itemOpen, /*TSSEditorUtils.fixedLineHeight*/EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
+            if (GUILayout.Button(TSSEditorTextures.itemOpen, EditorStyles.miniButtonRight, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max40pxWidth))
             {
                 Undo.RecordObject(item, "[TSS Item] to opened state");
                 if (Application.isPlaying) InvokeItemMethod("OpenBranch"); else InvokeItemMethod("OpenBranchImmediately");
@@ -261,7 +261,7 @@ namespace TSS.Editor
 
             GUILayout.Space(3);
 
-            EditorGUI.BeginDisabledGroup(item.parentChainMode);
+            EditorGUI.BeginDisabledGroup(item.parentChainMode);// && !item.ignoreParent);
 
             EditorGUILayout.BeginHorizontal();
             DrawItemProperty(item, "openDelay");
