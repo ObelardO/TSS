@@ -262,6 +262,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -438,6 +440,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -849,6 +853,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1590,6 +1596,7 @@ GameObject:
   - component: {fileID: 614595061}
   - component: {fileID: 614595060}
   - component: {fileID: 614595059}
+  - component: {fileID: 614595062}
   m_Layer: 5
   m_Name: ButtonState - Prev
   m_TagString: Untagged
@@ -1614,7 +1621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -40, y: 26}
+  m_AnchoredPosition: {x: -40, y: 29.768}
   m_SizeDelta: {x: 29.529999, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &614595059
@@ -1630,7 +1637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1656,18 +1663,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 614595060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 546661232}
-        m_MethodName: SelectState
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: incorrect state name
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &614595060
@@ -1707,6 +1703,253 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614595057}
   m_CullTransparentMesh: 0
+--- !u!114 &614595062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614595057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed90a8e541113f47b99f22448383c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  values:
+    inited: 1
+    startAction: 1
+    activations: 0500000004000000
+    delays:
+    - 0
+    - 0
+    durations:
+    - 1
+    - 1
+    childBefore: 0000
+    chainDirections: 0000000000000000
+    chainDelays:
+    - 0.2
+    - 0.2
+    firstChildDelay:
+    - 0.2
+    - 0.2
+    rotationMode: 0
+    rotationMask: {x: 1, y: 1, z: 1}
+    materialMode: 0
+    childChainMode: 0
+    brakeChainDelay: 1
+    interactions: 0
+    blockRaycasting: 0
+    soundControl: 0
+    soundRestart: 0
+    videoControl: 0
+    videoRestart: 0
+    randomWaveLength: 0
+    floatFormat: 0
+    ignoreChilds: 0
+    ignoreParent: 0
+    buttonDuration: 0.35
+    buttonDirection: 0
+    onKeyboard: 14010000
+    loops: 0
+    loopMode: 0
+    positions:
+    - {x: -40, y: -195.232, z: 0}
+    - {x: 0, y: 0, z: 0}
+    rotations:
+    - {x: -0, y: -0, z: -0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
+    eulerRotations:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    scales:
+    - {x: 0.8, y: 0.8, z: 0.8}
+    - {x: 1, y: 1, z: 1}
+    colors:
+    - {r: 1, g: 1, b: 1, a: 0.3137255}
+    - {r: 1, g: 1, b: 1, a: 1}
+    alphas:
+    - 0.3137255
+    - 1
+    imageFills:
+    - 1
+    - 1
+    numbers:
+    - 0
+    - 100
+    texts:
+    - 
+    - 
+    rects:
+    - {x: -54.765, y: 29.768, z: -25.235, w: 59.767998}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchors:
+    - {x: 0.5, y: 0, z: 0.5, w: 0}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchorPositions:
+    - {x: -40, y: 29.768}
+    - {x: 0, y: 0}
+    intensities:
+    - 0
+    - 1
+    lightRange:
+    - 0
+    - 1
+    soundRange:
+    - 0
+    - 1
+    sphereRange:
+    - 0
+    - 1
+    updatingType: 0
+    timeScaled: 1
+    path:
+    - {x: -200, y: 0, z: 0}
+    - {x: -150, y: 0, z: 0}
+    - {x: 150, y: 0, z: 0}
+    - {x: 200, y: 0, z: 0}
+    pathIsLooped: 0
+    pathAutoControl: 0
+    pathSmoothFactor: 0.5
+    pathResolution: 1
+    pathSpacing: 10
+    pathNormal: 0
+    pathLerpMode: 0
+  ID: 0
+  time: 1
+  loopActivated: 0
+  currentLoops: 0
+  childCountWithoutLoops: 0
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpening:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClosing:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  childItems: []
+  tweens:
+  - enabled: 1
+    startPoint: 0
+    endPoint: 1
+    item: {fileID: 614595062}
+    customEase:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -2
+        outSlope: -2
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    mode: 0
+    type: 3
+    closingType: 0
+    direction: 3
+    effect: 3
+    matPropertyType: 0
+    matProperty:
+      enabled: 0
+      name: 
+      type: 0
+      singleValues: []
+      integerValues: 
+      colorValues: []
+      vector2values: []
+      vector3values: []
+      vector4values: []
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    blendFactor: 0.25
+    blendTime: 0
+  parent: {fileID: 0}
+  _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 614595060}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 614595058}
+  button: {fileID: 614595059}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
+  stringPart: 
 --- !u!1 &680064791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +2041,7 @@ GameObject:
   - component: {fileID: 749191033}
   - component: {fileID: 749191032}
   m_Layer: 5
-  m_Name: State Container (1)
+  m_Name: State Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1937,6 +2180,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2405,6 +2650,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -2867,6 +3114,7 @@ GameObject:
   - component: {fileID: 1047082464}
   - component: {fileID: 1047082463}
   - component: {fileID: 1047082462}
+  - component: {fileID: 1047082465}
   m_Layer: 5
   m_Name: ButtonState - Next
   m_TagString: Untagged
@@ -2891,7 +3139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 40, y: 26}
+  m_AnchoredPosition: {x: 40, y: 29.768}
   m_SizeDelta: {x: 29.529999, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1047082462
@@ -2907,7 +3155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2933,18 +3181,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1047082463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 546661232}
-        m_MethodName: SelectState
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: incorrect state name
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1047082463
@@ -2984,6 +3221,253 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047082460}
   m_CullTransparentMesh: 0
+--- !u!114 &1047082465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047082460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed90a8e541113f47b99f22448383c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  values:
+    inited: 1
+    startAction: 1
+    activations: 0500000004000000
+    delays:
+    - 0
+    - 0
+    durations:
+    - 1
+    - 1
+    childBefore: 0000
+    chainDirections: 0000000000000000
+    chainDelays:
+    - 0.2
+    - 0.2
+    firstChildDelay:
+    - 0.2
+    - 0.2
+    rotationMode: 0
+    rotationMask: {x: 1, y: 1, z: 1}
+    materialMode: 0
+    childChainMode: 0
+    brakeChainDelay: 1
+    interactions: 0
+    blockRaycasting: 0
+    soundControl: 0
+    soundRestart: 0
+    videoControl: 0
+    videoRestart: 0
+    randomWaveLength: 0
+    floatFormat: 0
+    ignoreChilds: 0
+    ignoreParent: 0
+    buttonDuration: 0.35
+    buttonDirection: 0
+    onKeyboard: 13010000
+    loops: 0
+    loopMode: 0
+    positions:
+    - {x: 40, y: -195.232, z: 0}
+    - {x: 0, y: 0, z: 0}
+    rotations:
+    - {x: -0, y: -0, z: -0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
+    eulerRotations:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    scales:
+    - {x: 0.8, y: 0.8, z: 0.8}
+    - {x: 1, y: 1, z: 1}
+    colors:
+    - {r: 1, g: 1, b: 1, a: 0.3137255}
+    - {r: 1, g: 1, b: 1, a: 1}
+    alphas:
+    - 0.3137255
+    - 1
+    imageFills:
+    - 1
+    - 1
+    numbers:
+    - 0
+    - 100
+    texts:
+    - 
+    - 
+    rects:
+    - {x: 25.235, y: 29.768, z: 54.765, w: 59.767998}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchors:
+    - {x: 0.5, y: 0, z: 0.5, w: 0}
+    - {x: 0, y: 0, z: 0, w: 0}
+    anchorPositions:
+    - {x: 40, y: 29.768}
+    - {x: 0, y: 0}
+    intensities:
+    - 0
+    - 1
+    lightRange:
+    - 0
+    - 1
+    soundRange:
+    - 0
+    - 1
+    sphereRange:
+    - 0
+    - 1
+    updatingType: 0
+    timeScaled: 1
+    path:
+    - {x: -200, y: 0, z: 0}
+    - {x: -150, y: 0, z: 0}
+    - {x: 150, y: 0, z: 0}
+    - {x: 200, y: 0, z: 0}
+    pathIsLooped: 0
+    pathAutoControl: 0
+    pathSmoothFactor: 0.5
+    pathResolution: 1
+    pathSpacing: 10
+    pathNormal: 0
+    pathLerpMode: 0
+  ID: 0
+  time: 0
+  loopActivated: 0
+  currentLoops: 0
+  childCountWithoutLoops: 0
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpening:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClosing:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  childItems: []
+  tweens:
+  - enabled: 1
+    startPoint: 0
+    endPoint: 1
+    item: {fileID: 1047082465}
+    customEase:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -2
+        outSlope: -2
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    mode: 0
+    type: 3
+    closingType: 0
+    direction: 3
+    effect: 3
+    matPropertyType: 0
+    matProperty:
+      enabled: 0
+      name: 
+      type: 0
+      singleValues: []
+      integerValues: 
+      colorValues: []
+      vector2values: []
+      vector3values: []
+      vector4values: []
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    blendFactor: 0.25
+    blendTime: 0
+  parent: {fileID: 0}
+  _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 1047082463}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 1047082461}
+  button: {fileID: 1047082462}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
+  stringPart: 
 --- !u!1 &1084677343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,6 +3965,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3855,6 +4341,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -4322,7 +4810,7 @@ MonoBehaviour:
   - core: {fileID: 1608531579}
     name: state 3
     isDefault: 0
-    editing: 0
+    editing: 1
     enabled: 1
     overrideModes: 0
     modeOpenOverride: 4
@@ -4365,6 +4853,91 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   incorrectAction: 2
+  useEvents: 0
+  useInput: 0
+  OnStateSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TSS.TSSCoreStateSelectedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    TSSState:
+      core: {fileID: 0}
+      name: 
+      isDefault: 0
+      editing: 0
+      enabled: 0
+      overrideModes: 0
+      modeOpenOverride: 0
+      modeCloseOverride: 0
+      activators: []
+      onKeyboard: 
+      onOpen:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      onClose:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  OnFirstStateSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TSS.TSSCoreStateSelectedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    TSSState:
+      core: {fileID: 0}
+      name: 
+      isDefault: 0
+      editing: 0
+      enabled: 0
+      overrideModes: 0
+      modeOpenOverride: 0
+      modeCloseOverride: 0
+      activators: []
+      onKeyboard: 
+      onOpen:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      onClose:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  OnLastStateSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TSS.TSSCoreStateSelectedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    TSSState:
+      core: {fileID: 0}
+      name: 
+      isDefault: 0
+      editing: 0
+      enabled: 0
+      overrideModes: 0
+      modeOpenOverride: 0
+      modeCloseOverride: 0
+      activators: []
+      onKeyboard: 
+      onOpen:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      onClose:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  OnincorrectStateSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1626760217
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,6 +5619,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5343,6 +5918,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5796,6 +6373,8 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
+  time: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0

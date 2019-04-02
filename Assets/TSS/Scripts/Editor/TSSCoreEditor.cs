@@ -63,7 +63,11 @@ namespace TSS.Editor
 
             serializedCore.Update();
 
-            if (Selection.transforms.Length == 1) DrawStatesPanel();
+            if (Selection.transforms.Length == 1)
+            {
+                DrawStatesPanel();
+                DrawEventsPanel();
+            }
 
             serializedCore.ApplyModifiedProperties();
 
@@ -73,7 +77,7 @@ namespace TSS.Editor
 
         #endregion
 
-        #region Drawing & Update
+        #region Drawing states panel
 
         private void DrawStatesPanel()
         {
@@ -163,9 +167,12 @@ namespace TSS.Editor
                         TSSEditorUtils.DrawEventProperty(statesProperty.GetArrayElementAtIndex(stateID), "onOpen", state.onOpen.GetPersistentEventCount());
                         GUILayout.Space(3);
                         TSSEditorUtils.DrawEventProperty(statesProperty.GetArrayElementAtIndex(stateID), "onClose", state.onClose.GetPersistentEventCount());
-                        TSSEditorUtils.DrawSeparator();
 
-                        TSSEditorUtils.DrawKeyCodeListProperty(state.onKeyboard, core, statesProperty.GetArrayElementAtIndex(stateID).FindPropertyRelative("onKeyboard"), false);
+                        if (core.useInput)
+                        {
+                            TSSEditorUtils.DrawSeparator();
+                            TSSEditorUtils.DrawKeyCodeListProperty(state.onKeyboard, core, statesProperty.GetArrayElementAtIndex(stateID).FindPropertyRelative("onKeyboard"), false);
+                        }
                     }
 
                 EditorGUI.EndDisabledGroup();
@@ -261,6 +268,27 @@ namespace TSS.Editor
             core.RemoveState(state);
             return true;
         }
+
+        #endregion
+
+        #region Drawing events panel
+
+        private void DrawEventsPanel()
+        {
+            TSSEditorUtils.DrawGenericProperty(ref core.useInput, "Precess input", core);
+            TSSEditorUtils.DrawGenericProperty(ref core.useEvents, "Use events", core);
+
+            if (!core.useEvents) return;
+
+            GUILayout.Space(3);
+            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnStateSelected"));
+            GUILayout.Space(3);
+            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnFirstStateSelected"));
+            GUILayout.Space(3);
+            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnLastStateSelected"));
+            GUILayout.Space(3);
+            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnincorrectStateSelected"));
+    }
 
         #endregion
     }

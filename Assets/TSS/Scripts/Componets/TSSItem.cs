@@ -23,7 +23,7 @@ namespace TSS
         [HideInInspector] public TSSItemValues values;
 
         [HideInInspector] public int ID = 0;
-        [HideInInspector] public float time = 0;
+        [HideInInspector, NonSerialized] public float time = 0;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
         [HideInInspector] public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
@@ -202,6 +202,7 @@ namespace TSS
                         if (enable && !videoPlayer.isPlaying) videoPlayer.Play();
                         else if (value == ItemState.closed) { if (videoRestart) videoPlayer.Stop(); else videoPlayer.Pause(); }
                     }
+
 
                     if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave && parent.childStateCounts[(int)_state] > 0) parent.childStateCounts[(int)_state] -= 1;
 
@@ -446,9 +447,6 @@ namespace TSS
                     {
                         time = 1;
                         state = ItemState.opened;
-
-
-
                     }
 
                     UpdateInput();
@@ -606,8 +604,8 @@ namespace TSS
 
         private void UpdateInput()
         {
-            if (button == null || Input.anyKey) return;
-            for (int i = 0; i < values.onKeyboard.Count; i++) if (Input.GetKeyUp(values.onKeyboard[i])) button.onClick.Invoke();
+            if (button == null || !button.interactable || !Input.anyKeyDown) return;
+            for (int i = 0; i < values.onKeyboard.Count; i++) if (Input.GetKeyDown(values.onKeyboard[i])) button.onClick.Invoke();
         }
 
         #endregion

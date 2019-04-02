@@ -4,18 +4,20 @@ using TSS;
 
 public class CoreBuilder : MonoBehaviour
 {
+    // how many slides generate
     public int stateCount = 5;
-    public TSSItem stateObject;
-    public Button prevBtn, nextBrn;
 
-    private TSSCore core;
-    private int currentStateID = 0;
+    // slide prefab
+    public TSSItem stateObject;
+
+    // navigation buttons
+    public Button prevBtn, nextBrn;
 
 	// Use this for initialization
 	void Start ()
     {
         // Add "TSS Core" component
-        core = this.gameObject.AddComponent<TSSCore>();
+        TSSCore core = this.gameObject.AddComponent<TSSCore>();
 
         // Clone state object and additing clone to core as new state
         for (int i = 0; i < stateCount; i++)
@@ -32,53 +34,34 @@ public class CoreBuilder : MonoBehaviour
             // Add state and selecting key
             TSSState stateState = core.AddState(newStateObject, (i + 1).ToString());
             stateState.AddSelectionKey((KeyCode)((int)KeyCode.Alpha1 + i));
-
-            // For update buttens interactable when state was selected by keyboard
-            stateState.onOpen.AddListener(UpdateCurrentStateID);
         }
 
         // Set first core state as default. Default state will be selected and activated on start.
         // You can use any of syntax:
-        // core.SetDefaultState(core.GetState("1"));
-        // core.SetDefaultState("3");
-        // core.SetDefaultState(core[2]);
+        // core.SetDefaultState(core.GetState("0"));
+        // core.SetDefaultState("0");
+        // core.SetDefaultState(core[0]);
         core[0].SetAsDefault();
 
-        // Update navigation buttons
-        SelectState(0);
-    }
+        // Allow core events
+        core.useEvents = true;
 
-    // Calling from navigation buttons
-    public void SelectState(int stateIDoffset)
-    {
-        // Check for limits
-        if (currentStateID + stateIDoffset < 0 || currentStateID + stateIDoffset > stateCount - 1) return;
+        // Update navigation buttons interactable by core events
+        core.OnStateSelected.AddListener(state =>
+        {
+            prevBtn.interactable = !state.isFirst;
+            nextBrn.interactable = !state.isLast;
+        });
 
-        // New state ID
-        currentStateID += stateIDoffset;
-
-        // Buttons interactable
-        UpdateButtons();
+        // Attach core selecting method to buttons
+        nextBrn.onClick.AddListener(core.SelectNextState);
+        prevBtn.onClick.AddListener(core.SelectPreviousState);
 
         // Select core state
         // You can use any of syntax:
-        // core.SelectState(core.GetState((currentStateID + 1).ToString()));
-        // core.SelectState((currentStateID + 1).ToString());
+        // core.SelectState(core.GetState(0).ToString()));
+        // core.SelectState("0");
         // core.GetState((currentStateID + 1).ToString()).Select();
-        core[currentStateID].Select();
-    }
-
-    // Update navigation buttons interactable
-    public void UpdateButtons()
-    {
-        prevBtn.interactable = !(currentStateID == 0);
-        nextBrn.interactable = !(currentStateID == stateCount - 1);
-    }
-
-    // Update currentStateID by selected core state
-    public void UpdateCurrentStateID()
-    {
-        currentStateID = core.currentState.ID;
-        UpdateButtons();
+        core[0].Select();
     }
 }

@@ -15,7 +15,7 @@ namespace TSS
 {
     #region Enumerations
 
-    public enum IncorrectStateAction { OpenDefault, None, CloseAll }
+    public enum IncorrectStateAction { openDefault, none, closeAll }
 
     #endregion
 
@@ -31,7 +31,10 @@ namespace TSS
         public int Count { get { return states.Count; } }
 
         /// <summary>Last added state</summary>
-        public TSSState last { get { return this[Count - 1]; } }
+        public TSSState Last { get { return this[Count - 1]; } } 
+
+        /// <summary>first added state</summary>
+        public TSSState First { get { return this[0]; } }
 
         [SerializeField] private List<TSSState> states = new List<TSSState>();
 
@@ -44,7 +47,26 @@ namespace TSS
             get { return states.Where(s => s.isDefault == true).FirstOrDefault(); }
         }
 
+        /// <summary>What happens if there are no any state with specified name</summary>
         public IncorrectStateAction incorrectAction;
+
+        /// <summary>If toggled, events will Invoke by state selecting</summary>
+        public bool useEvents = false;
+
+        /// <summary>When toggled, input will be proccesed</summary>
+        public bool useInput = true;
+
+        /// <summary>Event will Invoke when any state has been selected</summary>
+        public TSSCoreStateSelectedEvent OnStateSelected = new TSSCoreStateSelectedEvent();
+
+        /// <summary>Event will Invoke when first has been selected</summary>
+        public TSSCoreStateSelectedEvent OnFirstStateSelected = new TSSCoreStateSelectedEvent();
+
+        /// <summary>Event will Invoke when last state has been selected</summary>
+        public TSSCoreStateSelectedEvent OnLastStateSelected = new TSSCoreStateSelectedEvent();
+
+        /// <summary>Event will Invoke when trying to open an unexisting state</summary>
+        public UnityEvent OnincorrectStateSelected = new UnityEvent();
 
         #endregion
 
@@ -58,7 +80,7 @@ namespace TSS
 
         private void Update()
         {
-            if (!Input.anyKeyDown) return;
+            if (!useInput || !Input.anyKeyDown) return;
 
             for (int stateID = 0; stateID < states.Count; stateID++)
                 if (!this[stateID].enabled) continue; else this[stateID].UpdateInput();
@@ -109,9 +131,12 @@ namespace TSS
             {
                 switch (incorrectAction)
                 {
-                    case IncorrectStateAction.OpenDefault: SelectDefaultState(); break;
-                    case IncorrectStateAction.CloseAll: states.ForEach(s => s.Close()); break;
+                    case IncorrectStateAction.openDefault: SelectDefaultState(); break;
+                    case IncorrectStateAction.closeAll: states.ForEach(s => s.Close()); break;
                 }
+
+                if (useEvents) OnincorrectStateSelected.Invoke();
+
                 return;
             }
 
@@ -119,6 +144,12 @@ namespace TSS
 
             states.Where(s => s.name.ToLower() != state.name.ToLower()).ToList().ForEach(s => s.Close());
             currentState.Open();
+
+            if (!useEvents) return;
+
+            OnStateSelected.Invoke(currentState);
+            if (currentState == First) OnFirstStateSelected.Invoke(currentState);
+            if (currentState == Last) OnLastStateSelected.Invoke(currentState);
         }
 
         /// <summary>Open specified state</summary>
@@ -126,6 +157,20 @@ namespace TSS
         public void SelectState(string stateName)
         {
             SelectState(states.Where(s => s.name.ToLower() == stateName.ToLower() && s.enabled).FirstOrDefault());
+        }
+
+        /// <summary>Open next after current state</summary>
+        public void SelectNextState()
+        {
+            if (currentState == Last || Count <= 1) return;
+            SelectState(states[GetStateID(currentState) + 1]);
+        }
+
+        /// <summary>Open previous before current state</summary>
+        public void SelectPreviousState()
+        {
+            if (currentState == First || Count <= 1) return;
+            SelectState(states[GetStateID(currentState) - 1]);
         }
 
         /// <summary>Close all states</summary>
@@ -194,7 +239,13 @@ namespace TSS
 
         #endregion
     }
-    
+
+    [System.Serializable]
+    public class TSSCoreStateSelectedEvent : UnityEvent<TSSState>
+    {
+        public TSSState TSSState;
+    }
+
     [System.Serializable]
     public class TSSState
     {
@@ -219,6 +270,12 @@ namespace TSS
 
         /// <summary>Use overrided activation modes</summary>
         public bool overrideModes;
+
+        /// <summary>Return true if this state is last</summary>
+        public bool isLast { get { return core.Last == this; } }
+
+        /// <summary>Return true if this state is first</summary>
+        public bool isFirst { get { return core.First == this; } }
 
         /// <summary>State open activation mode overriding (default is openBranch)</summary>
         public ActivationMode modeOpenOverride = ActivationMode.openBranch;

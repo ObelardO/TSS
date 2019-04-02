@@ -1,3 +1,8 @@
+1.5.9
+- Bug with disabled time options in chains with toggles parent ignoring
++ TSSCore improvements: Events, SelectNextState() and SelectPreviousState() methods, optiaonal input processing
++ input processing moved from KeyUp to KeyDown
+
 1.5.8
 + Path improvements
 
@@ -38,7 +43,7 @@
 + Item updating mode (Update, LateUpdate, FixedUpdate)
 + Item can be time scaled or not
 + Added a CORE property that allows you to specify an action when calling a nonexistent state
-+ CORE API for handy work with cores by code at runtime
++ TSSCore API for handy work with cores by code at runtime
 
 1.4.0
 + Migration to DLL
