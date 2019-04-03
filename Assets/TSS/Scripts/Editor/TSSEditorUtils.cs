@@ -28,6 +28,8 @@ namespace TSS.Editor
         public static GUILayoutOption max12pxWidth = GUILayout.MaxWidth(12),
                                       max18pxWidth = GUILayout.MaxWidth(18),
                                       max80pxWidth = GUILayout.MaxWidth(80),
+                                      max60pxWidth = GUILayout.MaxWidth(60),
+                                      max50pxWidth = GUILayout.MaxWidth(50),
                                       max40pxWidth = GUILayout.MaxWidth(30),
                                       max90pxWidth = GUILayout.MaxWidth(90),
                                       max100pxWidth = GUILayout.MaxWidth(100),
@@ -391,7 +393,7 @@ namespace TSS.Editor
         
         public static void DrawSeparator()
         {
-            EditorGUILayout.LabelField(string.Empty, GUI.skin.horizontalSlider);
+            EditorGUILayout.LabelField(string.Empty, GUI.skin.horizontalSlider, fixedLineHeight);
         }
 
         public static void DrawMinMaxSliderProperty(ref float minValue, ref float maxValue, UnityEngine.Object recordingObject, float clampMin = 0, float clampMax = 1)

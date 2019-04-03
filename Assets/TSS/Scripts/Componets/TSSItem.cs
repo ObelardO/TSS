@@ -14,7 +14,12 @@ using TSS.Base;
 
 namespace TSS
 {
-    [Serializable, ExecuteInEditMode, DisallowMultipleComponent, AddComponentMenu("TSS/Item")]
+    [Serializable, DisallowMultipleComponent, AddComponentMenu("TSS/Item")]
+    #if UNITY_2018_3_OR_NEWER
+        [ExecuteAlways]
+    #else
+        [ExecuteInEditMode]
+    #endif
     public class TSSItem : MonoBehaviour
     {
         #region Properties

@@ -530,7 +530,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
     blendFactor: 0.25
-    blendTime: 0
+    blendTime: 0.3
   - enabled: 1
     startPoint: 0
     endPoint: 1
@@ -4666,7 +4666,7 @@ MonoBehaviour:
   - core: {fileID: 1608531579}
     name: state 3
     isDefault: 0
-    editing: 1
+    editing: 0
     enabled: 1
     overrideModes: 0
     modeOpenOverride: 4
@@ -4710,8 +4710,34 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   incorrectAction: 2
   useEvents: 0
-  useInput: 0
+  useInput: 1
   OnStateSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TSS.TSSCoreStateSelectedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    TSSState:
+      core: {fileID: 0}
+      name: 
+      isDefault: 0
+      editing: 0
+      enabled: 0
+      overrideModes: 0
+      modeOpenOverride: 0
+      modeCloseOverride: 0
+      activators: []
+      onKeyboard: 
+      onOpen:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      onClose:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  OnCurrentStatedClosed:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: TSS.TSSCoreStateSelectedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -4789,7 +4815,7 @@ MonoBehaviour:
           m_Calls: []
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-  OnincorrectStateSelected:
+  OnIncorrectStateSelected:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

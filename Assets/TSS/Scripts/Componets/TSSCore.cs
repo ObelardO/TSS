@@ -30,12 +30,50 @@ namespace TSS
         /// <summary>Count of states list</summary>
         public int Count { get { return states.Count; } }
 
+        /// <summary>Count of enabled states in states list</summary>
+        public int CountEnabled { get { return states.Where(s => s.enabled).Count(); } }
+
         /// <summary>Last added state</summary>
-        public TSSState Last { get { return this[Count - 1]; } } 
+        public TSSState Last { get { return this[Count - 1]; } }
+
+        /// <summary>Last enabled state</summary>
+        public TSSState LastEnabled { get { return states.Where(s => s.enabled).LastOrDefault(); } }
+
+        /// <summary>Next after currentState enabled state. Return first enabled if currentState is null</summary>
+        public TSSState NextEnabled { get {
+                if (currentState == null) return states.Where(s => s.enabled).FirstOrDefault();
+                return states.Where(s => s.enabled && GetStateID(s) > GetStateID(currentState)).FirstOrDefault();
+            }
+        }
+
+        /// <summary>Next after currentState state. Return first if currentState is null</summary>
+        public TSSState Next { get {
+                if (currentState == null) return states.FirstOrDefault();
+                return states.Where(s => GetStateID(s) > GetStateID(currentState)).FirstOrDefault();
+            }
+        }
+
+        /// <summary>Previous before currentState enabled state. Return last enabled if currentState is null</summary>
+        public TSSState PreviousEnabled { get {
+                if (currentState == null) return states.Where(s => s.enabled).LastOrDefault();
+                return states.Where(s => s.enabled && GetStateID(s) < GetStateID(currentState)).LastOrDefault();
+            }
+        }
+
+        /// <summary>Previous before currentState state. Return last if currentState is null</summary>
+        public TSSState Previous { get {
+                if (currentState == null) return states.LastOrDefault();
+                return states.Where(s => GetStateID(s) < GetStateID(currentState)).LastOrDefault();
+            }
+        }
 
         /// <summary>first added state</summary>
         public TSSState First { get { return this[0]; } }
 
+        /// <summary>First enabled state</summary>
+        public TSSState FirstEnabled { get { return states.Where(s => s.enabled).FirstOrDefault(); } }
+
+        /// <summary>List of core states</summary>
         [SerializeField] private List<TSSState> states = new List<TSSState>();
 
         /// <summary>Current opened state</summary>
@@ -59,6 +97,9 @@ namespace TSS
         /// <summary>Event will Invoke when any state has been selected</summary>
         public TSSCoreStateSelectedEvent OnStateSelected = new TSSCoreStateSelectedEvent();
 
+        /// <summary>Event will Invoke when current state has been closed</summary>
+        public TSSCoreStateSelectedEvent OnCurrentStatedClosed = new TSSCoreStateSelectedEvent();
+
         /// <summary>Event will Invoke when first has been selected</summary>
         public TSSCoreStateSelectedEvent OnFirstStateSelected = new TSSCoreStateSelectedEvent();
 
@@ -66,7 +107,7 @@ namespace TSS
         public TSSCoreStateSelectedEvent OnLastStateSelected = new TSSCoreStateSelectedEvent();
 
         /// <summary>Event will Invoke when trying to open an unexisting state</summary>
-        public UnityEvent OnincorrectStateSelected = new UnityEvent();
+        public UnityEvent OnIncorrectStateSelected = new UnityEvent();
 
         #endregion
 
@@ -135,7 +176,9 @@ namespace TSS
                     case IncorrectStateAction.closeAll: states.ForEach(s => s.Close()); break;
                 }
 
-                if (useEvents) OnincorrectStateSelected.Invoke();
+                currentState = null;
+
+                if (useEvents) OnIncorrectStateSelected.Invoke();
 
                 return;
             }
@@ -148,8 +191,8 @@ namespace TSS
             if (!useEvents) return;
 
             OnStateSelected.Invoke(currentState);
-            if (currentState == First) OnFirstStateSelected.Invoke(currentState);
-            if (currentState == Last) OnLastStateSelected.Invoke(currentState);
+            if (currentState == FirstEnabled || currentState == First) OnFirstStateSelected.Invoke(currentState);
+            if (currentState == LastEnabled || currentState == Last) OnLastStateSelected.Invoke(currentState);
         }
 
         /// <summary>Open specified state</summary>
@@ -159,18 +202,33 @@ namespace TSS
             SelectState(states.Where(s => s.name.ToLower() == stateName.ToLower() && s.enabled).FirstOrDefault());
         }
 
+
         /// <summary>Open next after current state</summary>
         public void SelectNextState()
         {
-            if (currentState == Last || Count <= 1) return;
-            SelectState(states[GetStateID(currentState) + 1]);
+            if (currentState == LastEnabled || Count <= 1) return;
+            SelectState(Next);
+        }
+
+        /// <summary>Open next enabled after current state</summary>
+        public void SelectNextEnabledState()
+        {
+            if (currentState == LastEnabled || CountEnabled <= 1) return;
+            SelectState(NextEnabled);
         }
 
         /// <summary>Open previous before current state</summary>
         public void SelectPreviousState()
         {
             if (currentState == First || Count <= 1) return;
-            SelectState(states[GetStateID(currentState) - 1]);
+            SelectState(Previous);
+        }
+
+        /// <summary>Open previous enabled before current state</summary>
+        public void SelectPreviousEnabledState()
+        {
+            if (currentState == FirstEnabled || CountEnabled <= 1) return;
+            SelectState(PreviousEnabled);
         }
 
         /// <summary>Close all states</summary>
@@ -178,6 +236,18 @@ namespace TSS
         public void CloseAll()
         {
             states.ForEach(s => s.Close());
+            if (currentState != null && useEvents) OnCurrentStatedClosed.Invoke(currentState);
+            currentState = null;
+        }
+
+        /// <summary>Close specified state</summary>
+        /// <param name="state">state pointer</param>
+        public void Close(TSSState state)
+        {
+            state.Close();
+            if (state != currentState) return;
+            currentState = null;
+            if (useEvents) OnCurrentStatedClosed.Invoke(state);
         }
 
         /// <summary>Add a new state to this core</summary>
@@ -277,6 +347,12 @@ namespace TSS
         /// <summary>Return true if this state is first</summary>
         public bool isFirst { get { return core.First == this; } }
 
+        /// <summary>Return true if this state is last enabled state</summary>
+        public bool isLastEnabled { get { return core.LastEnabled == this; } }
+
+        /// <summary>Return true if this state is first enabled state</summary>
+        public bool isFirstEnabled { get { return core.FirstEnabled == this; } }
+
         /// <summary>State open activation mode overriding (default is openBranch)</summary>
         public ActivationMode modeOpenOverride = ActivationMode.openBranch;
         /// <summary>State close activation mode overriding (default is closeBranch)</summary>
@@ -314,6 +390,7 @@ namespace TSS
             if (!enabled) return;
             if (overrideModes) activators.ForEach(i => i.ActivateManualy(modeOpenOverride));
             else activators.ForEach(i => i.Open());
+
             onOpen.Invoke();
         }
 
@@ -323,7 +400,17 @@ namespace TSS
             if (!enabled) return;
             if (overrideModes) activators.ForEach(i => i.ActivateManualy(modeCloseOverride));
             else activators.ForEach(i => i.Close());
+
             onClose.Invoke();
+        }
+
+        /// <summary>Activate manualy this state (not affect on others states of parent core)</summary>
+        /// <param name="mode">Activation mode</param>
+        /// <param name="force">Activate even state is disabled</param>
+        public void ActivateManualy(ActivationMode mode, bool force = false)
+        {
+            if (!force && !enabled) return;
+            activators.ForEach(i => i.ActivateManualy(mode));
         }
 
         /// <summary>Opening this state (and close all other states of parent core)</summary>

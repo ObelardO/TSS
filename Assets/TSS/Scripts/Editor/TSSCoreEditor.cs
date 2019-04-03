@@ -4,10 +4,12 @@
 // https://obeldev.ru
 // MIT License
 
+using TSS.Base;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.AnimatedValues;
+using UnityEngine.Events;
 
 namespace TSS.Editor
 {
@@ -20,6 +22,7 @@ namespace TSS.Editor
                                   newStateBigButtonContent = new GUIContent("Add new state", "Add a new state to this core"),
                                   delStateButtonContent = new GUIContent("-", "Remove this state"),
                                   stateSetDefault = new GUIContent("set default"),
+                                  stateSelect = new GUIContent("select"),
                                   stateUnsetDefault = new GUIContent("release"),
                                   propertyItem = new GUIContent("Items"),
                                   hlpBoxMessageNewState = new GUIContent("Click[+] to add first state to this scene"),
@@ -34,6 +37,10 @@ namespace TSS.Editor
 
         private static GUIStyle stateFoldAutStyle;
         private static AnimBool foldOutStates;
+
+        private string[] toolBarEventsTitle2 = new string[] { "Some", "First", "Last", "Incorrect", "Current", "All" };
+
+        private static int toolBarEventsID2 = 0;
 
         #endregion
 
@@ -121,6 +128,38 @@ namespace TSS.Editor
             core.AddState(null).editing = true;
         }
 
+        private void SelectState(TSSState state)
+        {
+            if (Application.isPlaying)
+            {
+                if (core.currentState == state)
+                {
+                    core.Close(state);
+                    return;
+                }
+
+                core.SelectState(state);
+                return;
+            }
+
+            if (core.currentState == state)
+            {
+                state.ActivateManualy(ActivationMode.closeBranchImmediately);
+                core.currentState = null;
+            }
+            else
+            {
+                for (int i = 0; i < core.Count; i++)
+                {
+                    core[i].ActivateManualy(state == core[i]
+                        ? ActivationMode.openBranchImmediately
+                        : ActivationMode.closeBranchImmediately);
+
+                    core.currentState = state;
+                }
+            }
+        }
+
         private bool DrawState(TSSState state, int stateID)
         {
             if (state == null) return false;
@@ -131,22 +170,41 @@ namespace TSS.Editor
 
                     EditorGUILayout.BeginHorizontal();
 
-                    TSSEditorUtils.DrawGenericProperty(ref state.enabled, core);
-
-                    state.editing = EditorGUILayout.Foldout(state.editing, string.Format("   {0} {1}", state.name, state == core.defaultState ? " (default)" : string.Empty), true, stateFoldAutStyle);
+                        bool isStateEnabled = state.enabled;
+                        TSSEditorUtils.DrawGenericProperty(ref isStateEnabled, core);
+                        if (core.currentState == state && state.enabled && !isStateEnabled)
+                        {
+                            if (Application.isPlaying) state.Close();
+                            else state.ActivateManualy(ActivationMode.closeBranchImmediately);
+                            core.currentState = null;
+  
+                        }
+                        state.enabled = isStateEnabled;
 
                         EditorGUI.BeginDisabledGroup(!state.enabled);
+
+                            state.editing = EditorGUILayout.Foldout(state.editing, string.Format("   {0} {1}", state.name, state == core.defaultState ? " (default)" : string.Empty), true, stateFoldAutStyle);
 
                             if (state != core.defaultState && GUILayout.Button(stateSetDefault, TSSEditorUtils.max80pxWidth, TSSEditorUtils.fixedLineHeight))
                             {
                                 Undo.RecordObject(core, "[TSS Core] default state");
                                 core.SetDefaultState(state);
                             }
+
                             else if (state == core.defaultState && GUILayout.Button(stateUnsetDefault, TSSEditorUtils.max80pxWidth, TSSEditorUtils.fixedLineHeight))
                             {
                                 Undo.RecordObject(core, "[TSS Core] default state");
                                 core.SetDefaultState();
                             }
+
+                            if (core.currentState == state) GUI.color = TSSEditorUtils.greenColor;
+
+                            if (GUILayout.Button(stateSelect, TSSEditorUtils.max50pxWidth, TSSEditorUtils.fixedLineHeight))
+                            {
+                                SelectState(state);
+                            }
+
+                            GUI.color = Color.white;
 
                         EditorGUI.EndDisabledGroup();
 
@@ -280,14 +338,14 @@ namespace TSS.Editor
 
             if (!core.useEvents) return;
 
-            GUILayout.Space(3);
-            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnStateSelected"));
-            GUILayout.Space(3);
-            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnFirstStateSelected"));
-            GUILayout.Space(3);
-            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnLastStateSelected"));
-            GUILayout.Space(3);
-            EditorGUILayout.PropertyField(serializedCore.FindProperty("OnincorrectStateSelected"));
+            toolBarEventsID2 = GUILayout.Toolbar(toolBarEventsID2, toolBarEventsTitle2);
+            EditorGUILayout.BeginVertical();
+            if (toolBarEventsID2 == 0 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnStateSelected"));
+            if (toolBarEventsID2 == 1 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnFirstStateSelected"));
+            if (toolBarEventsID2 == 2 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnLastStateSelected"));
+            if (toolBarEventsID2 == 3 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnIncorrectStateSelected"));
+            if (toolBarEventsID2 == 4 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnCurrentStatedClosed"));
+            EditorGUILayout.EndVertical();
     }
 
         #endregion
