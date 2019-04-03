@@ -370,6 +370,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -420,21 +421,6 @@ MonoBehaviour:
   tweens: []
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 182610591}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &228576503
 GameObject:
@@ -543,7 +529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258275873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.982542, y: -4.4931245, z: 0.15400958}
+  m_LocalPosition: {x: -63.963383, y: -48.038986, z: 1.646637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 896042290}
@@ -606,8 +592,6 @@ MonoBehaviour:
   - {x: -71.25246, y: -64.83045, z: 18.472672}
   - {x: -68.21435, y: -56.182728, z: 10.112153}
   - {x: -63.99722, y: -48.0934, z: 1.7054846}
-  showGizmos: 1
-  gizmoSize: 6.7976103
 --- !u!114 &258275877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +712,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -836,21 +821,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 504019002}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 258275878}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 2100000, guid: 63d3f8ada4f8ce546999bc1fc78fade0, type: 2}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 258275879}
-  itemLight: {fileID: 0}
-  path: {fileID: 258275876}
   stringPart: 
 --- !u!65 &258275878
 BoxCollider:
@@ -1224,6 +1194,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1274,21 +1245,6 @@ MonoBehaviour:
   tweens: []
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 326238199}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &370299734
 GameObject:
@@ -1439,6 +1395,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1489,21 +1446,6 @@ MonoBehaviour:
   tweens: []
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 370299735}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &380115047
 GameObject:
@@ -1676,7 +1618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233.8269, y: 0}
+  m_AnchoredPosition: {x: -250, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432422348
@@ -1714,8 +1656,6 @@ MonoBehaviour:
   - {x: 200.56422, y: -30.862373, z: 0}
   - {x: 225.77916, y: -16.49027, z: 0}
   - {x: 249.77867, y: -0.16156194, z: 0}
-  showGizmos: 0
-  gizmoSize: 0.33
 --- !u!114 &432422349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,6 +1768,7 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1936,21 +1877,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1608531579}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 432422347}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 432422348}
   stringPart: 
 --- !u!222 &432422351
 CanvasRenderer:
@@ -1998,7 +1924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -71.999985}
+  m_AnchoredPosition: {x: 0, y: -72}
   m_SizeDelta: {x: 0, y: -144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438472919
@@ -2287,6 +2213,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -2396,21 +2323,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 881382247}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &623508547
 GameObject:
@@ -3079,7 +2991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881382244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -236.50807, y: 5.6077423, z: -293.92255}
+  m_LocalPosition: {x: -236.50818, y: 5.6077423, z: -293.92255}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 504019001}
@@ -3114,8 +3026,6 @@ MonoBehaviour:
   - {x: 91.96805, y: 75.14021, z: -30.922937}
   - {x: 153.08951, y: 79.537186, z: -23.572317}
   - {x: 214.68588, y: 81.097466, z: -20.003225}
-  showGizmos: 0
-  gizmoSize: 0.25
 --- !u!114 &881382247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,6 +3138,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 2
@@ -3419,21 +3330,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 182610592}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 881382248}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  sphereCollider: {fileID: 881382248}
-  itemRenderer: {fileID: 881382249}
-  itemLight: {fileID: 0}
-  path: {fileID: 881382246}
   stringPart: 
 --- !u!135 &881382248
 SphereCollider:
@@ -5232,7 +5128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233.8269, y: -0.000015258789}
+  m_AnchoredPosition: {x: -250, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603189161
@@ -5289,8 +5185,6 @@ MonoBehaviour:
   - {x: -229.15753, y: -61.823177, z: 0}
   - {x: -245.7887, y: -34.139194, z: 0}
   - {x: -249.98361, y: -1.7254504, z: 0}
-  showGizmos: 0
-  gizmoSize: 1
 --- !u!114 &1603189162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5405,6 +5299,7 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5513,21 +5408,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 326238200}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 1603189159}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 1603189161}
   stringPart: 
 --- !u!222 &1603189163
 CanvasRenderer:
@@ -5686,6 +5566,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5736,21 +5617,6 @@ MonoBehaviour:
   tweens: []
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 1608531578}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &1647922952
 GameObject:
@@ -6221,7 +6087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195.5, y: 75.617966}
+  m_AnchoredPosition: {x: -250, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756004675
@@ -6262,8 +6128,6 @@ MonoBehaviour:
   - {x: 200.56422, y: -30.862373, z: 0}
   - {x: 225.77916, y: -16.49027, z: 0}
   - {x: 249.77867, y: -0.16156194, z: 0}
-  showGizmos: 0
-  gizmoSize: 45.834652
 --- !u!114 &1756004676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,6 +6243,7 @@ MonoBehaviour:
     pathSpacing: 19
     pathNormal: 5
     pathLerpMode: 1
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6568,21 +6433,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 370299736}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 1756004673}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 1756004675}
   stringPart: 
 --- !u!222 &1756004677
 CanvasRenderer:
@@ -6883,7 +6733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981151015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0516112, y: 0.43866393, z: -0.80062467}
+  m_LocalPosition: {x: 112.43481, y: 46.900513, z: -85.60016}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 881382245}
@@ -6915,8 +6765,6 @@ MonoBehaviour:
   - {x: -393.6031, y: 113.17274, z: -616.9604}
   - {x: -458.22934, y: 132.52875, z: -685.1206}
   - {x: -522.7556, y: 150.7342, z: -753.6913}
-  showGizmos: 0
-  gizmoSize: 1.4806498
 --- !u!114 &1981151018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7029,6 +6877,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7137,21 +6986,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 881382247}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 1981151019}
-  itemLight: {fileID: 0}
-  path: {fileID: 1981151017}
   stringPart: 
 --- !u!23 &1981151019
 MeshRenderer:

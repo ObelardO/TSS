@@ -475,6 +475,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -583,21 +584,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1608531579}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 221022297}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 2100000, guid: 9e4c1d29b6531c34d93b4b2ced350aa0, type: 2}
-  sphereCollider: {fileID: 221022297}
-  itemRenderer: {fileID: 221022298}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &228576503
 GameObject:
@@ -1056,6 +1042,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -1187,21 +1174,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 448496603}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &476127266
 GameObject:
@@ -1349,6 +1321,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1639,21 +1612,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 2141123683}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 476127269}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 2100000, guid: 9e4c1d29b6531c34d93b4b2ced350aa0, type: 2}
-  sphereCollider: {fileID: 476127269}
-  itemRenderer: {fileID: 476127270}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!135 &476127269
 SphereCollider:
@@ -1900,6 +1858,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2008,21 +1967,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1994724306}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 548913095}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 548913094}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &656101978
 GameObject:
@@ -2176,6 +2120,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2311,21 +2256,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 656101982}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 656101979}
-  button: {fileID: 656101981}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!114 &656101981
 MonoBehaviour:
@@ -2662,6 +2592,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2770,21 +2701,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 448496604}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 761175524}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 2100000, guid: 9e4c1d29b6531c34d93b4b2ced350aa0, type: 2}
-  sphereCollider: {fileID: 761175524}
-  itemRenderer: {fileID: 761175523}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!23 &761175523
 MeshRenderer:
@@ -3062,6 +2978,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3170,21 +3087,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1608531579}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 779194440}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 2100000, guid: 9e4c1d29b6531c34d93b4b2ced350aa0, type: 2}
-  sphereCollider: {fileID: 779194440}
-  itemRenderer: {fileID: 779194441}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &793064890
 GameObject:
@@ -3399,6 +3301,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3588,21 +3491,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1994724306}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 930954962}
-  gradient: {fileID: 0}
-  rect: {fileID: 930954964}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!114 &930954962
 MonoBehaviour:
@@ -4936,6 +4824,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5188,21 +5077,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 0}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 1584006857}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &1608531577
 GameObject:
@@ -5354,6 +5228,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 2
@@ -5486,21 +5361,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 1608531578}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &1675223534
 GameObject:
@@ -5860,6 +5720,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 3
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6049,21 +5910,6 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 1994724306}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 1972419826}
-  gradient: {fileID: 0}
-  rect: {fileID: 1972419824}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1972419826
 MonoBehaviour:
@@ -6259,6 +6105,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 3
@@ -6289,21 +6136,6 @@ MonoBehaviour:
   tweens: []
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 1994724305}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 
 --- !u!1 &2118530378
 GameObject:
@@ -6533,6 +6365,7 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
+  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -6664,19 +6497,4 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
-  canvasGroup: {fileID: 0}
-  image: {fileID: 0}
-  rawImage: {fileID: 0}
-  text: {fileID: 0}
-  gradient: {fileID: 0}
-  rect: {fileID: 2141123682}
-  button: {fileID: 0}
-  colider: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  material: {fileID: 0}
-  sphereCollider: {fileID: 0}
-  itemRenderer: {fileID: 0}
-  itemLight: {fileID: 0}
-  path: {fileID: 0}
   stringPart: 

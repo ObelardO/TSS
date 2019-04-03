@@ -203,9 +203,7 @@ namespace TSS
                         else if (value == ItemState.closed) { if (videoRestart) videoPlayer.Stop(); else videoPlayer.Pause(); }
                     }
 
-
                     if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave && parent.childStateCounts[(int)_state] > 0) parent.childStateCounts[(int)_state] -= 1;
-
 
                     _state = value;
                     switch (_state)
@@ -249,21 +247,21 @@ namespace TSS
         /// <summary>Attached profile</summary>
         [HideInInspector, SerializeField] public TSSProfile profile { set { _profile = value; } get { return _profile; } }
 
-        [HideInInspector] public CanvasGroup canvasGroup;
-        [HideInInspector] public Image image;
-        [HideInInspector] public RawImage rawImage;
-        [HideInInspector] public Text text;
-        [HideInInspector] public TSSGradient gradient;
-        [HideInInspector] public RectTransform rect;
-        [HideInInspector] public Button button;
-        [HideInInspector] public Collider colider;
-        [HideInInspector] public AudioSource audioPlayer;
-        [HideInInspector] public VideoPlayer videoPlayer;
-        [HideInInspector] public Material material;
-        [HideInInspector] public SphereCollider sphereCollider;
-        [HideInInspector] public Renderer itemRenderer;
-        [HideInInspector] public Light itemLight;
-        [HideInInspector] public TSSPath path;
+        [HideInInspector, NonSerialized] public CanvasGroup canvasGroup;
+        [HideInInspector, NonSerialized] public Image image;
+        [HideInInspector, NonSerialized] public RawImage rawImage;
+        [HideInInspector, NonSerialized] public Text text;
+        [HideInInspector, NonSerialized] public TSSGradient gradient;
+        [HideInInspector, NonSerialized] public RectTransform rect;
+        [HideInInspector, NonSerialized] public Button button;
+        [HideInInspector, NonSerialized] public Collider colider;
+        [HideInInspector, NonSerialized] public AudioSource audioPlayer;
+        [HideInInspector, NonSerialized] public VideoPlayer videoPlayer;
+        [HideInInspector, NonSerialized] public Material material;
+        [HideInInspector, NonSerialized] public SphereCollider sphereCollider;
+        [HideInInspector, NonSerialized] public Renderer itemRenderer;
+        [HideInInspector, NonSerialized] public Light itemLight;
+        [HideInInspector, NonSerialized] public TSSPath path;
         [HideInInspector] public string stringPart;
 
         #endregion
