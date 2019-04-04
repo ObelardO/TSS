@@ -275,5 +275,5 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    blendFactor: 0.25
+    blendFactor: 0.24
     blendTime: 0
