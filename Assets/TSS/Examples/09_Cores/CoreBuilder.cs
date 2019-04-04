@@ -13,8 +13,8 @@ public class CoreBuilder : MonoBehaviour
     // navigation buttons
     public Button prevBtn, nextBrn;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         // Add "TSS Core" component
         TSSCore core = this.gameObject.AddComponent<TSSCore>();
