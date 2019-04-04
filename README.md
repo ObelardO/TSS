@@ -18,7 +18,7 @@ If you want to support me, please buy this plugin at https://assetstore.unity.co
 
 • Various tweens for opening and closing objects
 
-• Path module sets objects movement trajectory
+• Path module sets objects movement trajectory (nested path support)
 
 • State machine module lets to group all the objects with tweens control their state
 
