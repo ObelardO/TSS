@@ -68,6 +68,8 @@ namespace TSS.Editor
 
         private void OnEnable()
         {
+            TSSPrefsEditor.Load();
+
             item = (TSSItem)target;
             serializedItem = new SerializedObject(item);
 
@@ -261,7 +263,7 @@ namespace TSS.Editor
 
             GUILayout.Space(3);
 
-            EditorGUI.BeginDisabledGroup(item.parentChainMode);// && !item.ignoreParent);
+            EditorGUI.BeginDisabledGroup(item.parentChainMode);
 
             EditorGUILayout.BeginHorizontal();
             DrawItemProperty(item, "openDelay");

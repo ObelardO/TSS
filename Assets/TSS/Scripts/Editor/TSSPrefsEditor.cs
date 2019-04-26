@@ -24,7 +24,7 @@ namespace TSS.Editor
 
         #region Save & Load
 
-        private static void Load()
+        public static void Load()
         {
             showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", showTweenProperties);
 

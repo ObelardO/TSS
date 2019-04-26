@@ -595,6 +595,8 @@ namespace TSS.Editor
                 item.openDelay = RoundItemValue(item.openDelay);
             else
                 item.closeDelay = RoundItemValue(item.closeDelay);
+
+            if (item.parent != null) item.parent.UpdateItemDelaysInChain((int)direction);
         }
 
         private void RoundItemDuration(TSSItem item)
@@ -611,6 +613,8 @@ namespace TSS.Editor
                 item.firstChildOpenDelay = RoundItemValue(item.firstChildOpenDelay);
             else
                 item.firstChildCloseDelay = RoundItemValue(item.firstChildCloseDelay);
+
+            if (item.parent != null) item.parent.UpdateItemDelaysInChain((int)direction);
         }
 
         private void Clamp0ItemDelay(TSSItem item)

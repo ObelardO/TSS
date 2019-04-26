@@ -43,20 +43,10 @@ namespace TSS
         [HideInInspector] public ActivationMode activationClose { get { return values.activations[0]; } set { values.activations[0] = value; } }
 
         /// <summary>Time in seconds which item waits before start opening</summary>
-        [HideInInspector]
-        public float openDelay
-        {
-            set { values.delays[1] = value; }
-            get { if (parentChainMode) return this.GetItemDelayInChain(parent.openChildBefore, parent.chainOpenDirection, parent.chainOpenDelay, values.delays[1], parent.values.firstChildDelay[1]); else return values.delays[1]; }
-        }
+        [HideInInspector] public float openDelay { set { values.delays[1] = value; } get { return values.delays[1]; } }
 
         /// <summary>Time in seconds which item waits before start closing</summary>
-        [HideInInspector]
-        public float closeDelay
-        {
-            set { values.delays[0] = value; }
-            get { if (parentChainMode) return this.GetItemDelayInChain(parent.closeChildBefore, parent.chainCloseDirection, parent.chainCloseDelay, values.delays[0], parent.values.firstChildDelay[0]); else return values.delays[0]; }
-        }
+        [HideInInspector] public float closeDelay{ set { values.delays[0] = value; } get { return values.delays[0]; } }
 
         /// <summary>Time in seconds for which item opens</summary>
         [HideInInspector] public float openDuration { set { values.durations[1] = value; } get { return values.durations[1]; } }
@@ -86,9 +76,9 @@ namespace TSS
         [HideInInspector] public float firstChildCloseDelay { set { values.firstChildDelay[0] = value; } get { return values.firstChildDelay[0]; } }
 
         /// <summary>Order of opening child items (auto control child open delays)</summary>
-        [HideInInspector] public ChainDirection chainOpenDirection { set { values.chainDirections[1] = value; } get { return values.chainDirections[1]; } }
+        [HideInInspector] public ChainDirection chainOpenDirection { set { values.chainDirections[1] = value; this.UpdateItemDelaysInChain((int)ItemKey.opened); } get { return values.chainDirections[1]; } }
         /// <summary>Order of closing child items (auto control child close delays)</summary>
-        [HideInInspector] public ChainDirection chainCloseDirection { set { values.chainDirections[0] = value; } get { return values.chainDirections[0]; } }
+        [HideInInspector] public ChainDirection chainCloseDirection { set { values.chainDirections[0] = value; this.UpdateItemDelaysInChain((int)ItemKey.closed); } get { return values.chainDirections[0]; } }
 
         /// <summary>Interpolating rotation mode</summary>
         [HideInInspector] public RotationMode rotationMode { set { values.rotationMode = value; } get { return values.rotationMode; } }
@@ -375,6 +365,9 @@ namespace TSS
             Transform parentTransform = TSSItemBase.GetItemParentTransform(this);
             if (ignoreParent) parent = null; else parent = parentTransform == null ? null : parentTransform.GetComponent<TSSItem>();
             if (parent != null) parent.Refresh();
+
+            this.UpdateItemDelaysInChain((int)ItemKey.closed);
+            this.UpdateItemDelaysInChain((int)ItemKey.opened);
 
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();

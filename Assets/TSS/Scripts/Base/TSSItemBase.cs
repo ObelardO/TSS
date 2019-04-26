@@ -444,7 +444,7 @@ namespace TSS.Base
             return 0;
         }
 
-        public static float GetItemDelayInChain(this TSSItem item, bool childBefore, ChainDirection direction, float delay, float defaultDelay, float firstChildDelay)
+        public static float GetItemDelayInChain(this TSSItem item, bool childBefore, ChainDirection direction, float delay, float firstChildDelay)
         {
 
             float offset = -firstChildDelay + delay;
@@ -456,9 +456,9 @@ namespace TSS.Base
                 case ChainDirection.middle2End: return Mathf.CeilToInt(item.parent.childItems.Count % 2 + Mathf.Abs((item.parent.childItems.Count + 1) * 0.5f - item.ID)) * delay - offset;
                 case ChainDirection.end2Middle: return ((item.parent.childItems.Count + 1) * 0.5f - Mathf.Abs((item.parent.childItems.Count + 1) * 0.5f - item.ID)) * delay - offset;
                 case ChainDirection.sync: return delay - offset;
-                case ChainDirection.random: return UnityEngine.Random.Range(0, item.parent.childItems.Count - 1) * delay + offset;
+                case ChainDirection.random: return UnityEngine.Random.Range(1, item.parent.childItems.Count - 1) * delay - offset;
+                default: return 0;
             }
-            return defaultDelay;
         }
 
         public static Transform GetItemParentTransform(TSSItem item)
@@ -468,9 +468,18 @@ namespace TSS.Base
             return parent;
         }
 
-        public static void UpdateItemDelaysInChain(this TSSItem item)
+        public static void UpdateItemDelaysInChain(this TSSItem item, int key)
         {
+            if (!item.childChainMode) return;
 
+            for (int i = 0; i < item.childItems.Count; i++)
+            {
+                item.childItems[i].values.delays[key] = item.childItems[i].GetItemDelayInChain(
+                    item.values.childBefore[key],
+                    item.values.chainDirections[key], 
+                    item.values.chainDelays[key], 
+                    item.values.firstChildDelay[key]);
+            }
         }
 
         #endregion
