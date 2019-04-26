@@ -52,7 +52,7 @@ namespace TSS
         openBranchImmediately, closeBranchImmediately, openCloseBranchImmediately
     }
 
-    public enum ChainDirection { first2Last, last2First, middle2End, end2Middle, sync }
+    public enum ChainDirection { first2Last, last2First, middle2End, end2Middle, sync, random }
 
     public enum ButtonDirection { open2Close, close2Open }
 
@@ -456,6 +456,7 @@ namespace TSS.Base
                 case ChainDirection.middle2End: return Mathf.CeilToInt(item.parent.childItems.Count % 2 + Mathf.Abs((item.parent.childItems.Count + 1) * 0.5f - item.ID)) * delay - offset;
                 case ChainDirection.end2Middle: return ((item.parent.childItems.Count + 1) * 0.5f - Mathf.Abs((item.parent.childItems.Count + 1) * 0.5f - item.ID)) * delay - offset;
                 case ChainDirection.sync: return delay - offset;
+                case ChainDirection.random: return UnityEngine.Random.Range(0, item.parent.childItems.Count - 1) * delay + offset;
             }
             return defaultDelay;
         }
@@ -465,6 +466,11 @@ namespace TSS.Base
             Transform parent = item.transform.parent;
             while (parent != null && (parent.GetComponent<TSSItem>() == null || (parent.GetComponent<TSSItem>() != null && !parent.GetComponent<TSSItem>().enabled))) parent = parent.parent;
             return parent;
+        }
+
+        public static void UpdateItemDelaysInChain(this TSSItem item)
+        {
+
         }
 
         #endregion

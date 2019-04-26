@@ -226,15 +226,15 @@ namespace TSS
         }
 
         /// <summary>Item is completely opened</summary>
-        [HideInInspector] public bool isOpened { get { return (_state == ItemState.opened); } }
+        [HideInInspector] public bool isOpened { get { return _state == ItemState.opened; } }
         /// <summary>Item is completely closed</summary>
-        [HideInInspector] public bool IsClosed { get { return (_state == ItemState.closed); } }
+        [HideInInspector] public bool IsClosed { get { return _state == ItemState.closed; } }
         /// <summary>Item is opening</summary>
-        [HideInInspector] public bool isOpening { get { return (_state == ItemState.opening); } }
+        [HideInInspector] public bool isOpening { get { return _state == ItemState.opening; } }
         /// <summary>Item is closing</summary>
-        [HideInInspector] public bool isClosing { get { return (_state == ItemState.closing); } }
+        [HideInInspector] public bool isClosing { get { return _state == ItemState.closing; } }
         /// <summary>Item's evaluation is controlled from external script</summary>
-        [HideInInspector] public bool isSlave { get { return (_state == ItemState.slave); } }
+        [HideInInspector] public bool isSlave { get { return _state == ItemState.slave; } }
 
         /// <summary>Item's child states</summary>
         [HideInInspector, NonSerialized] public int[] childStateCounts = new int[4];
