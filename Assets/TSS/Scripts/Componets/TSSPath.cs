@@ -1,7 +1,7 @@
 ﻿// TSS - Unity visual tweener plugin
 // © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
-// https://obeldev.ru
+// https://obeldev.ru/tss
 // MIT License
 
 using System.Collections.Generic;
@@ -396,7 +396,7 @@ namespace TSS
         /// <summary>
         /// Path points can be dynamically move if path are dynamic (affected on performance)
         /// </summary>
-        public void UpdatePath()
+        public void Update()
         {
             if (item.values.pathLerpMode == PathLerpMode.baked || pointsAttach == null || pointsAttach.Count == 0) return;
 

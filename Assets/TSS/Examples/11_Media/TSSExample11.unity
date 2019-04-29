@@ -2060,7 +2060,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448342323}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2122,8 +2122,8 @@ MonoBehaviour:
     - 0
     - 0
     durations:
-    - 1
-    - 0.7
+    - 0.1
+    - 0.8
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 0.050251257
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3052,7 +3052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00:00
+  m_Text: 00:02
 --- !u!222 &750137330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3743,7 +3743,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 770ddfaebf112034b88d8acb09ac2ef4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3847,7 +3847,7 @@ MonoBehaviour:
     - 0
     - 0
     durations:
-    - 0.5
+    - 0.3
     - 5.5
     childBefore: 0000
     chainDirections: 0000000000000000

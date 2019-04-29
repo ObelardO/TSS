@@ -1,7 +1,7 @@
 ﻿// TSS - Unity visual tweener plugin
 // © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
-// https://obeldev.ru
+// https://obeldev.ru/tss
 // MIT License
 
 using System;
@@ -252,7 +252,7 @@ namespace TSS.Editor
             if (item == TSSTimeLineEditor.item && GUILayout.Button(takeOfTimeLineButton, TSSEditorUtils.fixedLineHeight, TSSEditorUtils.max80pxWidth))
             {
                 TSSTimeLineEditor.item = null;
-                TSSItemBase.CloseBranchImmediately(item);
+                TSSItemBase.Activate(item, ActivationMode.closeBranchImmediately);
             }
 
             EditorGUILayout.EndHorizontal();

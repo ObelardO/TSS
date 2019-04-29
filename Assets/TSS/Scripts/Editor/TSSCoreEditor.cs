@@ -1,15 +1,13 @@
 ﻿// TSS - Unity visual tweener plugin
 // © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
-// https://obeldev.ru
+// https://obeldev.ru/tss
 // MIT License
 
-using TSS.Base;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.AnimatedValues;
-using UnityEngine.Events;
 
 namespace TSS.Editor
 {

@@ -5,42 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/TSS/Examples/01_Basics/TSSExample01.unity
-    guid: a717f085f531662488f6eb74be4184fc
-  - enabled: 1
-    path: Assets/TSS/Examples/02_Activations/TSSExample02.unity
-    guid: 665a30fb566a20b4097cf8bafb7ada55
-  - enabled: 1
-    path: Assets/TSS/Examples/03_Effects/TSSExample03.unity
-    guid: f65b977ff6d3cef4b9bd339a573e2307
-  - enabled: 1
-    path: Assets/TSS/Examples/04_Gradients/TSSExample04.unity
-    guid: 49d82ceaf1b45374e8a803ac0bab94dd
-  - enabled: 1
-    path: Assets/TSS/Examples/05_Tweens/TSSExample05.unity
-    guid: 0cb3175be12b72c49a9ca75e14ac0520
-  - enabled: 1
-    path: Assets/TSS/Examples/06_Interactions/TSSExample06.unity
-    guid: d5791abb2957789429a5824ef8befe58
-  - enabled: 1
-    path: Assets/TSS/Examples/07_Loops/TSSExample07.unity
-    guid: d8bf7e7d6e981654c8a571bdee9a3611
-  - enabled: 1
-    path: Assets/TSS/Examples/08_Profiles/TSSExample08.unity
-    guid: 445ee2d2a312b2c40b4873dbdea80b24
-  - enabled: 1
-    path: Assets/TSS/Examples/09_Cores/TSSExample09.unity
-    guid: 25d545960fa1e2b489c807fa4d42a145
-  - enabled: 1
-    path: Assets/TSS/Examples/10_Materials/TSSExample10.unity
-    guid: 92cbe95bdd712694380c3df10129f0b7
-  - enabled: 1
-    path: Assets/TSS/Examples/11_Media/TSSExample11.unity
-    guid: 5706d74540f922c418132bf3bccc4277
   - enabled: 1
     path: Assets/TSS/Examples/12_Path/TSSExample12.unity
     guid: cfc1c047fe45bcd47a764512f9f288ca

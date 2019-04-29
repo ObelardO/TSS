@@ -1,7 +1,7 @@
 ﻿// TSS - Unity visual tweener plugin
 // © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
-// https://obeldev.ru
+// https://obeldev.ru/tss
 // MIT License
 
 using System.Collections.Generic;
@@ -750,7 +750,7 @@ namespace TSS.Base
 
         delegate void ActivationDelegate(TSSItem item);
 
-        static ActivationDelegate[] activators = new ActivationDelegate[]
+        private static ActivationDelegate[] activators = new ActivationDelegate[]
         {
             Open, Close, OpenClose,
             OpenBranch, CloseBranch, OpenCloseBranch,
@@ -762,6 +762,8 @@ namespace TSS.Base
         {
             item.loopActivated = false;
             if (mode == ActivationMode.disabled) return;
+            TSSBehaviour.AddItem(item);
+
             activators[(int)mode-1](item); 
         }
 
@@ -773,6 +775,7 @@ namespace TSS.Base
             item.stateChgBranchMode = false;
             if (item.parentChainMode && item.parent.brakeChainDelay && (item.time != 0 || item.time < 0)) item.stateChgTime = 0;
             item.state = ItemState.opening;
+            TSSBehaviour.AddItem(item);
         }
 
         public static void Close(TSSItem item)
@@ -780,12 +783,11 @@ namespace TSS.Base
             item.loopActivated = false;
             if (item.closeDelay == 0 && item.closeDuration == 0) { CloseImmediately(item); return; }
             if (item.state == ItemState.closing || item.state == ItemState.closed) return;
-            
             item.stateChgTime = item.closeDelay;
             item.stateChgBranchMode = false;
             if (item.parentChainMode && item.parent.brakeChainDelay && (item.time != 1 || item.time > 1)) item.stateChgTime = 0;
-
             item.state = ItemState.closing;
+            TSSBehaviour.AddItem(item);
         }
 
         public static void OpenClose(TSSItem item)
@@ -817,6 +819,7 @@ namespace TSS.Base
 
         public static void OpenImmediately(TSSItem item)
         {
+            TSSBehaviour.RemoveItem(item);
             item.state = ItemState.opened;
             item.time = 1;
             DoAllEffects(item, item.time);
@@ -825,6 +828,7 @@ namespace TSS.Base
 
         public static void CloseImmediately(TSSItem item)
         {
+            TSSBehaviour.RemoveItem(item);
             item.state = ItemState.closed;
             item.time = 0;
             DoAllEffects(item, item.time);

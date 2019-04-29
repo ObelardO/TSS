@@ -1,7 +1,7 @@
 ﻿// TSS - Unity visual tweener plugin
 // © 2018 ObelardO aka Vladislav Trubitsyn
 // obelardos@gmail.com
-// https://obeldev.ru
+// https://obeldev.ru/tss
 // MIT License
 
 using System.Collections.Generic;
@@ -201,11 +201,12 @@ namespace TSS
                     if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave && parent.childStateCounts[(int)_state] > 0) parent.childStateCounts[(int)_state] -= 1;
 
                     _state = value;
+
                     switch (_state)
                     {
                         case ItemState.closed: if (OnClosed != null && OnClosed.GetPersistentEventCount() > 0) OnClosed.Invoke(); break;
                         case ItemState.opening: if (OnOpening != null && OnOpening.GetPersistentEventCount() > 0) OnOpening.Invoke(); break;
-                        case ItemState.opened: if (OnOpened != null && OnOpened.GetPersistentEventCount() > 0) OnOpened.Invoke(); break;
+                        case ItemState.opened:  if (OnOpened != null && OnOpened.GetPersistentEventCount() > 0) OnOpened.Invoke(); break;
                         case ItemState.closing: if (OnClosing != null && OnClosing.GetPersistentEventCount() > 0) OnClosing.Invoke(); break;
                     }
 
@@ -295,40 +296,40 @@ namespace TSS
         public void Evaluate(float value, ItemKey direction) { TSSItemBase.Evaluate(this, value, direction); }
 
         /// <summary>Open only this item without activation mode</summary>
-        public void OpenSinge() { TSSItemBase.Open(this); }
+        public void OpenSinge() { TSSItemBase.Activate(this, ActivationMode.open); }
 
         /// <summary>Close only this item without activation mode</summary>
-        public void CloseSingle() { TSSItemBase.Close(this); }
+        public void CloseSingle() { TSSItemBase.Activate(this, ActivationMode.close); }
 
         /// <summary>Open (if closed) or close (if opened) only this item without activation modes</summary>
-        public void OpenCloseSingle() { TSSItemBase.OpenClose(this); }
+        public void OpenCloseSingle() { TSSItemBase.Activate(this, ActivationMode.openClose); }
 
         /// <summary>Open this item's branch without activation mode</summary>
-        public void OpenBranch() { TSSItemBase.OpenBranch(this); }
+        public void OpenBranch() { TSSItemBase.Activate(this, ActivationMode.openBranch); }
 
         /// <summary>Close this item branch without activation mode</summary>
-        public void CloseBranch() { TSSItemBase.CloseBranch(this); }
+        public void CloseBranch() { TSSItemBase.Activate(this, ActivationMode.closeBranch); }
 
         /// <summary>Open (if closed) or close (if opened) this item's branch without activation modes</summary>
-        public void OpenCloseBranch() { TSSItemBase.OpenCloseBranch(this); }
+        public void OpenCloseBranch() { TSSItemBase.Activate(this, ActivationMode.openCloseBranch); }
 
         /// <summary>Open only this item immediately without activation mode</summary>
-        public void OpenImmediately() { TSSItemBase.OpenImmediately(this); }
+        public void OpenImmediately() { TSSItemBase.Activate(this, ActivationMode.openImmediately); }
 
         /// <summary>Close only this item immediately without activation mode</summary>
-        public void CloseImmediately() { TSSItemBase.CloseImmediately(this); }
+        public void CloseImmediately() { TSSItemBase.Activate(this, ActivationMode.closeImmediately); }
 
         /// <summary>Open (if closed) or close (if opened) this item immediately without activation modes</summary>
-        public void OpenCloseImmediately() { TSSItemBase.OpenCloseImmediately(this); }
+        public void OpenCloseImmediately() { TSSItemBase.Activate(this, ActivationMode.openCloseImmediately); }
 
         /// <summary>Open this item's branch immediately without activation mode</summary>
-        public void OpenBranchImmediately() { TSSItemBase.OpenBranchImmediately(this); }
+        public void OpenBranchImmediately() { TSSItemBase.Activate(this, ActivationMode.openBranchImmediately); }
 
         /// <summary>Close this item's branch immediately without activation mode</summary>
-        public void CloseBranchImmediately() { TSSItemBase.CloseBranchImmediately(this); }
+        public void CloseBranchImmediately() { TSSItemBase.Activate(this, ActivationMode.closeBranchImmediately); }
 
         /// <summary>Open (if closed) or close (if opened) this item's branch immediately without activation modes</summary>
-        public void OpenCloseBranchImmediately() { TSSItemBase.OpenCloseBranchImmediately(this); }
+        public void OpenCloseBranchImmediately() { TSSItemBase.Activate(this, ActivationMode.openCloseBranchImmediately); }
 
         #endregion
 
@@ -410,123 +411,6 @@ namespace TSS
             }
         }
 
-        private void UpdateItem()
-        {
-            deltaTime = updatingType == ItemUpdateType.fixedUpdate ?
-                (timeScaled ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime) :
-                (timeScaled ? Time.deltaTime : Time.unscaledDeltaTime);
-
-            if (path != null) path.UpdatePath();
-
-            UpdateItem(deltaTime);
-        }
-
-        private void UpdateItem(float userDeltaTime)
-        {
-            deltaTime = userDeltaTime;
-
-            switch (state)
-            {
-                case ItemState.opening:
-                    if (stateChgTime > 0 || stateChgTime == 0)
-                    {
-                        stateChgTime -= deltaTime;
-                        if (stateChgTime > 0) break;
-                        for (int i = 0; i < tweens.Count; i++) tweens[i].blendTime = 0;
-                        if (stateChgBranchMode && !openChildBefore) TSSItemBase.OpenChilds(this);
-                    }
-                    else if (time < 1)
-                    {
-                        time += deltaTime / openDuration;
-                    }
-                    else if (childStateCounts[(int)ItemState.opened] == childCountWithoutLoops)
-                    {
-                        time = 1;
-                        state = ItemState.opened;
-                    }
-
-                    UpdateInput();
-
-                    for (int i = 0; i < tweens.Count; i++) tweens[i].Update();
-                    break;
-
-                case ItemState.closing:
-                    if (stateChgTime > 0 || stateChgTime == 0)
-                    {
-                        stateChgTime -= deltaTime;
-                        if (stateChgTime > 0) break;
-                        for (int i = 0; i < tweens.Count; i++) tweens[i].blendTime = 0;
-                        if (stateChgBranchMode && !closeChildBefore) TSSItemBase.CloseChilds(this);
-                    }
-                    else if (time > 0)
-                    {
-                        time -= deltaTime / closeDuration;
-                    }
-                    else if (childStateCounts[(int)ItemState.closed] == childCountWithoutLoops)
-                    {
-                        time = 0;
-                        state = ItemState.closed;
-                    }
-
-                    for (int i = 0; i < tweens.Count; i++) tweens[i].Update();
-                    break;
-
-                case ItemState.closed:
-
-                    if (!loopActivated || !Application.isPlaying) break;
-
-                    if (currentLoops > 0 || loops < 0)
-                    {
-                        TSSItemBase.Activate(this, activationOpen);
-                        loopActivated = true;
-                        stateChgTime = 0;
-                        break;
-                    }
-
-                    loopActivated = false;
-                    break;
-
-                case ItemState.opened:
-
-                    UpdateInput();
-
-                    if (videoControl && videoPlayer != null && !videoPlayer.isLooping && videoPlayer.isPlaying
-                        && (((videoPlayer.frameCount / videoPlayer.frameRate) - (videoPlayer.frame / videoPlayer.frameRate)) * videoPlayer.playbackSpeed) <= closeDuration + closeDelay) Close();
-
-                    if (videoPlayer == null && soundControl && audioPlayer != null && !audioPlayer.loop && audioPlayer.isPlaying
-                       && (audioPlayer.clip.length - audioPlayer.time) <= closeDuration + closeDelay) Close();
-
-                    if (loops == 0 || !Application.isPlaying) break;
-
-                    if (!loopActivated) { loopActivated = true; currentLoops = loops; }
-
-                    if (currentLoops > 0 || loops < 0)
-                    {
-                        TSSItemBase.Activate(this, loopMode);
-                        loopActivated = true;
-                        if (loops > 0) currentLoops--;
-                        if (loopMode == ActivationMode.closeImmediately ||
-                            loopMode == ActivationMode.closeBranchImmediately) { UpdateItem(deltaTime); }
-                    }
-
-                    break;
-            }
-
-            if (buttonEvaluation > 0)
-            {
-                buttonEvaluation -= deltaTime;
-                if (buttonEvaluation < 0) buttonEvaluation = 0;
-
-                for (int i = 0; i < tweens.Count; i++)
-                {
-                    if (!tweens[i].enabled || tweens[i].direction != TweenDirection.Button) continue;
-                    TSSItemBase.DoEffect(this, tweens[i].Evaluate(buttonDirection == ButtonDirection.open2Close ?
-                        buttonEvaluation / buttonDuration : 
-                        1 - (buttonEvaluation / buttonDuration), tweens[i].type), tweens[i].effect);
-                }
-            }
-        }
-
         #endregion
 
         #region Unity methods
@@ -534,6 +418,7 @@ namespace TSS
         private void Awake()
         {
             TSSPrefs.Load();
+            TSSBehaviour.Load();
         }
 
         private void OnEnable()
@@ -568,21 +453,6 @@ namespace TSS
             if (Application.isPlaying) TSSItemBase.Activate(this, values.startAction);
         }
 
-        private void FixedUpdate()
-        {
-            if (values.updatingType == ItemUpdateType.fixedUpdate) UpdateItem();
-        }
-
-        private void Update()
-        {
-            if (values.updatingType == ItemUpdateType.update) UpdateItem();
-        }
-
-        private void LateUpdate()
-        {
-            if (values.updatingType == ItemUpdateType.lateUpdate) UpdateItem();
-        }
-
         private void OnDrawGizmos()
         {
 
@@ -590,7 +460,7 @@ namespace TSS
 
         #endregion
 
-        #region Input methods
+        #region Update Methods
 
         private void OnClick()
         {
@@ -598,10 +468,36 @@ namespace TSS
             for (int i = 0; i < childItems.Count; i++) if (childItems[i].buttonEvaluation <= 0) childItems[i].buttonEvaluation = childItems[i].buttonDuration;
         }
 
-        private void UpdateInput()
+        public void UpdateMedia()
+        {
+            if (videoControl && videoPlayer != null && !videoPlayer.isLooping && videoPlayer.isPlaying
+                && (((videoPlayer.frameCount / videoPlayer.frameRate) - (videoPlayer.frame / videoPlayer.frameRate)) * videoPlayer.playbackSpeed) <= closeDuration + closeDelay) Close();
+
+            if (videoPlayer == null && soundControl && audioPlayer != null && !audioPlayer.loop && audioPlayer.isPlaying
+                && (audioPlayer.clip.length - audioPlayer.time) <= closeDuration + closeDelay) Close();
+        }
+
+        public void UpdateInput()
         {
             if (button == null || !button.interactable || !Input.anyKeyDown) return;
             for (int i = 0; i < values.onKeyboard.Count; i++) if (Input.GetKeyDown(values.onKeyboard[i])) button.onClick.Invoke();
+        }
+
+        public void UpdateButton(float deltaTime)
+        {
+            if (buttonEvaluation > 0)
+            {
+                buttonEvaluation -= deltaTime;
+                if (buttonEvaluation < 0) buttonEvaluation = 0;
+
+                for (int i = 0; i < tweens.Count; i++)
+                {
+                    if (!tweens[i].enabled || tweens[i].direction != TweenDirection.Button) continue;
+                    TSSItemBase.DoEffect(this, tweens[i].Evaluate(buttonDirection == ButtonDirection.open2Close ?
+                        buttonEvaluation / buttonDuration :
+                        1 - (buttonEvaluation / buttonDuration), tweens[i].type), tweens[i].effect);
+                }
+            }
         }
 
         #endregion
