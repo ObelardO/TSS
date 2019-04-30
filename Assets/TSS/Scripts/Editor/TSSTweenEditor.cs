@@ -302,6 +302,7 @@ namespace TSS.Editor
                     case ItemEffect.color:
 
                         EditorGUILayout.BeginHorizontal();
+                        TSSEditorUtils.useHDRcolors = false;
                         TSSEditorUtils.DrawGenericProperty(ref values.colors[0], TSSEditorUtils.redColor, parent);
                         TSSEditorUtils.DrawGenericProperty(ref values.colors[1], TSSEditorUtils.greenColor, parent);
                         EditorGUILayout.EndHorizontal();

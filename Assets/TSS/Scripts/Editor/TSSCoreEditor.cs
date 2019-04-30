@@ -50,7 +50,6 @@ namespace TSS.Editor
             serializedCore = new SerializedObject(core);
             statesProperty = serializedCore.FindProperty("states");
 
-
             if (foldOutStates == null) foldOutStates = new AnimBool(false);
             foldOutStates.valueChanged.AddListener(Repaint);
 
@@ -99,13 +98,10 @@ namespace TSS.Editor
                 EditorGUILayout.BeginFadeGroup(foldOutStates.faded);
 
                 if (core.Count == 0)
-                {
                     EditorGUILayout.HelpBox(hlpBoxMessageNewState.text, MessageType.Info);
-                }
                 else
-                {
                     for (int i =  0; i < core.Count; i++) if (!DrawState(core[i], i)) break;
-                }
+
                 if (GUILayout.Button(newStateBigButtonContent)) { AddState(true); return; }
 
                 EditorGUILayout.EndFadeGroup();
@@ -175,8 +171,8 @@ namespace TSS.Editor
                             if (Application.isPlaying) state.Close();
                             else state.ActivateManualy(ActivationMode.closeBranchImmediately);
                             core.currentState = null;
-  
                         }
+
                         state.enabled = isStateEnabled;
 
                         EditorGUI.BeginDisabledGroup(!state.enabled);
@@ -313,7 +309,6 @@ namespace TSS.Editor
                     EditorGUILayout.EndVertical();
                 }
             EditorGUILayout.EndVertical();
-
         }
 
         private bool DrawStateDeleteButton(TSSState state)
@@ -344,7 +339,7 @@ namespace TSS.Editor
             if (toolBarEventsID2 == 3 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnIncorrectStateSelected"));
             if (toolBarEventsID2 == 4 || toolBarEventsID2 == 5) EditorGUILayout.PropertyField(serializedCore.FindProperty("OnCurrentStatedClosed"));
             EditorGUILayout.EndVertical();
-    }
+        }
 
         #endregion
     }

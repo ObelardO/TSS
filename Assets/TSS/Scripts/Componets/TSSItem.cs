@@ -253,7 +253,7 @@ namespace TSS
         [HideInInspector, NonSerialized] public Collider colider;
         [HideInInspector, NonSerialized] public AudioSource audioPlayer;
         [HideInInspector, NonSerialized] public VideoPlayer videoPlayer;
-        [HideInInspector, NonSerialized] public Material material;
+        [/*HideInInspector, */NonSerialized] public Material material;
         [HideInInspector, NonSerialized] public SphereCollider sphereCollider;
         [HideInInspector, NonSerialized] public Renderer itemRenderer;
         [HideInInspector, NonSerialized] public Light itemLight;

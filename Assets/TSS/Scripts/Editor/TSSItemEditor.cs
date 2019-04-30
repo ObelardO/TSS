@@ -504,7 +504,7 @@ namespace TSS.Editor
             }
 
             if (string.IsNullOrEmpty(displayPropertyName)) displayPropertyName = propertyName;
-            if (displayPropertyOption == null) displayPropertyOption =  TSSEditorUtils.max100pxWidth;
+            if (displayPropertyOption == null) displayPropertyOption = TSSEditorUtils.max100pxWidth;
 
             Type propertyType = GetItemPropertyType(propertyName);
 
