@@ -1640,13 +1640,13 @@ MonoBehaviour:
     - 1
     - 1
     childBefore: 0000
-    chainDirections: 0200000000000000
+    chainDirections: 0000000000000000
     chainDelays:
     - 0.2
     - 0.2
     firstChildDelay:
-    - 0
-    - 0
+    - 0.2
+    - 0.2
     rotationMode: 0
     rotationMask: {x: 1, y: 1, z: 1}
     materialMode: 0
@@ -1823,11 +1823,11 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0
-    - 0.4
+    - 0.6
+    - 0.6
     durations:
-    - 0.5
-    - 0.4
+    - 1
+    - 1
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:
@@ -2299,11 +2299,11 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0.2
-    - 0.2
-    durations:
-    - 0.5
     - 0.4
+    - 0.4
+    durations:
+    - 1
+    - 1
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:
@@ -5995,11 +5995,11 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0.4
-    - 0.8
+    - 1
+    - 1
     durations:
-    - 0.5
-    - 0.4
+    - 1
+    - 1
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:
@@ -11518,11 +11518,11 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0.2
-    - 0.6
+    - 0.8
+    - 0.8
     durations:
-    - 0.5
-    - 0.4
+    - 1
+    - 1
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:
@@ -12839,11 +12839,11 @@ MonoBehaviour:
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 0.4
-    - 0
+    - 0.2
+    - 0.2
     durations:
-    - 0.5
-    - 0.4
+    - 1
+    - 1
     childBefore: 0000
     chainDirections: 0000000000000000
     chainDelays:

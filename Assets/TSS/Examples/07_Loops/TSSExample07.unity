@@ -1174,7 +1174,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     mode: 0
     type: 6
-    closingType: 0
+    closingType: 1
     direction: 1
     effect: 2
     matPropertyType: 0
@@ -1223,7 +1223,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    blendFactor: 0.25
+    blendFactor: 0.01
     blendTime: 0
   parent: {fileID: 283275559}
   _profile: {fileID: 0}

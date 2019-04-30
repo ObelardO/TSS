@@ -137,7 +137,7 @@ namespace TSS.Base
                     }
                     else if (item.childStateCounts[(int)ItemState.opened] == item.childCountWithoutLoops)
                     {
-                        //item.time = 1;
+                        item.time = 1;
                         item.state = ItemState.opened;
                     }
 
