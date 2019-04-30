@@ -10,7 +10,12 @@ using TSS.Base;
 
 namespace TSS
 {
-    [System.Serializable, DisallowMultipleComponent, ExecuteInEditMode, AddComponentMenu("TSS/Path"), RequireComponent(typeof(TSSItem))]
+    [System.Serializable, DisallowMultipleComponent, AddComponentMenu("TSS/Path"), RequireComponent(typeof(TSSItem))]
+    #if UNITY_2018_3_OR_NEWER
+        [ExecuteAlways]
+    #else
+        [ExecuteInEditMode]
+    #endif
     public class TSSPath : MonoBehaviour
     {
         #region Properties

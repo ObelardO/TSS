@@ -19,6 +19,7 @@ namespace TSS.Editor
 
         public static bool showTweenProperties;
         public static bool drawAllPaths;
+        public static bool hideBehaviour = true;
 
         #endregion
 
@@ -27,7 +28,6 @@ namespace TSS.Editor
         public static void Load()
         {
             showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", showTweenProperties);
-
             drawAllPaths = EditorPrefs.GetBool("TSS_drawAllPaths", drawAllPaths);
 
             prefsLoaded = true;
@@ -50,17 +50,16 @@ namespace TSS.Editor
 
             EditorGUILayout.LabelField("Version: " + TSSInfo.version);
 
-            TSSEditorUtils.DrawGenericProperty(ref showTweenProperties, "showTweenProperties");
+            EditorGUI.BeginChangeCheck();
 
-            TSSEditorUtils.DrawGenericProperty(ref drawAllPaths, "showAllPaths");
+            showTweenProperties = EditorGUILayout.Toggle("Show Properties", showTweenProperties);
+            drawAllPaths = EditorGUILayout.Toggle("Draw all path", drawAllPaths);
 
-            if (GUI.changed) 
+            if (EditorGUI.EndChangeCheck()) 
             {
                 Save();
-
                 TSSPrefs.Save();
             }
-
         }
 
         #endregion

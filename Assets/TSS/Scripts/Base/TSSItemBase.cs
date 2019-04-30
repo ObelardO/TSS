@@ -762,7 +762,7 @@ namespace TSS.Base
         {
             item.loopActivated = false;
             if (mode == ActivationMode.disabled) return;
-            TSSBehaviour.AddItem(item);
+            //TSSBehaviour.AddItem(item);
 
             activators[(int)mode-1](item); 
         }

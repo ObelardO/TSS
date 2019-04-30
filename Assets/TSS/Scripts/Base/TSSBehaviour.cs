@@ -13,6 +13,8 @@ namespace TSS.Base
     [DisallowMultipleComponent]
     public class TSSBehaviour : MonoBehaviour
     {
+        #region Properties
+
         private static TSSBehaviour _instance;
         public static TSSBehaviour instance
         {
@@ -20,7 +22,7 @@ namespace TSS.Base
             {
                 if (_instance == null)
                 {
-                    GameObject gameObject = new GameObject() { name = "TSS Behaviour", hideFlags = HideFlags.HideAndDontSave };
+                    GameObject gameObject = new GameObject() { name = "TSS Behaviour", hideFlags = HideFlags./*HideAnd*/DontSave };
                     _instance = gameObject.AddComponent<TSSBehaviour>();
                     SceneManager.sceneUnloaded += Clear;
                     if (Application.isPlaying)
@@ -38,22 +40,26 @@ namespace TSS.Base
             get { return _clearLists; }
         }
 
+        public List<TSSItem> updatingItems = new List<TSSItem>();
+        public List<TSSItem> fixedUpdatingItems = new List<TSSItem>();
+        public List<TSSItem> lateUpdateingItems = new List<TSSItem>();
+
+        #endregion
+
+        #region Public methods
+
         public static void Load()
         {
             if (instance == null) return;
         }
 
-        private static void Clear(Scene scene)
+        public static void Clear(Scene scene)
         {
             if (!_clearLists) return;
             instance.updatingItems.Clear();
             instance.fixedUpdatingItems.Clear();
             instance.lateUpdateingItems.Clear();
         }
-
-        public List<TSSItem> updatingItems = new List<TSSItem>();
-        public List<TSSItem> fixedUpdatingItems = new List<TSSItem>();
-        public List<TSSItem> lateUpdateingItems = new List<TSSItem>();
 
         public static void AddItem(TSSItem item)
         {
@@ -80,7 +86,9 @@ namespace TSS.Base
             }
         }
 
+        #endregion
 
+        #region Unity methods
 
         private void Awake()
         {
@@ -105,8 +113,11 @@ namespace TSS.Base
                 UpdateItem(lateUpdateingItems[i], lateUpdateingItems[i].timeScaled ? Time.deltaTime : Time.unscaledDeltaTime);
         }
 
+        #endregion
 
-        public void UpdateItem(TSSItem item, float deltaTime)
+        #region Updating
+
+        private void UpdateItem(TSSItem item, float deltaTime)
         {
             item.deltaTime = deltaTime;
 
@@ -203,6 +214,8 @@ namespace TSS.Base
 
             item.UpdateButton(deltaTime);
         }
+
+        #endregion
     }
 }
 

@@ -19,7 +19,6 @@ namespace TSS.Editor
 {
     public static class TSSEditorUtils
     {
-
         #region Properties
 
         public static GUIContent addKeyButtonContent = new GUIContent("+", "Add a new element to list"),
@@ -214,15 +213,6 @@ namespace TSS.Editor
         }
 
         #endregion
-
-        /*
-        private static bool GenericPropertiesIsIdentical<T>(T[] values)
-        {
-            if (values.Length == 1) return true;
-            for (int i = 0; i < values.Length; i++) if (!EqualityComparer<T>.Default.Equals(values[i], values[0])) return false;
-            return true;
-        }
-        */
 
         #region Specific propery drawers 
 
