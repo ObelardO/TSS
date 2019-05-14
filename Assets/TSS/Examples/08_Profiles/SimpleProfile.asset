@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: SimpleProfile
   m_EditorClassIdentifier: 
   isUI: 1
-  version: 1.5.0
+  version: 1.6.0
   values:
     inited: 1
     startAction: 11
     activations: 0500000004000000
     delays:
-    - 1
+    - 0.4
     - 0
     durations:
     - 0.5

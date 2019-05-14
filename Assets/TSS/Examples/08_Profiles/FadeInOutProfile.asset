@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FadeInOutProfile
   m_EditorClassIdentifier: 
   isUI: 1
-  version: 1.5.1
+  version: 1.6.0
   values:
     inited: 1
     startAction: 11
