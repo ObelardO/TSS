@@ -57,7 +57,7 @@ namespace TSS
     {
         #region Properties
 
-        public static string version { get { return @"1.6.2"; } }
+        public static string version { get { return @"1.6.21"; } }
 
         public static string author { get { return @"ObelardO"; } }
         public static string email { get { return @"obelardos@gmail.com"; } }
