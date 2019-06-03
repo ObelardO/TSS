@@ -418,8 +418,7 @@ namespace TSS
         private void Awake()
         {
             TSSPrefs.Load();
-            TSSBehaviour.Load();
-            if (Application.isPlaying) TSSItemBase.Activate(this, values.startAction);
+            if (Application.isPlaying) TSSBehaviour.Load();
         }
 
         private void OnEnable()

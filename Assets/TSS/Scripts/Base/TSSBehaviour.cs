@@ -66,12 +66,9 @@ namespace TSS.Base
 
         private static void SceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            foreach (var item in TSSItemBase.AllItems) TSSItemBase.Activate(item, item.values.startAction);
 
-            //TSSCore[] crs = FindObjectsOfType<TSSCore>();
-
-            //Debug.Log(crs.Length);
-
-            foreach (var core in cores) { core.SelectDefaultState(); }
+            foreach (var core in cores) core.SelectDefaultState();
         }
 
         public static void AddItem(TSSItem item)
