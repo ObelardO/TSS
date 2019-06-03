@@ -362,7 +362,17 @@ namespace TSS
 
         #endregion
 
-        #region Init Update
+        #region Inity Update
+
+        private void OnEnable()
+        {
+            TSSPathBase.allPathes.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            TSSPathBase.allPathes.Remove(this);
+        }
 
         private void Start()
         {
@@ -401,7 +411,7 @@ namespace TSS
         /// <summary>
         /// Path points can be dynamically move if path are dynamic (affected on performance)
         /// </summary>
-        public void Update()
+        public void UpdatePath()
         {
             if (item.values.pathLerpMode == PathLerpMode.baked || pointsAttach == null || pointsAttach.Count == 0) return;
 

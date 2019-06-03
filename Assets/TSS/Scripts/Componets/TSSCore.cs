@@ -9,6 +9,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using TSS.Base;
 
 namespace TSS
@@ -113,10 +114,14 @@ namespace TSS
 
         #region Unity methods
 
-        private IEnumerator Start()
+        private void OnEnable()
         {
-            if (Application.isPlaying) yield return new WaitForSeconds(0.5f);
-            SelectDefaultState();
+            TSSBehaviour.AddCore(this);
+        }
+
+        private void OnDisable()
+        {
+            TSSBehaviour.RemoveCore(this);
         }
 
         private void Update()
@@ -161,7 +166,9 @@ namespace TSS
         /// <summary>Open default state (if there is one)</summary>
         public void SelectDefaultState()
         {
+           
             if (defaultState != null) SelectState(defaultState.name);
+            
         }
 
         /// <summary>Open specified state</summary>

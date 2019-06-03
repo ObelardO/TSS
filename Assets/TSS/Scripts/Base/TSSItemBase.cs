@@ -141,19 +141,20 @@ namespace TSS.Base
             name = "_Property";
             switch (propertyType)
             {
-                case MaterialPropertyType.single:   singleValues  = new float[TSSItemBase.stateCount] { 0, 1 }; break;
-                case MaterialPropertyType.integer:  integerValues = new int[TSSItemBase.stateCount] { 0, 1 } ; break;
-                case MaterialPropertyType.color:    colorValues   = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
+                case MaterialPropertyType.single: singleValues = new float[TSSItemBase.stateCount] { 0, 1 }; break;
+                case MaterialPropertyType.integer: integerValues = new int[TSSItemBase.stateCount] { 0, 1 }; break;
+                case MaterialPropertyType.color: colorValues = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
                 case MaterialPropertyType.colorHDR: colorValues = new Color[TSSItemBase.stateCount] { Color.white, Color.white }; break;
-                case MaterialPropertyType.vector2:  vector2values = new Vector2[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.vector3:  vector3values = new Vector3[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.vector4:  vector4values = new Vector4[TSSItemBase.stateCount]; break;
-                case MaterialPropertyType.curve:    curve = AnimationCurve.EaseInOut(0, 0, 1, 1); break;
-                case MaterialPropertyType.gradient: gradient = new Gradient()
-                {
-                    colorKeys = new GradientColorKey[] { new GradientColorKey(Color.black, 0), new GradientColorKey(Color.white, 1) }
-                };
-                break;
+                case MaterialPropertyType.vector2: vector2values = new Vector2[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.vector3: vector3values = new Vector3[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.vector4: vector4values = new Vector4[TSSItemBase.stateCount]; break;
+                case MaterialPropertyType.curve: curve = AnimationCurve.EaseInOut(0, 0, 1, 1); break;
+                case MaterialPropertyType.gradient:
+                    gradient = new Gradient()
+                    {
+                        colorKeys = new GradientColorKey[] { new GradientColorKey(Color.black, 0), new GradientColorKey(Color.white, 1) }
+                    };
+                    break;
             }
         }
 
@@ -245,7 +246,7 @@ namespace TSS.Base
 
         public const int stateCount = 2;
 
-        public static List<TSSItem> items = new List<TSSItem>();
+        public static List<TSSItem> AllItems = new List<TSSItem>();
 
         #endregion
 
@@ -476,8 +477,8 @@ namespace TSS.Base
             {
                 item.childItems[i].values.delays[key] = item.childItems[i].GetItemDelayInChain(
                     item.values.childBefore[key],
-                    item.values.chainDirections[key], 
-                    item.values.chainDelays[key], 
+                    item.values.chainDirections[key],
+                    item.values.chainDelays[key],
                     item.values.firstChildDelay[key]);
             }
         }
@@ -517,7 +518,7 @@ namespace TSS.Base
             if (item.state != ItemState.slave) item.state = ItemState.slave;
             for (int i = 0; i < item.tweens.Count; i++)
             {
-                if (!item.tweens[i].enabled || 
+                if (!item.tweens[i].enabled ||
                     (direction == ItemKey.closed && item.tweens[i].direction != TweenDirection.Close && item.tweens[i].direction != TweenDirection.OpenClose) ||
                     (direction == ItemKey.opened && item.tweens[i].direction != TweenDirection.Open && item.tweens[i].direction != TweenDirection.OpenClose)) continue;
 
@@ -596,7 +597,7 @@ namespace TSS.Base
         {
             if (item.path != null && item.path.enabled) item.transform.position = item.path.EvaluatePosition(time);
             else item.transform.localPosition = Vector3.LerpUnclamped(item.values.positions[0], item.values.positions[1], time);
-           
+
         }
 
         public static void DoRotation(TSSItem item, float time)
@@ -663,7 +664,7 @@ namespace TSS.Base
             if (item.text == null) return;
             item.text.text = string.Format("{0}{1}", Mathf.LerpUnclamped(item.values.numbers[0], item.values.numbers[1], time)
                             .ToString(item.values.floatFormat, System.Globalization.CultureInfo.InvariantCulture)
-                            .Replace(string.Format("<{0}>", TSSPrefs.Symbols.dot), string.Empty).Replace("<>", string.Empty), item.stringPart); 
+                            .Replace(string.Format("<{0}>", TSSPrefs.Symbols.dot), string.Empty).Replace("<>", string.Empty), item.stringPart);
         }
 
         public static void DoRect(TSSItem item, float time)
@@ -740,7 +741,6 @@ namespace TSS.Base
                 case MaterialPropertyType.curve: item.material.SetFloat(property.name, property.curve.Evaluate(time)); break;
                 case MaterialPropertyType.gradient: item.material.SetColor(property.name, property.gradient.Evaluate(time)); break;
                 case MaterialPropertyType.colorHDR: item.material.SetColor(property.name, Color.LerpUnclamped(property.colorValues[0], property.colorValues[1], time)); break;
-
             }
         }
 
@@ -762,9 +762,7 @@ namespace TSS.Base
         {
             item.loopActivated = false;
             if (mode == ActivationMode.disabled) return;
-            //TSSBehaviour.AddItem(item);
-
-            activators[(int)mode-1](item); 
+            activators[(int)mode - 1](item);
         }
 
         public static void Open(TSSItem item)

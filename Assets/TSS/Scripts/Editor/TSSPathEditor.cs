@@ -545,17 +545,16 @@ namespace TSS.Editor
         {
             if (TSSPrefsEditor.drawAllPaths)
             {
-                for (int i = 0; i < TSSItemBase.items.Count; i++)
+                for (int i = 0; i < TSSPathBase.allPathes.Count; i++)
                 {
-                    if (!TSSItemBase.items[i].gameObject.activeInHierarchy ||
-                        !TSSItemBase.items[i].enabled ||
-                         TSSItemBase.items[i].path == null ||
-                         TSSItemBase.items[i].path == path ||
-                        !TSSItemBase.items[i].path.enabled) continue;
+                    if (!TSSPathBase.allPathes[i].gameObject.activeInHierarchy ||
+                        !TSSPathBase.allPathes[i].enabled ||
+                         TSSPathBase.allPathes[i] == path ||
+                        !TSSPathBase.allPathes[i].item.enabled) continue;
 
-                    for (int j = 0; j < TSSItemBase.items[i].path.segmentsCount; j++)
+                    for (int j = 0; j < TSSPathBase.allPathes[i].segmentsCount; j++)
                     {
-                        Vector3[] segmentPoints = ToWorld(TSSItemBase.items[i].path, TSSItemBase.items[i].path.GetSegmentPoints(j));
+                        Vector3[] segmentPoints = ToWorld(TSSPathBase.allPathes[i], TSSPathBase.allPathes[i].GetSegmentPoints(j));
 
                         Handles.DrawBezier(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2], Color.white * 0.85f, null, 2);
                     }

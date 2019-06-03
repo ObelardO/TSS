@@ -5,6 +5,7 @@
 // MIT License
 
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,24 +26,25 @@ namespace TSS.Base
                     GameObject gameObject = new GameObject() { name = "TSS Behaviour", hideFlags = HideFlags./*HideAnd*/DontSave };
                     _instance = gameObject.AddComponent<TSSBehaviour>();
                     SceneManager.sceneUnloaded += Clear;
-                    if (Application.isPlaying)
-                        DontDestroyOnLoad(gameObject);
+                    SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => SceneLoaded(scene, mode);
+                    if (Application.isPlaying) DontDestroyOnLoad(gameObject);
                 }
 
                 return _instance;
             }
         }
 
-        private static bool _clearLists = true;
+        private static bool _clearLists = false;
         public bool clearListsOnSceneLoad
         {
             set { _clearLists = value; }
             get { return _clearLists; }
         }
 
-        public List<TSSItem> updatingItems = new List<TSSItem>();
-        public List<TSSItem> fixedUpdatingItems = new List<TSSItem>();
-        public List<TSSItem> lateUpdateingItems = new List<TSSItem>();
+        private static List<TSSItem> updatingItems = new List<TSSItem>();
+        private static List<TSSItem> fixedUpdatingItems = new List<TSSItem>();
+        private static List<TSSItem> lateUpdateingItems = new List<TSSItem>();
+        private static List<TSSCore> cores = new List<TSSCore>();
 
         #endregion
 
@@ -56,9 +58,20 @@ namespace TSS.Base
         public static void Clear(Scene scene)
         {
             if (!_clearLists) return;
-            instance.updatingItems.Clear();
-            instance.fixedUpdatingItems.Clear();
-            instance.lateUpdateingItems.Clear();
+            updatingItems.Clear();
+            fixedUpdatingItems.Clear();
+            lateUpdateingItems.Clear();
+            cores.Clear();
+        }
+
+        private static void SceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+
+            //TSSCore[] crs = FindObjectsOfType<TSSCore>();
+
+            //Debug.Log(crs.Length);
+
+            foreach (var core in cores) { core.SelectDefaultState(); }
         }
 
         public static void AddItem(TSSItem item)
@@ -66,13 +79,13 @@ namespace TSS.Base
             switch (item.updatingType)
             {
                 case ItemUpdateType.update:
-                    if (!instance.updatingItems.Contains(item)) instance.updatingItems.Add(item); break;
+                    if (!updatingItems.Contains(item)) updatingItems.Add(item); break;
 
                 case ItemUpdateType.fixedUpdate:
-                    if (!instance.fixedUpdatingItems.Contains(item)) instance.fixedUpdatingItems.Add(item); break;
+                    if (!fixedUpdatingItems.Contains(item)) fixedUpdatingItems.Add(item); break;
 
                 case ItemUpdateType.lateUpdate:
-                    if (!instance.lateUpdateingItems.Contains(item)) instance.lateUpdateingItems.Add(item); break;
+                    if (!lateUpdateingItems.Contains(item)) lateUpdateingItems.Add(item); break;
             }
         }
 
@@ -80,10 +93,20 @@ namespace TSS.Base
         {
             switch (item.updatingType)
             {
-                case ItemUpdateType.update: instance.updatingItems.Remove(item); break;
-                case ItemUpdateType.fixedUpdate: instance.fixedUpdatingItems.Remove(item); break;
-                case ItemUpdateType.lateUpdate: instance.lateUpdateingItems.Remove(item); break;
+                case ItemUpdateType.update: updatingItems.Remove(item); break;
+                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Remove(item); break;
+                case ItemUpdateType.lateUpdate: lateUpdateingItems.Remove(item); break;
             }
+        }
+
+        public static void AddCore(TSSCore core)
+        {
+            cores.Add(core);
+        }
+
+        public static void RemoveCore(TSSCore core)
+        {
+            cores.Remove(core);
         }
 
         #endregion
@@ -120,6 +143,8 @@ namespace TSS.Base
         private void UpdateItem(TSSItem item, float deltaTime)
         {
             item.deltaTime = deltaTime;
+
+            if (item.path != null) item.path.UpdatePath();
 
             switch (item.state)
             {

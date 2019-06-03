@@ -24,6 +24,8 @@ namespace TSS.Base
     {
         #region Transforms
 
+        public static List<TSSPath> allPathes = new List<TSSPath>();
+
         public static Vector3[] normals = new Vector3[] { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
         public static Vector3 ToLocal(TSSPath path, Vector3 worldPoint)
