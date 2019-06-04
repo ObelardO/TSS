@@ -29,6 +29,7 @@ namespace TSS
 
         [HideInInspector] public int ID = 0;
         [HideInInspector, NonSerialized] public float time = 0;
+        [HideInInspector, NonSerialized] public bool behaviourCatched;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
         [HideInInspector] public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
@@ -421,11 +422,6 @@ namespace TSS
             TSSItemBase.InitValues(ref values);
             TSSItemBase.DoAllEffects(this, 0);
             state = ItemState.closed;
-        }
-
-        private void Start()
-        {
-            TSSItemBase.Activate(this, activationStart);
         }
 
         private void OnDestroy()

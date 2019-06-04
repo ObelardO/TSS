@@ -122,7 +122,14 @@ namespace TSS
             TSSBehaviour.RemoveCore(this);
         }
 
-        private void Update()
+        /*
+        private void Start()
+        {
+            SelectDefaultState();
+        }
+        */
+
+        public void UpdateCore()
         {
             if (!useInput || !Input.anyKeyDown) return;
 

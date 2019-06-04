@@ -15,6 +15,8 @@ namespace TSS.Base
     {
         #region Properties
 
+        public static bool showBehaviour = false;
+
         private static TSSBehaviour _instance;
         public static TSSBehaviour instance
         {
@@ -22,10 +24,15 @@ namespace TSS.Base
             {
                 if (_instance == null)
                 {
-                    GameObject gameObject = new GameObject() { name = "TSS Behaviour", hideFlags = HideFlags./*HideAnd*/DontSave };
+                    GameObject gameObject = new GameObject()
+                    {
+                        name = "TSS Behaviour",
+                        hideFlags = showBehaviour ? HideFlags.DontSave : HideFlags.HideAndDontSave
+                    };
+
                     _instance = gameObject.AddComponent<TSSBehaviour>();
                     SceneManager.sceneUnloaded += Clear;
-                    SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => SceneLoaded(scene, mode);
+                    SceneManager.sceneLoaded += SceneLoaded;
                     if (Application.isPlaying) DontDestroyOnLoad(gameObject);
                 }
 
@@ -49,12 +56,7 @@ namespace TSS.Base
 
         #region Public methods
 
-        public static void Load()
-        {
-            if (instance == null) return;
-        }
-
-        public static void Clear(Scene scene)
+        private static void Clear(Scene scene)
         {
             if (!_clearLists) return;
             updatingItems.Clear();
@@ -65,24 +67,30 @@ namespace TSS.Base
 
         private static void SceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            foreach (var core in cores) core.SelectDefaultState();
+            for (int i = 0; i < TSSItemBase.AllItems.Count; i++)
+            {
+                if (TSSItemBase.AllItems[i].parent == null) TSSItemBase.AllItems[i].Refresh();
+                TSSItemBase.Activate(TSSItemBase.AllItems[i], TSSItemBase.AllItems[i].activationStart);
+            }
+
+            for (int i = 0; i < cores.Count; i++)
+            {
+                cores[i].SelectDefaultState();
+            }
         }
 
         public static void AddItem(TSSItem item)
         {
-            if ((object)instance == null) return;
+            if ((object)instance == null || item.behaviourCatched) return;
 
             switch (item.updatingType)
             {
-                case ItemUpdateType.update:
-                    if (!updatingItems.Contains(item)) updatingItems.Add(item); break;
-
-                case ItemUpdateType.fixedUpdate:
-                    if (!fixedUpdatingItems.Contains(item)) fixedUpdatingItems.Add(item); break;
-
-                case ItemUpdateType.lateUpdate:
-                    if (!lateUpdateingItems.Contains(item)) lateUpdateingItems.Add(item); break;
+                case ItemUpdateType.update: updatingItems.Add(item); break;
+                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Add(item); break;
+                case ItemUpdateType.lateUpdate: lateUpdateingItems.Add(item); break;
             }
+
+            item.behaviourCatched = true;
         }
 
         public static void RemoveItem(TSSItem item)
@@ -93,15 +101,22 @@ namespace TSS.Base
                 case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Remove(item); break;
                 case ItemUpdateType.lateUpdate: lateUpdateingItems.Remove(item); break;
             }
+
+            item.behaviourCatched = false;
         }
 
         public static void AddCore(TSSCore core)
         {
+            if ((object)instance == null) return;
+
             cores.Add(core);
+            Debug.Log("Added core: " + core.gameObject.name);
         }
 
         public static void RemoveCore(TSSCore core)
         {
+            if ((object)instance == null) return;
+
             cores.Remove(core);
         }
 
@@ -116,20 +131,31 @@ namespace TSS.Base
 
         private void Update()
         {
+            float time = Time.deltaTime;
+            float unscaledTIme = Time.unscaledDeltaTime;
+
             for (int i = 0; i < updatingItems.Count; i++)
-                UpdateItem(updatingItems[i], updatingItems[i].timeScaled ? Time.deltaTime : Time.unscaledDeltaTime);
+                UpdateItem(updatingItems[i], updatingItems[i].timeScaled ? time : unscaledTIme);
+
+            for (int i = 0; i < cores.Count; i++) cores[i].UpdateCore();
         }
 
         private void FixedUpdate()
         {
+            float time = Time.fixedDeltaTime;
+            float unscaledTIme = Time.fixedUnscaledDeltaTime;
+
             for (int i = 0; i < fixedUpdatingItems.Count; i++)
-                UpdateItem(fixedUpdatingItems[i], fixedUpdatingItems[i].timeScaled ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
+                UpdateItem(fixedUpdatingItems[i], fixedUpdatingItems[i].timeScaled ? time : unscaledTIme);
         }
 
         private void LateUpdate()
         {
+            float time = Time.deltaTime;
+            float unscaledTIme = Time.unscaledDeltaTime;
+
             for (int i = 0; i < lateUpdateingItems.Count; i++)
-                UpdateItem(lateUpdateingItems[i], lateUpdateingItems[i].timeScaled ? Time.deltaTime : Time.unscaledDeltaTime);
+                UpdateItem(lateUpdateingItems[i], lateUpdateingItems[i].timeScaled ? time : unscaledTIme);
         }
 
         #endregion

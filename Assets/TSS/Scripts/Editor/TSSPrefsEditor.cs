@@ -4,8 +4,8 @@
 // https://obeldev.ru/tss
 // MIT License
 
-using UnityEngine;
 using UnityEditor;
+using TSS.Base;
 
 namespace TSS.Editor
 {
@@ -17,9 +17,11 @@ namespace TSS.Editor
         private static bool foldOutEditor;
         private static bool foldOutRuntime;
 
-        public static bool showTweenProperties;
-        public static bool drawAllPaths;
-        public static bool hideBehaviour = true;
+        public static bool showTweenProperties { get; private set; }
+        public static bool showAllPaths { get; private set; }
+        public static bool showBehaviour {
+            get { return TSSBehaviour.showBehaviour; }
+            private set { TSSBehaviour.showBehaviour = value; } }
 
         #endregion
 
@@ -27,8 +29,9 @@ namespace TSS.Editor
 
         public static void Load()
         {
-            showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", showTweenProperties);
-            drawAllPaths = EditorPrefs.GetBool("TSS_drawAllPaths", drawAllPaths);
+            showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", false);
+            showAllPaths = EditorPrefs.GetBool("TSS_showAllPaths", false);
+            showBehaviour = EditorPrefs.GetBool("TSS_showBehaviour", false);
 
             prefsLoaded = true;
         }
@@ -36,7 +39,8 @@ namespace TSS.Editor
         private static void Save()
         {
             EditorPrefs.SetBool("TSS_showTweenProperties", showTweenProperties);
-            EditorPrefs.SetBool("TSS_drawAllPaths", drawAllPaths);
+            EditorPrefs.SetBool("TSS_showAllPaths", showAllPaths);
+            EditorPrefs.SetBool("TSS_showBehaviour", showBehaviour);
         }
 
         #endregion
@@ -50,15 +54,15 @@ namespace TSS.Editor
 
             EditorGUILayout.LabelField("Version: " + TSSInfo.version);
 
+            EditorGUILayout.Space();
+
             EditorGUI.BeginChangeCheck();
 
             showTweenProperties = EditorGUILayout.Toggle("Show Properties", showTweenProperties);
-            drawAllPaths = EditorGUILayout.Toggle("Draw all path", drawAllPaths);
+            showAllPaths = EditorGUILayout.Toggle("Show all path", showAllPaths);
+            showBehaviour = EditorGUILayout.Toggle("Show behaviour object", showBehaviour);
 
-            if (EditorGUI.EndChangeCheck()) 
-            {
-                Save();
-            }
+            if (EditorGUI.EndChangeCheck()) Save();
         }
 
         #endregion

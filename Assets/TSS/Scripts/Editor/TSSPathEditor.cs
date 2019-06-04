@@ -543,7 +543,7 @@ namespace TSS.Editor
 
         private void DrawPath()
         {
-            if (TSSPrefsEditor.drawAllPaths)
+            if (TSSPrefsEditor.showAllPaths)
             {
                 for (int i = 0; i < TSSPathBase.allPathes.Count; i++)
                 {
