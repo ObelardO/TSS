@@ -58,7 +58,6 @@ namespace TSS.Editor
             if (EditorGUI.EndChangeCheck()) 
             {
                 Save();
-                TSSPrefs.Save();
             }
         }
 

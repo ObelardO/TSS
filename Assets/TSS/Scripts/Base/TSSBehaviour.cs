@@ -5,7 +5,6 @@
 // MIT License
 
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -66,13 +65,13 @@ namespace TSS.Base
 
         private static void SceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            foreach (var item in TSSItemBase.AllItems) TSSItemBase.Activate(item, item.values.startAction);
-
             foreach (var core in cores) core.SelectDefaultState();
         }
 
         public static void AddItem(TSSItem item)
         {
+            if ((object)instance == null) return;
+
             switch (item.updatingType)
             {
                 case ItemUpdateType.update:
@@ -112,7 +111,7 @@ namespace TSS.Base
 
         private void Awake()
         {
-            if (_instance != null) DestroyImmediate(this);
+            if (_instance != null) DestroyImmediate(gameObject);
         }
 
         private void Update()

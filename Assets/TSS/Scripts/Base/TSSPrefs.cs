@@ -22,35 +22,6 @@ namespace TSS
         }
 
         #endregion
-
-        #region Save & Load
-
-        public static void Load()
-        {
-            if (prefsLoaded) return;
-
-            /*
-            dynamicPathSampling = PlayerPrefs.GetInt("TSS_dynamicPathSampling", 25);
-
-            Symbols.percent = PlayerPrefs.GetString("TSS_symbolPercent", "%")[0];
-            Symbols.space = PlayerPrefs.GetString("TSS_symbolSpace", " ")[0];
-            Symbols.dot = PlayerPrefs.GetString("TSS_symbolDot", ".")[0];
-            */
-            prefsLoaded = true;
-        }
-
-        public static void Save()
-        {
-            /*
-            PlayerPrefs.SetInt("TSS_dynamicPathSampling", dynamicPathSampling);
-
-            PlayerPrefs.SetString("TSS_symbolPercent", Symbols.percent.ToString());
-            PlayerPrefs.SetString("TSS_symbolSpace", Symbols.space.ToString());
-            PlayerPrefs.SetString("TSS_symbolDot", Symbols.dot.ToString());
-            */
-        }
-
-        #endregion
     }
 
     public static class TSSInfo

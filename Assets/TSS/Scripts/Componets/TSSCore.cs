@@ -5,11 +5,9 @@
 // MIT License
 
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using TSS.Base;
 
 namespace TSS

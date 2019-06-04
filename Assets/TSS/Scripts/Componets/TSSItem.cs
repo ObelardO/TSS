@@ -417,30 +417,36 @@ namespace TSS
 
         private void Awake()
         {
-            TSSPrefs.Load();
-            if (Application.isPlaying) TSSBehaviour.Load();
-        }
-
-        private void OnEnable()
-        {
             TSSItemBase.AllItems.Add(this);
             TSSItemBase.InitValues(ref values);
             TSSItemBase.DoAllEffects(this, 0);
             state = ItemState.closed;
-            Refresh();
+        }
+
+        private void Start()
+        {
+            TSSItemBase.Activate(this, activationStart);
+        }
+
+        private void OnDestroy()
+        {
+            TSSItemBase.AllItems.Remove(this);
+        }
+
+        private void OnEnable()
+        {
+
         }
 
         private void OnDisable()
         {
-            TSSItemBase.AllItems.Remove(this);
-            Refresh();
+
         }
 
         private void Reset()
         {
             values = new TSSItemValues();
             TSSItemBase.InitValues(ref values);
-            Refresh();
         }
 
         private void OnDrawGizmos()
