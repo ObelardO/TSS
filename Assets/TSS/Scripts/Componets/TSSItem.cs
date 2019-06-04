@@ -244,6 +244,7 @@ namespace TSS
         /// <summary>Attached profile</summary>
         [HideInInspector, SerializeField] public TSSProfile profile { set { _profile = value; } get { return _profile; } }
 
+        [HideInInspector, NonSerialized] public Transform chtransform;
         [HideInInspector, NonSerialized] public CanvasGroup canvasGroup;
         [HideInInspector, NonSerialized] public Image image;
         [HideInInspector, NonSerialized] public RawImage rawImage;
@@ -254,7 +255,7 @@ namespace TSS
         [HideInInspector, NonSerialized] public Collider colider;
         [HideInInspector, NonSerialized] public AudioSource audioPlayer;
         [HideInInspector, NonSerialized] public VideoPlayer videoPlayer;
-        [/*HideInInspector, */NonSerialized] public Material material;
+        [HideInInspector, NonSerialized] public Material material;
         [HideInInspector, NonSerialized] public SphereCollider sphereCollider;
         [HideInInspector, NonSerialized] public Renderer itemRenderer;
         [HideInInspector, NonSerialized] public Light itemLight;
@@ -341,6 +342,8 @@ namespace TSS
         {
             if (gameObject == null) return;
 
+            chtransform = transform;
+
             TSSItem[] childs = GetComponentsInChildren<TSSItem>();
 
             childItems.Clear();
@@ -348,7 +351,7 @@ namespace TSS
 
             for (int i = 0; i < childs.Length; i++)
             {
-                if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != transform || !childs[i].enabled) continue;
+                if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != chtransform || !childs[i].enabled) continue;
 
                 if (!ignoreChilds)
                 {
