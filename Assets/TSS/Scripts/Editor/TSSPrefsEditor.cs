@@ -4,6 +4,7 @@
 // https://obeldev.ru/tss
 // MIT License
 
+using UnityEngine;
 using UnityEditor;
 using TSS.Base;
 
@@ -27,6 +28,7 @@ namespace TSS.Editor
 
         #region Save & Load
 
+        [RuntimeInitializeOnLoadMethod]
         public static void Load()
         {
             showTweenProperties = EditorPrefs.GetBool("TSS_showTweenProperties", false);

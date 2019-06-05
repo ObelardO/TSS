@@ -243,7 +243,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 3
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -267,7 +266,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -602,7 +600,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1608531579}
   _profile: {fileID: 11400000, guid: e138e88f4c12ce2488d68850ff8c0a6c, type: 2}
   stringPart: 
 --- !u!224 &2766911
@@ -612,7 +609,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2766909}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -687,7 +684,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32528279}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -696,7 +693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8.797473}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &32528281
@@ -811,7 +808,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -835,7 +831,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -1170,7 +1165,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1608531579}
   _profile: {fileID: 11400000, guid: e138e88f4c12ce2488d68850ff8c0a6c, type: 2}
   stringPart: 
 --- !u!114 &32528282
@@ -1186,7 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.56373096, g: 1, b: 0.56373096, a: 0.29147196}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2195,7 +2189,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 4
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2219,7 +2212,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -2554,7 +2546,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1608531579}
   _profile: {fileID: 11400000, guid: e138e88f4c12ce2488d68850ff8c0a6c, type: 2}
   stringPart: 
 --- !u!224 &1542556727
@@ -2564,7 +2555,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542556725}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2573,7 +2564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49.41926}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542556728
@@ -2589,7 +2580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9920822, g: 1, b: 0.9920822, a: 0.5}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2836,7 +2827,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 5
@@ -2860,14 +2850,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 32528281}
-  - {fileID: 1737108481}
-  - {fileID: 2766910}
-  - {fileID: 1542556726}
-  - {fileID: 2065263059}
   tweens: []
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1608531580
@@ -3025,7 +3008,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3049,7 +3031,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -3384,7 +3365,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1608531579}
   _profile: {fileID: 11400000, guid: e138e88f4c12ce2488d68850ff8c0a6c, type: 2}
   stringPart: 
 --- !u!224 &1737108482
@@ -3394,7 +3374,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737108480}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3403,7 +3383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49.41926}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737108483
@@ -3419,7 +3399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9920822, g: 1, b: 0.9920822, a: 0.5}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3505,7 +3485,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065263057}
-  m_LocalRotation: {x: 0, y: 0, z: 0.70708656, w: 0.707127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3514,7 +3494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8.797473}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065263059
@@ -3629,7 +3609,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 5
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3653,7 +3632,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -3988,7 +3966,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1608531579}
   _profile: {fileID: 11400000, guid: e138e88f4c12ce2488d68850ff8c0a6c, type: 2}
   stringPart: 
 --- !u!114 &2065263060
@@ -4004,7 +3981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.56373096, g: 1, b: 0.56373096, a: 0.29147196}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -680,7 +680,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -704,7 +703,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -787,7 +785,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &112156997
@@ -803,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
+  m_Color: {r: 0.57495856, g: 0.92700225, b: 0.5019608, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1682,7 +1679,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 6
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1706,7 +1702,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -1870,7 +1865,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &411913849
@@ -2065,7 +2059,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2089,7 +2082,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -2298,7 +2290,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &430770389
@@ -2642,7 +2633,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 4
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2666,7 +2656,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -2830,7 +2819,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &475668439
@@ -3554,7 +3542,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3578,7 +3565,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -3742,7 +3728,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1116479048}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &689879589
@@ -4262,7 +4247,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -4286,7 +4270,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -4450,7 +4433,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: ' s.'
 --- !u!114 &889850658
@@ -4874,7 +4856,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 2
@@ -4898,9 +4879,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 689879588}
-  - {fileID: 1767652710}
   tweens:
   - enabled: 1
     startPoint: 0
@@ -4983,7 +4961,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1116479049
@@ -5856,7 +5833,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 3
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5880,7 +5856,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -6044,7 +6019,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1469881703
@@ -6258,7 +6232,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6282,7 +6255,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -6428,7 +6400,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1477720224
@@ -7219,7 +7190,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 8
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7243,7 +7213,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -7407,7 +7376,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1730701733
@@ -7606,7 +7574,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7630,7 +7597,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -7713,7 +7679,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1116479048}
   _profile: {fileID: 0}
   stringPart: 'SOME TYPED TEXT
 
@@ -7912,7 +7877,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7936,7 +7900,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -8019,7 +7982,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1789066387
@@ -8035,7 +7997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.45722005}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8245,7 +8207,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 5
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -8269,7 +8230,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -8433,7 +8393,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1852155967
@@ -8688,7 +8647,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -8712,7 +8670,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -8876,7 +8833,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1897524104
@@ -9229,7 +9185,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 7
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -9253,7 +9208,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -9417,7 +9371,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2036467436}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &1966480954
@@ -9756,7 +9709,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 8
@@ -9780,15 +9732,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 889850657}
-  - {fileID: 1897524103}
-  - {fileID: 1469881702}
-  - {fileID: 475668438}
-  - {fileID: 1852155966}
-  - {fileID: 411913848}
-  - {fileID: 1966480953}
-  - {fileID: 1730701732}
   tweens:
   - enabled: 0
     startPoint: 0
@@ -9871,7 +9814,6 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
   stringPart: 
 --- !u!114 &2036467437

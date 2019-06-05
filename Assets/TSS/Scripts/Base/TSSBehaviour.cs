@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 namespace TSS.Base
 {
     [DisallowMultipleComponent]
-    public class TSSBehaviour : MonoBehaviour
+    public partial class TSSBehaviour : MonoBehaviour
     {
         #region Properties
 
@@ -32,8 +32,6 @@ namespace TSS.Base
 
                     _instance = gameObject.AddComponent<TSSBehaviour>();
                     SceneManager.sceneUnloaded += Clear;
-                    SceneManager.sceneLoaded += SceneLoaded;
-                    if (Application.isPlaying) DontDestroyOnLoad(gameObject);
                 }
 
                 return _instance;
@@ -52,9 +50,28 @@ namespace TSS.Base
         private static List<TSSItem> lateUpdateingItems = new List<TSSItem>();
         private static List<TSSCore> cores = new List<TSSCore>();
 
+        public static int updatingItemsCount { get { return updatingItems.Count; } }
+        public static int fixedUpdatingItemsCount { get { return fixedUpdatingItems.Count; } }
+        public static int lateUpdateingItemsCount { get { return lateUpdateingItems.Count; } }
+        public static int coresCount { get { return cores.Count; } }
+
         #endregion
 
         #region Public methods
+
+        [RuntimeInitializeOnLoadMethod]
+        private static void OnLoad()
+        {
+            if (instance == null) return;
+
+            for (int i = 0; i < TSSItemBase.AllItems.Count; i++)
+            {
+                if (TSSItemBase.AllItems[i].parent == null) TSSItemBase.AllItems[i].Refresh();
+                TSSItemBase.Activate(TSSItemBase.AllItems[i], TSSItemBase.AllItems[i].activationStart);
+            }
+
+            for (int i = 0; i < cores.Count; i++) cores[i].SelectDefaultState();
+        }
 
         private static void Clear(Scene scene)
         {
@@ -65,23 +82,9 @@ namespace TSS.Base
             cores.Clear();
         }
 
-        private static void SceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            for (int i = 0; i < TSSItemBase.AllItems.Count; i++)
-            {
-                if (TSSItemBase.AllItems[i].parent == null) TSSItemBase.AllItems[i].Refresh();
-                TSSItemBase.Activate(TSSItemBase.AllItems[i], TSSItemBase.AllItems[i].activationStart);
-            }
-
-            for (int i = 0; i < cores.Count; i++)
-            {
-                cores[i].SelectDefaultState();
-            }
-        }
-
         public static void AddItem(TSSItem item)
         {
-            if ((object)instance == null || item.behaviourCatched) return;
+            if (item.behaviourCached) return;
 
             switch (item.updatingType)
             {
@@ -90,11 +93,13 @@ namespace TSS.Base
                 case ItemUpdateType.lateUpdate: lateUpdateingItems.Add(item); break;
             }
 
-            item.behaviourCatched = true;
+            item.behaviourCached = true;
         }
 
         public static void RemoveItem(TSSItem item)
         {
+            if (!item.behaviourCached) return;
+
             switch (item.updatingType)
             {
                 case ItemUpdateType.update: updatingItems.Remove(item); break;
@@ -102,21 +107,16 @@ namespace TSS.Base
                 case ItemUpdateType.lateUpdate: lateUpdateingItems.Remove(item); break;
             }
 
-            item.behaviourCatched = false;
+            item.behaviourCached = false;
         }
 
         public static void AddCore(TSSCore core)
         {
-            if ((object)instance == null) return;
-
             cores.Add(core);
-            Debug.Log("Added core: " + core.gameObject.name);
         }
 
         public static void RemoveCore(TSSCore core)
         {
-            if ((object)instance == null) return;
-
             cores.Remove(core);
         }
 
@@ -126,8 +126,9 @@ namespace TSS.Base
 
         private void Awake()
         {
-            if (_instance != null) DestroyImmediate(gameObject);
+            if (_instance != null) Destroy(gameObject);
         }
+
 
         private void Update()
         {
@@ -165,8 +166,6 @@ namespace TSS.Base
         private void UpdateItem(TSSItem item, float deltaTime)
         {
             item.deltaTime = deltaTime;
-
-            if (item.path != null) item.path.UpdatePath();
 
             switch (item.state)
             {
@@ -210,6 +209,7 @@ namespace TSS.Base
                         item.time = 0;
                         item.state = ItemState.closed;
                         if (!item.loopActivated) TSSBehaviour.RemoveItem(item);
+
                     }
 
                     for (int i = 0; i < item.tweens.Count; i++) item.tweens[i].Update();
@@ -217,7 +217,11 @@ namespace TSS.Base
 
                 case ItemState.closed:
 
-                    if (!item.loopActivated || !Application.isPlaying) break;
+                    if (!item.loopActivated)
+                    {
+                        TSSBehaviour.RemoveItem(item);
+                        if (!Application.isPlaying) break;
+                    }
 
                     if (item.currentLoops > 0 || item.loops < 0)
                     {
@@ -260,6 +264,7 @@ namespace TSS.Base
             }
 
             item.UpdateButton(deltaTime);
+            if (item.path != null) item.path.UpdatePath();
         }
 
         #endregion
