@@ -595,21 +595,21 @@ namespace TSS.Base
 
         public static void DoPosition(TSSItem item, float time)
         {
-            if (item.path != null && item.path.enabled) item.transform.position = item.path.EvaluatePosition(time);
-            else item.transform.localPosition = Vector3.LerpUnclamped(item.values.positions[0], item.values.positions[1], time);
+            if (item.path != null && item.path.enabled) item.chtransform.position = item.path.EvaluatePosition(time);
+            else item.chtransform.localPosition = Vector3.LerpUnclamped(item.values.positions[0], item.values.positions[1], time);
 
         }
 
         public static void DoRotation(TSSItem item, float time)
         {
-            if (item.path != null && item.path.enabled && item.rotationMode == RotationMode.path) item.transform.rotation = item.path.EvaluateRotation(time, TSSPathBase.normals[(int)item.values.pathNormal]);
-            if (item.rotationMode == RotationMode.quaternion) item.transform.localRotation = Quaternion.LerpUnclamped(item.values.rotations[0], item.values.rotations[1], time);
-            else if (item.rotationMode == RotationMode.euler) item.transform.localEulerAngles = Vector3.LerpUnclamped(item.values.eulerRotations[0], item.values.eulerRotations[1], time);
+            if (item.path != null && item.path.enabled && item.rotationMode == RotationMode.path) item.chtransform.rotation = item.path.EvaluateRotation(time, TSSPathBase.normals[(int)item.values.pathNormal]);
+            if (item.rotationMode == RotationMode.quaternion) item.chtransform.localRotation = Quaternion.LerpUnclamped(item.values.rotations[0], item.values.rotations[1], time);
+            else if (item.rotationMode == RotationMode.euler) item.chtransform.localEulerAngles = Vector3.LerpUnclamped(item.values.eulerRotations[0], item.values.eulerRotations[1], time);
         }
 
         public static void DoScale(TSSItem item, float time)
         {
-            item.transform.localScale = Vector3.LerpUnclamped(item.values.scales[0], item.values.scales[1], time);
+            item.chtransform.localScale = Vector3.LerpUnclamped(item.values.scales[0], item.values.scales[1], time);
         }
 
         public static void DoAlpha(TSSItem item, float time)
@@ -771,7 +771,7 @@ namespace TSS.Base
             if (item.state == ItemState.opening || item.state == ItemState.opened) return;
             item.stateChgTime = item.openDelay;
             item.stateChgBranchMode = false;
-            if (item.parentChainMode && item.parent.brakeChainDelay) item.stateChgTime = item.openDelay * (1 - item.time);
+            if (item.parentChainMode && item.parent.brakeChainDelay && (item.time != 0 || item.time < 0)) item.stateChgTime = 0;
             item.state = ItemState.opening;
             TSSBehaviour.AddItem(item);
         }
@@ -783,7 +783,7 @@ namespace TSS.Base
             if (item.state == ItemState.closing || item.state == ItemState.closed) return;
             item.stateChgTime = item.closeDelay;
             item.stateChgBranchMode = false;
-            if (item.parentChainMode && item.parent.brakeChainDelay) item.stateChgTime = item.closeDelay * (item.time);
+            if (item.parentChainMode && item.parent.brakeChainDelay && (item.time != 1 || item.time > 1)) item.stateChgTime = 0;
             item.state = ItemState.closing;
             TSSBehaviour.AddItem(item);
         }
