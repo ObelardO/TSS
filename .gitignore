@@ -6,7 +6,8 @@
 [Aa]ssets/AssetStoreTools*
 [Ll]ogs/
 [Pp]ackages/
-[Pp]rojectSettings
+[Pp]rojectSettings/
+[Aa]ssets/
 
 # Visual Studio cache directory
 .vs/
