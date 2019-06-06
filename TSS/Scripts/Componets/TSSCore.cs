@@ -122,24 +122,12 @@ namespace TSS
             TSSBehaviour.RemoveCore(this);
         }
 
-        /*
-        private void Start()
-        {
-            SelectDefaultState();
-        }
-        */
-
         public void UpdateCore()
         {
             if (!useInput || !Input.anyKeyDown) return;
 
             for (int stateID = 0; stateID < states.Count; stateID++)
                 if (!this[stateID].enabled) continue; else this[stateID].UpdateInput();
-        }
-
-        private void OnDrawGizmos()
-        {
-
         }
 
         #endregion

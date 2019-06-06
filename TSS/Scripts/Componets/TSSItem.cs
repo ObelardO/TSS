@@ -446,11 +446,6 @@ namespace TSS
 
         }
 
-        private void OnDrawGizmos()
-        {
-
-        }
-
         #endregion
 
         #region Update Methods
