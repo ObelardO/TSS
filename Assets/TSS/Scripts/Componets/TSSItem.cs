@@ -27,116 +27,116 @@ namespace TSS
         /// <summary>Values container</summary>
         [HideInInspector] public TSSItemValues values;
 
-        [NonSerialized] public int ID = 0;
-        [NonSerialized] public float time = 0;
-        [NonSerialized] public bool behaviourCached;
+        [HideInInspector] public int ID = 0;
+        [HideInInspector, NonSerialized] public float time = 0;
+        [HideInInspector, NonSerialized] public bool behaviourCatched;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
-        public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
+        [HideInInspector] public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
         /// <summary>Use time scaling</summary>
-        public bool timeScaled { get { return values.timeScaled; } set { values.timeScaled = value; } }
+        [HideInInspector] public bool timeScaled { get { return values.timeScaled; } set { values.timeScaled = value; } }
 
         /// <summary>Activation mode for starting (activated once at awake, default is CloseBranchImmediately)</summary>
-        public ActivationMode activationStart { get { return values.startAction; } set { values.startAction = value; } }
+        [HideInInspector] public ActivationMode activationStart { get { return values.startAction; } set { values.startAction = value; } }
         /// <summary>Activation mode for opening (activated at Open() calling, default is OpenBranch)</summary>
-        public ActivationMode activationOpen { get { return values.activations[1]; } set { values.activations[1] = value; } }
+        [HideInInspector] public ActivationMode activationOpen { get { return values.activations[1]; } set { values.activations[1] = value; } }
         /// <summary>Activation mode for closing (activated at Close() calling, default is CloseBranch)</summary>
-        public ActivationMode activationClose { get { return values.activations[0]; } set { values.activations[0] = value; } }
+        [HideInInspector] public ActivationMode activationClose { get { return values.activations[0]; } set { values.activations[0] = value; } }
 
         /// <summary>Time in seconds which item waits before start opening</summary>
-        public float openDelay { set { values.delays[1] = value; } get { return values.delays[1]; } }
+        [HideInInspector] public float openDelay { set { values.delays[1] = value; } get { return values.delays[1]; } }
 
         /// <summary>Time in seconds which item waits before start closing</summary>
-        public float closeDelay{ set { values.delays[0] = value; } get { return values.delays[0]; } }
+        [HideInInspector] public float closeDelay{ set { values.delays[0] = value; } get { return values.delays[0]; } }
 
         /// <summary>Time in seconds for which item opens</summary>
-        public float openDuration { set { values.durations[1] = value; } get { return values.durations[1]; } }
+        [HideInInspector] public float openDuration { set { values.durations[1] = value; } get { return values.durations[1]; } }
         /// <summary>Time in seconds for which item closes</summary>
-        public float closeDuration { set { values.durations[0] = value; } get { return values.durations[0]; } }
+        [HideInInspector] public float closeDuration { set { values.durations[0] = value; } get { return values.durations[0]; } }
 
         /// <summary>Item's child open and close delays are controlled by this item</summary>
-        public bool childChainMode { set { values.childChainMode = value; } get { return values.childChainMode; } }
+        [HideInInspector] public bool childChainMode { set { values.childChainMode = value; } get { return values.childChainMode; } }
         /// <summary>Item's child open and close delays are ignoring on a halfway</summary>
-        public bool brakeChainDelay { set { values.brakeChainDelay = value; } get { return values.brakeChainDelay; } }
+        [HideInInspector] public bool brakeChainDelay { set { values.brakeChainDelay = value; } get { return values.brakeChainDelay; } }
         /// <summary>Item's parent control this item's open and close delays/summary>
-        public bool parentChainMode { get { if (parent == null) return false; else return parent.childChainMode; } }
+        [HideInInspector] public bool parentChainMode { get { if (parent == null) return false; else return parent.childChainMode; } }
 
         /// <summary>Item's child opens with own open delay without waiting this item open delay</summary>
-        public bool openChildBefore { set { values.childBefore[1] = value; } get { return values.childBefore[1]; } }
+        [HideInInspector] public bool openChildBefore { set { values.childBefore[1] = value; } get { return values.childBefore[1]; } }
         /// <summary>Item's child closes with own close delay without waiting this item close delay</summary>
-        public bool closeChildBefore { set { values.childBefore[0] = value; } get { return values.childBefore[0]; } }
+        [HideInInspector] public bool closeChildBefore { set { values.childBefore[0] = value; } get { return values.childBefore[0]; } }
 
         /// <summary>Time in seconds which the next element in child chain wait before opening</summary>
-        public float chainOpenDelay { set { values.chainDelays[1] = value; } get { return values.chainDelays[1]; } }
+        [HideInInspector] public float chainOpenDelay { set { values.chainDelays[1] = value; } get { return values.chainDelays[1]; } }
         /// <summary>Time in seconds which the next element in child chain wait before closing</summary>
-        public float chainCloseDelay { set { values.chainDelays[0] = value; } get { return values.chainDelays[0]; } }
+        [HideInInspector] public float chainCloseDelay { set { values.chainDelays[0] = value; } get { return values.chainDelays[0]; } }
 
         /// <summary>Time in seconds which item's child chain waits before start opening</summary>
-        public float firstChildOpenDelay { set { values.firstChildDelay[1] = value; } get { return values.firstChildDelay[1]; } }
+        [HideInInspector] public float firstChildOpenDelay { set { values.firstChildDelay[1] = value; } get { return values.firstChildDelay[1]; } }
         /// <summary>Time in seconds which item's child chain waits before start closing</summary>
-        public float firstChildCloseDelay { set { values.firstChildDelay[0] = value; } get { return values.firstChildDelay[0]; } }
+        [HideInInspector] public float firstChildCloseDelay { set { values.firstChildDelay[0] = value; } get { return values.firstChildDelay[0]; } }
 
         /// <summary>Order of opening child items (auto control child open delays)</summary>
-        public ChainDirection chainOpenDirection { set { values.chainDirections[1] = value; this.UpdateItemDelaysInChain((int)ItemKey.opened); } get { return values.chainDirections[1]; } }
+        [HideInInspector] public ChainDirection chainOpenDirection { set { values.chainDirections[1] = value; this.UpdateItemDelaysInChain((int)ItemKey.opened); } get { return values.chainDirections[1]; } }
         /// <summary>Order of closing child items (auto control child close delays)</summary>
-        public ChainDirection chainCloseDirection { set { values.chainDirections[0] = value; this.UpdateItemDelaysInChain((int)ItemKey.closed); } get { return values.chainDirections[0]; } }
+        [HideInInspector] public ChainDirection chainCloseDirection { set { values.chainDirections[0] = value; this.UpdateItemDelaysInChain((int)ItemKey.closed); } get { return values.chainDirections[0]; } }
 
         /// <summary>Interpolating rotation mode</summary>
-        public RotationMode rotationMode { set { values.rotationMode = value; } get { return values.rotationMode; } }
+        [HideInInspector] public RotationMode rotationMode { set { values.rotationMode = value; } get { return values.rotationMode; } }
         /// <summary>Direct or Instance</summary>
-        public MaterialMode materialMode { set { values.materialMode = value; RefreshMaterial(); } get { return values.materialMode; } }
+        [HideInInspector] public MaterialMode materialMode { set { values.materialMode = value; RefreshMaterial(); } get { return values.materialMode; } }
 
         /// <summary>Which axis controlled by path rotation</summary>
-        public Vector3 rotationMask { set { values.rotationMask = value; } get { return values.rotationMask; } }
-        public bool rotationMaskX { set { values.rotationMask.x = value ? 1 : 0; } get { return values.rotationMask.x == 1; } }
-        public bool rotationMaskY { set { values.rotationMask.y = value ? 1 : 0; } get { return values.rotationMask.y == 1; } }
-        public bool rotationMaskZ { set { values.rotationMask.z = value ? 1 : 0; } get { return values.rotationMask.z == 1; } }
+        [HideInInspector] public Vector3 rotationMask { set { values.rotationMask = value; } get { return values.rotationMask; } }
+        [HideInInspector] public bool rotationMaskX { set { values.rotationMask.x = value ? 1 : 0; } get { return values.rotationMask.x == 1; } }
+        [HideInInspector] public bool rotationMaskY { set { values.rotationMask.y = value ? 1 : 0; } get { return values.rotationMask.y == 1; } }
+        [HideInInspector] public bool rotationMaskZ { set { values.rotationMask.z = value ? 1 : 0; } get { return values.rotationMask.z == 1; } }
 
         /// <summary>Path alignment vector (for eliminate sharp turns, Up for 3D and Forward for 2D usually)</summary>
-        public PathNormal pathNormal { set { values.pathNormal = value; } get { return values.pathNormal; } }
+        [HideInInspector] public PathNormal pathNormal { set { values.pathNormal = value; } get { return values.pathNormal; } }
 
         /// <summary>Control interactable components</summary>
-        public bool interactions { set { values.interactions = value; } get { return values.interactions; } }
+        [HideInInspector] public bool interactions { set { values.interactions = value; } get { return values.interactions; } }
         /// <summary>Control components with raycast target</summary>
-        public bool blockRaycasting { set { values.blockRaycasting = value; } get { return values.blockRaycasting; } }
+        [HideInInspector] public bool blockRaycasting { set { values.blockRaycasting = value; } get { return values.blockRaycasting; } }
 
         /// <summary>Control AudioSource component</summary>
-        public bool soundControl { set { values.soundControl = value; } get { return values.soundControl; } }
+        [HideInInspector] public bool soundControl { set { values.soundControl = value; } get { return values.soundControl; } }
         /// <summary>Restart AudioSource playing at opening</summary>
-        public bool soundRestart { set { values.soundRestart = value; } get { return values.soundRestart; } }
+        [HideInInspector] public bool soundRestart { set { values.soundRestart = value; } get { return values.soundRestart; } }
 
         /// <summary>Control VideoPlauer component</summary>
-        public bool videoControl { set { values.videoControl = value; } get { return values.videoControl; } }
+        [HideInInspector] public bool videoControl { set { values.videoControl = value; } get { return values.videoControl; } }
         /// <summary>Restart VideoPlauer playing at opening</summary>
-        public bool videoRestart { set { values.videoRestart = value; } get { return values.videoRestart; } }
+        [HideInInspector] public bool videoRestart { set { values.videoRestart = value; } get { return values.videoRestart; } }
 
         /// <summary>Length of random symbols in text interpolation</summary>
-        public int randomWave { set { values.randomWaveLength = value; } get { return values.randomWaveLength; } }
+        [HideInInspector] public int randomWave { set { values.randomWaveLength = value; } get { return values.randomWaveLength; } }
         /// <summary>Format for number to text converting</summary>
-        public string floatFormat { set { values.floatFormat = value; } get { return values.floatFormat; } }
+        [HideInInspector] public string floatFormat { set { values.floatFormat = value; } get { return values.floatFormat; } }
 
         /// <summary>Don't consider child in inheriting</summary>
-        public bool ignoreChilds { set { values.ignoreChilds = value; Refresh(); } get { return values.ignoreChilds; } }
+        [HideInInspector] public bool ignoreChilds { set { values.ignoreChilds = value; Refresh(); } get { return values.ignoreChilds; } }
         /// <summary>Don't consider parent in inheriting</summary>
-        public bool ignoreParent { set { values.ignoreParent = value; Refresh(); } get { return values.ignoreParent; } }
+        [HideInInspector] public bool ignoreParent { set { values.ignoreParent = value; Refresh(); } get { return values.ignoreParent; } }
 
         /// <summary>Time in seconds which button animation is playing</summary>
-        public float buttonDuration { set { values.buttonDuration = value; } get { return values.buttonDuration; } }
-        private float _buttonEvaluation;
+        [HideInInspector] public float buttonDuration { set { values.buttonDuration = value; } get { return values.buttonDuration; } }
+        [HideInInspector] private float _buttonEvaluation;
         /// <summary>Button animation evaluation</summary>
-        public float buttonEvaluation { set { _buttonEvaluation = value; for (int i = 0; i < childItems.Count; i++) childItems[i].buttonEvaluation = value; } get { return _buttonEvaluation; } }
+        [HideInInspector] public float buttonEvaluation { set { _buttonEvaluation = value; for (int i = 0; i < childItems.Count; i++) childItems[i].buttonEvaluation = value; } get { return _buttonEvaluation; } }
         /// <summary>what item state to use as the pressed button state</summary>
-        public ButtonDirection buttonDirection { set { values.buttonDirection = value; } get { return values.buttonDirection; } }
+        [HideInInspector] public ButtonDirection buttonDirection { set { values.buttonDirection = value; } get { return values.buttonDirection; } }
 
         /// <summary>Item evaluation</summary>
-        [NonSerialized] public float evaluation;
+        [HideInInspector, NonSerialized] public float evaluation;
         /// <summary>Item delteTime affected by updating type and time scaling</summary>
-        [NonSerialized] public float deltaTime;
+        [HideInInspector, NonSerialized] public float deltaTime;
 
         /// <summary>Count of item loops. Loop activation will start after every opening (-1 as infinity loop)</summary>
-        public int loops { set { values.loops = value; Refresh(); } get { return values.loops; } }
+        [HideInInspector] public int loops { set { values.loops = value; Refresh(); } get { return values.loops; } }
         /// <summary>Loop activation mode what start after opening</summary>
-        public ActivationMode loopMode { set { values.loopMode = value; Refresh(); } get { return values.loopMode; } }
+        [HideInInspector] public ActivationMode loopMode { set { values.loopMode = value; Refresh(); } get { return values.loopMode; } }
         /// <summary>Current item activation inwoked by loop</summary>
         [HideInInspector] public bool loopActivated;
         /// <summary>Number of loops remaining</summary>
@@ -154,7 +154,7 @@ namespace TSS
         [HideInInspector] public UnityEvent OnClosing;
 
         /// <summary>Item current state</summary>
-        [NonSerialized] public ItemState _state;
+        [HideInInspector, NonSerialized] public ItemState _state;
         public ItemState state
         {
             set
@@ -218,48 +218,49 @@ namespace TSS
         }
 
         /// <summary>Item is completely opened</summary>
-        public bool isOpened { get { return _state == ItemState.opened; } }
+        [HideInInspector] public bool isOpened { get { return _state == ItemState.opened; } }
         /// <summary>Item is completely closed</summary>
-        public bool IsClosed { get { return _state == ItemState.closed; } }
+        [HideInInspector] public bool IsClosed { get { return _state == ItemState.closed; } }
         /// <summary>Item is opening</summary>
-        public bool isOpening { get { return _state == ItemState.opening; } }
+        [HideInInspector] public bool isOpening { get { return _state == ItemState.opening; } }
         /// <summary>Item is closing</summary>
-        public bool isClosing { get { return _state == ItemState.closing; } }
+        [HideInInspector] public bool isClosing { get { return _state == ItemState.closing; } }
         /// <summary>Item's evaluation is controlled from external script</summary>
-        public bool isSlave { get { return _state == ItemState.slave; } }
+        [HideInInspector] public bool isSlave { get { return _state == ItemState.slave; } }
 
         /// <summary>Item's child states</summary>
-        [NonSerialized] public int[] childStateCounts = new int[4];
-        [NonSerialized] public float stateChgTime;
-        [NonSerialized] public bool stateChgBranchMode;
+        [HideInInspector, NonSerialized] public int[] childStateCounts = new int[4];
+        [HideInInspector, NonSerialized] public float stateChgTime;
+        [HideInInspector, NonSerialized] public bool stateChgBranchMode;
 
         /// <summary>List of child</summary>
-        [NonSerialized] public List<TSSItem> childItems = new List<TSSItem>();
+        [HideInInspector] public List<TSSItem> childItems = new List<TSSItem>();
         /// <summary>List of attached tweens</summary>
         [HideInInspector] public List<TSSTween> tweens = new List<TSSTween>();
         /// <summary>parent item</summary>
-        [NonSerialized] public TSSItem parent;
+        [HideInInspector] public TSSItem parent;
         
-        [SerializeField] private TSSProfile _profile;
+        [HideInInspector, SerializeField] private TSSProfile _profile;
         /// <summary>Attached profile</summary>
-        public TSSProfile profile { set { _profile = value; } get { return _profile; } }
+        [HideInInspector, SerializeField] public TSSProfile profile { set { _profile = value; } get { return _profile; } }
 
-        [NonSerialized] public CanvasGroup canvasGroup;
-        [NonSerialized] public Image image;
-        [NonSerialized] public RawImage rawImage;
-        [NonSerialized] public Text text;
-        [NonSerialized] public TSSGradient gradient;
-        [NonSerialized] public RectTransform rect;
-        [NonSerialized] public Button button;
-        [NonSerialized] public Collider colider;
-        [NonSerialized] public AudioSource audioPlayer;
-        [NonSerialized] public VideoPlayer videoPlayer;
-        [NonSerialized] public Material material;
-        [NonSerialized] public SphereCollider sphereCollider;
-        [NonSerialized] public Renderer itemRenderer;
-        [NonSerialized] public Light itemLight;
-        [NonSerialized] public TSSPath path;
-        [NonSerialized] public string stringPart;
+        [HideInInspector, NonSerialized] public Transform chtransform;
+        [HideInInspector, NonSerialized] public CanvasGroup canvasGroup;
+        [HideInInspector, NonSerialized] public Image image;
+        [HideInInspector, NonSerialized] public RawImage rawImage;
+        [HideInInspector, NonSerialized] public Text text;
+        [HideInInspector, NonSerialized] public TSSGradient gradient;
+        [HideInInspector, NonSerialized] public RectTransform rect;
+        [HideInInspector, NonSerialized] public Button button;
+        [HideInInspector, NonSerialized] public Collider colider;
+        [HideInInspector, NonSerialized] public AudioSource audioPlayer;
+        [HideInInspector, NonSerialized] public VideoPlayer videoPlayer;
+        [HideInInspector, NonSerialized] public Material material;
+        [HideInInspector, NonSerialized] public SphereCollider sphereCollider;
+        [HideInInspector, NonSerialized] public Renderer itemRenderer;
+        [HideInInspector, NonSerialized] public Light itemLight;
+        [HideInInspector, NonSerialized] public TSSPath path;
+        [HideInInspector] public string stringPart;
 
         #endregion
 
@@ -341,6 +342,8 @@ namespace TSS
         {
             if (gameObject == null) return;
 
+            chtransform = transform;
+
             TSSItem[] childs = GetComponentsInChildren<TSSItem>();
 
             childItems.Clear();
@@ -348,7 +351,7 @@ namespace TSS
 
             for (int i = 0; i < childs.Length; i++)
             {
-                if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != transform || !childs[i].enabled) continue;
+                if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != chtransform || !childs[i].enabled) continue;
 
                 if (!ignoreChilds)
                 {
@@ -362,12 +365,11 @@ namespace TSS
                     childs[i].ID = 1;
                     childs[i].parent = null;
                 }
-
-                childs[i].Refresh();
             }
 
-            //Transform parentTransform = TSSItemBase.GetItemParentTransform(this);
-            //if (ignoreParent) parent = null; else parent = parentTransform == null ? null : parentTransform.GetComponent<TSSItem>();
+            Transform parentTransform = TSSItemBase.GetItemParentTransform(this);
+            if (ignoreParent) parent = null; else parent = parentTransform == null ? null : parentTransform.GetComponent<TSSItem>();
+            if (parent != null) parent.Refresh();
 
             this.UpdateItemDelaysInChain((int)ItemKey.closed);
             this.UpdateItemDelaysInChain((int)ItemKey.opened);
@@ -430,12 +432,6 @@ namespace TSS
             TSSItemBase.AllItems.Remove(this);
         }
 
-        private void Reset()
-        {
-            values = new TSSItemValues();
-            TSSItemBase.InitValues(ref values);
-        }
-
         private void OnEnable()
         {
 
@@ -444,6 +440,12 @@ namespace TSS
         private void OnDisable()
         {
 
+        }
+
+        private void Reset()
+        {
+            values = new TSSItemValues();
+            TSSItemBase.InitValues(ref values);
         }
 
         private void OnDrawGizmos()
