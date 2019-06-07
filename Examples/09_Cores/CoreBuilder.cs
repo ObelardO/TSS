@@ -15,7 +15,7 @@ public class CoreBuilder : MonoBehaviour
     public Button prevBtn, nextBrn;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         // Add "TSS Core" component
         TSSCore core = this.gameObject.AddComponent<TSSCore>();

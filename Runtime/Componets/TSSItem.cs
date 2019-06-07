@@ -244,22 +244,22 @@ namespace TSS
         /// <summary>Attached profile</summary>
         public TSSProfile profile { set { _profile = value; } get { return _profile; } }
 
-        [NonSerialized] public CanvasGroup canvasGroup;
-        [NonSerialized] public Image image;
-        [NonSerialized] public RawImage rawImage;
-        [NonSerialized] public Text text;
-        [NonSerialized] public TSSGradient gradient;
-        [NonSerialized] public RectTransform rect;
-        [NonSerialized] public Button button;
-        [NonSerialized] public Collider colider;
-        [NonSerialized] public AudioSource audioPlayer;
-        [NonSerialized] public VideoPlayer videoPlayer;
-        [NonSerialized] public Material material;
-        [NonSerialized] public SphereCollider sphereCollider;
-        [NonSerialized] public Renderer itemRenderer;
-        [NonSerialized] public Light itemLight;
-        [NonSerialized] public TSSPath path;
-        [NonSerialized] public string stringPart;
+        [HideInInspector] public CanvasGroup canvasGroup;
+        [HideInInspector] public Image image;
+        [HideInInspector] public RawImage rawImage;
+        [HideInInspector] public Text text;
+        [HideInInspector] public TSSGradient gradient;
+        [HideInInspector] public RectTransform rect;
+        [HideInInspector] public Button button;
+        [HideInInspector] public Collider colider;
+        [HideInInspector] public AudioSource audioPlayer;
+        [HideInInspector] public VideoPlayer videoPlayer;
+        [HideInInspector] public Material material;
+        [HideInInspector] public SphereCollider sphereCollider;
+        [HideInInspector] public Renderer itemRenderer;
+        [HideInInspector] public Light itemLight;
+        [HideInInspector] public TSSPath path;
+        [HideInInspector] public string stringPart;
 
         #endregion
 

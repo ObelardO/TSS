@@ -15,9 +15,12 @@ namespace TSS.Base
     {
         #region Properties
 
+        /// <summary>Shows nehaviour object in editor. This property only works in editor.</summary>
         public static bool showBehaviour = false;
 
         private static TSSBehaviour _instance;
+
+        /// <summary>Global behaviour pointer</summary>
         public static TSSBehaviour instance
         {
             get
@@ -32,17 +35,12 @@ namespace TSS.Base
 
                     _instance = gameObject.AddComponent<TSSBehaviour>();
                     SceneManager.sceneUnloaded += Clear;
+
+                    DontDestroyOnLoad(_instance);
                 }
 
                 return _instance;
             }
-        }
-
-        private static bool _clearLists = false;
-        public bool clearListsOnSceneLoad
-        {
-            set { _clearLists = value; }
-            get { return _clearLists; }
         }
 
         private static List<TSSItem> updatingItems = new List<TSSItem>();
@@ -50,14 +48,69 @@ namespace TSS.Base
         private static List<TSSItem> lateUpdateingItems = new List<TSSItem>();
         private static List<TSSCore> cores = new List<TSSCore>();
 
+        /// <summary>Count of contained items with default Update()</summary>
         public static int updatingItemsCount { get { return updatingItems.Count; } }
+
+        /// <summary>Count of contained items with FixedUpdate()</summary>
         public static int fixedUpdatingItemsCount { get { return fixedUpdatingItems.Count; } }
+
+        /// <summary>Count of contained items with LateUpdate()</summary>
         public static int lateUpdateingItemsCount { get { return lateUpdateingItems.Count; } }
         public static int coresCount { get { return cores.Count; } }
 
         #endregion
 
         #region Public methods
+
+        /// <summary>Add item to behaviour. Strongly not recommended for manual use</summary>
+        /// <param name="item">TSSitem</param>
+        public static void AddItem(TSSItem item)
+        {
+            if (item.behaviourCached) return;
+
+            switch (item.updatingType)
+            {
+                case ItemUpdateType.update: updatingItems.Add(item); break;
+                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Add(item); break;
+                case ItemUpdateType.lateUpdate: lateUpdateingItems.Add(item); break;
+            }
+
+            item.behaviourCached = true;
+        }
+
+        /// <summary>Remove item from behaviour. Strongly not recommended for manual use</summary>
+        /// <param name="item">TSSitem</param>
+        public static void RemoveItem(TSSItem item)
+        {
+            if (!item.behaviourCached) return;
+
+            switch (item.updatingType)
+            {
+                case ItemUpdateType.update: updatingItems.Remove(item); break;
+                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Remove(item); break;
+                case ItemUpdateType.lateUpdate: lateUpdateingItems.Remove(item); break;
+            }
+
+            item.behaviourCached = false;
+        }
+
+        /// <summary>Add core to behaviour. Strongly not recommended for manual use</summary>
+        /// <param name="core">TSSCore</param>
+        public static void AddCore(TSSCore core)
+        {
+            cores.Add(core);
+        }
+
+        /// <summary>Remove core from behaviour. Strongly not recommended for manual use</summary>
+        /// <param name="core">TSSCore</param>
+        public static void RemoveCore(TSSCore core)
+        {
+            cores.Remove(core);
+        }
+
+        #endregion
+
+        #region Private methods
 
         [RuntimeInitializeOnLoadMethod]
         private static void OnLoad()
@@ -75,49 +128,10 @@ namespace TSS.Base
 
         private static void Clear(Scene scene)
         {
-            if (!_clearLists) return;
             updatingItems.Clear();
             fixedUpdatingItems.Clear();
             lateUpdateingItems.Clear();
             cores.Clear();
-        }
-
-        public static void AddItem(TSSItem item)
-        {
-            if (item.behaviourCached) return;
-
-            switch (item.updatingType)
-            {
-                case ItemUpdateType.update: updatingItems.Add(item); break;
-                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Add(item); break;
-                case ItemUpdateType.lateUpdate: lateUpdateingItems.Add(item); break;
-            }
-
-            item.behaviourCached = true;
-        }
-
-        public static void RemoveItem(TSSItem item)
-        {
-            if (!item.behaviourCached) return;
-
-            switch (item.updatingType)
-            {
-                case ItemUpdateType.update: updatingItems.Remove(item); break;
-                case ItemUpdateType.fixedUpdate: fixedUpdatingItems.Remove(item); break;
-                case ItemUpdateType.lateUpdate: lateUpdateingItems.Remove(item); break;
-            }
-
-            item.behaviourCached = false;
-        }
-
-        public static void AddCore(TSSCore core)
-        {
-            cores.Add(core);
-        }
-
-        public static void RemoveCore(TSSCore core)
-        {
-            cores.Remove(core);
         }
 
         #endregion
@@ -128,7 +142,6 @@ namespace TSS.Base
         {
             if (_instance != null) Destroy(gameObject);
         }
-
 
         private void Update()
         {
@@ -270,4 +283,3 @@ namespace TSS.Base
         #endregion
     }
 }
-

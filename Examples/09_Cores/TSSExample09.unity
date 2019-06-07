@@ -262,7 +262,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -286,13 +285,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 1304564252}
-  - {fileID: 31035083}
   tweens: []
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!1 &31035082
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +418,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -448,7 +441,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -612,9 +604,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2128568}
   _profile: {fileID: 11400000, guid: 1e47cdb02558ce24abc5ec0df4d442af, type: 2}
-  stringPart: 
 --- !u!224 &31035084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -821,7 +811,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -845,7 +834,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -1009,9 +997,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 753522796}
   _profile: {fileID: 11400000, guid: 1e47cdb02558ce24abc5ec0df4d442af, type: 2}
-  stringPart: 
 --- !u!114 &32528282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1753,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1791,7 +1776,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -1883,9 +1867,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!1 &680064791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,7 +2098,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2140,7 +2121,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -2304,9 +2284,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!225 &749191033
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2570,7 +2548,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -2594,13 +2571,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 2142341564}
-  - {fileID: 32528281}
   tweens: []
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!1 &781678491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,7 +2969,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Core and states can be added to object dynamically. See "CoreBuilder.cs".'
+  m_Text: '   Core and states can be added to object dynamically. See "CoreBuilder.cs".
+
+    Press navigation buttons, left and right arraws or numbers 1, 2, etc.'
 --- !u!222 &1001737836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3237,7 +3211,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3261,7 +3234,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -3353,9 +3325,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!1 &1084677343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,7 +3823,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -3877,7 +3846,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -3960,9 +3928,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 2128568}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!114 &1304564253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4213,7 +4179,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 1
@@ -4237,13 +4202,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems:
-  - {fileID: 2018459428}
-  - {fileID: 2034804202}
   tweens: []
-  parent: {fileID: 0}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!224 &1368409059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5501,7 +5461,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5525,7 +5484,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -5608,9 +5566,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1368409057}
   _profile: {fileID: 0}
-  stringPart: 
 --- !u!114 &2018459429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5784,7 +5740,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 2
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5808,7 +5763,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -5972,9 +5926,7 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 1368409057}
   _profile: {fileID: 11400000, guid: 1e47cdb02558ce24abc5ec0df4d442af, type: 2}
-  stringPart: 
 --- !u!224 &2034804203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6223,7 +6175,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 1
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6247,7 +6198,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  childItems: []
   tweens:
   - enabled: 1
     startPoint: 0
@@ -6330,6 +6280,4 @@ MonoBehaviour:
         m_RotationOrder: 4
     blendFactor: 0.25
     blendTime: 0
-  parent: {fileID: 753522796}
   _profile: {fileID: 0}
-  stringPart: 
