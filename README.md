@@ -28,9 +28,8 @@ If you want to support me, please buy this plugin at https://assetstore.unity.co
 
 - Check the [Releases](https://github.com/ObelardO/TSS2.0/releases) section above to download a version of TSS that is a simple .unitypackage file which is ready for you to import into your project. 
 - You can also click the "Clone or Download" button and select "Download Zip", then extract the contents to "Assets/TSS" in your project to test out the latest unreleased versions of TSS.
-- Open the manifest.json file in the Packages folder inside of the Project and add ```"com.obel.tss": "https://github.com/ObelardO/TSS.git",```
+- Open the manifest.json file in the Packages folder inside of the Project and add ```"com.obel.tss":"https://github.com/ObelardO/TSS.git",```
 - If you want to support me, please buy this plugin at https://assetstore.unity.com/packages/slug/138944
-
 
 ## IMPORTANT
 
