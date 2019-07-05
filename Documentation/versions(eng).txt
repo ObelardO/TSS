@@ -1,3 +1,6 @@
+1.6.3
+- Some bugs
+
 1.6.2
 + Method Refresh() calling only once at scene loaded or manualy. Method Start() and Update() are removed.
 + TSS Behavior - new internal component for some optimisations.

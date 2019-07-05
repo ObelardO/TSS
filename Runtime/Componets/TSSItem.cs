@@ -32,7 +32,7 @@ namespace TSS
         [NonSerialized] public bool behaviourCached;
 
         /// <summary>Update, FixedUpdate or LateUpdate</summary>
-        public ItemUpdateType updatingType { get { return values.updatingType; } set { values.updatingType = value; } }
+        public ItemUpdateType updatingType { get { return values.updatingType; } set { if (!Application.isPlaying) values.updatingType = value; } }
         /// <summary>Use time scaling</summary>
         public bool timeScaled { get { return values.timeScaled; } set { values.timeScaled = value; } }
 
@@ -118,7 +118,7 @@ namespace TSS
         /// <summary>Don't consider child in inheriting</summary>
         public bool ignoreChilds { set { values.ignoreChilds = value; Refresh(); } get { return values.ignoreChilds; } }
         /// <summary>Don't consider parent in inheriting</summary>
-        public bool ignoreParent { set { values.ignoreParent = value; Refresh(); } get { return values.ignoreParent; } }
+        public bool ignoreParent { set { values.ignoreParent = value; if (parent) parent.Refresh(); } get { return values.ignoreParent; } }
 
         /// <summary>Time in seconds which button animation is playing</summary>
         public float buttonDuration { set { values.buttonDuration = value; } get { return values.buttonDuration; } }
@@ -157,63 +157,7 @@ namespace TSS
         [NonSerialized] public ItemState _state;
         public ItemState state
         {
-            set
-            {
-                if (_state != value)
-                {
-                    bool enable = false;
-
-                    if (value == ItemState.opening || value == ItemState.opened)
-                    {
-                        enable = true;
-                    }
-                    else if (value != ItemState.opened)
-                    {
-                        enable = false;
-                    }
-
-                    if (interactions)
-                    {
-                        if (colider != null) colider.enabled = enable;
-                        if (button != null) button.interactable = enable;
-                        if (canvasGroup != null) canvasGroup.interactable = enable;
-                    }
-
-                    if (blockRaycasting)
-                    {
-                        if (rawImage != null) rawImage.raycastTarget = enable;
-                        if (image != null) image.raycastTarget = enable;
-                        if (canvasGroup != null) canvasGroup.blocksRaycasts = enable;
-                        if (text != null) text.raycastTarget = enable;
-                    }
-
-                    if (soundControl && audioPlayer != null)
-                    {
-                        if (enable && !audioPlayer.isPlaying) audioPlayer.Play();
-                        else if (value == ItemState.closed) { if (soundRestart) audioPlayer.Stop(); else audioPlayer.Pause(); }
-                    }
-
-                    if (videoControl && videoPlayer != null)
-                    {
-                        if (enable && !videoPlayer.isPlaying) videoPlayer.Play();
-                        else if (value == ItemState.closed) { if (videoRestart) videoPlayer.Stop(); else videoPlayer.Pause(); }
-                    }
-
-                    if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave && parent.childStateCounts[(int)_state] > 0) parent.childStateCounts[(int)_state] -= 1;
-
-                    _state = value;
-
-                    switch (_state)
-                    {
-                        case ItemState.closed: if (OnClosed != null && OnClosed.GetPersistentEventCount() > 0) OnClosed.Invoke(); break;
-                        case ItemState.opening: if (OnOpening != null && OnOpening.GetPersistentEventCount() > 0) OnOpening.Invoke(); break;
-                        case ItemState.opened:  if (OnOpened != null && OnOpened.GetPersistentEventCount() > 0) OnOpened.Invoke(); break;
-                        case ItemState.closing: if (OnClosing != null && OnClosing.GetPersistentEventCount() > 0) OnClosing.Invoke(); break;
-                    }
-
-                    if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave) parent.childStateCounts[(int)_state] += 1;
-                }
-            }
+            set { if (_state != value) UpdateState(value); }
             get { return _state; }
         }
 
@@ -229,16 +173,16 @@ namespace TSS
         public bool isSlave { get { return _state == ItemState.slave; } }
 
         /// <summary>Item's child states</summary>
-        [NonSerialized] public int[] childStateCounts = new int[4];
-        [NonSerialized] public float stateChgTime;
-        [NonSerialized] public bool stateChgBranchMode;
+        /*[NonSerialized] OB_TEST*/ public int[] childStateCounts = new int[4];
+        /*[NonSerialized] OB_TEST*/ public float stateChgTime;
+        /*[NonSerialized] OB_TEST*/ public bool stateChgBranchMode;
 
         /// <summary>List of child</summary>
-        [NonSerialized] public List<TSSItem> childItems = new List<TSSItem>();
+        /*[NonSerialized] OB_TEST*/ public List<TSSItem> childItems = new List<TSSItem>();
         /// <summary>List of attached tweens</summary>
         [HideInInspector] public List<TSSTween> tweens = new List<TSSTween>();
         /// <summary>parent item</summary>
-        [NonSerialized] public TSSItem parent;
+        /*[NonSerialized] OB_TEST*/ public TSSItem parent;
         
         [SerializeField] private TSSProfile _profile;
         /// <summary>Attached profile</summary>
@@ -350,24 +294,21 @@ namespace TSS
             {
                 if (childs[i] == this || childs[i].ignoreParent || TSSItemBase.GetItemParentTransform(childs[i]) != transform || !childs[i].enabled) continue;
 
-                if (!ignoreChilds)
+                if (ignoreChilds)
+                {
+                    childs[i].ID = 1;
+                    childs[i].parent = null;
+                }
+                else
                 {
                     childItems.Add(childs[i]);
                     childs[i].ID = childItems.Count;
                     childs[i].parent = this;
                     if (childs[i].loops == 0) childCountWithoutLoops++;
                 }
-                else
-                {
-                    childs[i].ID = 1;
-                    childs[i].parent = null;
-                }
 
                 childs[i].Refresh();
             }
-
-            //Transform parentTransform = TSSItemBase.GetItemParentTransform(this);
-            //if (ignoreParent) parent = null; else parent = parentTransform == null ? null : parentTransform.GetComponent<TSSItem>();
 
             this.UpdateItemDelaysInChain((int)ItemKey.closed);
             this.UpdateItemDelaysInChain((int)ItemKey.opened);
@@ -419,36 +360,104 @@ namespace TSS
 
         private void Awake()
         {
-            TSSItemBase.AllItems.Add(this);
+            TSSBehaviour.OnItemAwake(this);
             TSSItemBase.InitValues(ref values);
             TSSItemBase.DoAllEffects(this, 0);
-            state = ItemState.closed;
+            UpdateState(ItemState.closed);
         }
 
         private void OnDestroy()
         {
-            TSSItemBase.AllItems.Remove(this);
+            TSSBehaviour.OnItemDestroy(this);
         }
 
         private void Reset()
         {
             values = new TSSItemValues();
             TSSItemBase.InitValues(ref values);
-        }
-
-        private void OnEnable()
-        {
-
+            TSSItemBase.DoAllEffects(this, 0);
+            UpdateState(ItemState.closed);
         }
 
         private void OnDisable()
         {
+            if (!ignoreParent && parent && parent.childItems.Contains(this))
+            {
+                parent.childItems.Remove(this);
+                if (values.loops != 0) parent.childCountWithoutLoops--;
+                parent.childStateCounts[(int) _state]--;
+            }
+        }
 
+        private void OnEnable()
+        {
+            if (!ignoreParent && parent && !parent.ignoreChilds)
+            {
+                parent.childItems.Add(this);
+                if (values.loops != 0) parent.childCountWithoutLoops++;
+                parent.childStateCounts[(int)_state]++;
+            }
         }
 
         #endregion
 
         #region Update Methods
+
+        /// <summary>Switching to enw state</summary>
+        public void UpdateState(ItemState newState)
+        {
+            bool enable = false;
+
+            if (newState == ItemState.opening || newState == ItemState.opened)
+            {
+                enable = true;
+            }
+            else if (newState != ItemState.opened)
+            {
+                enable = false;
+            }
+
+            if (interactions)
+            {
+                if (colider != null) colider.enabled = enable;
+                if (button != null) button.interactable = enable;
+                if (canvasGroup != null) canvasGroup.interactable = enable;
+            }
+
+            if (blockRaycasting)
+            {
+                if (rawImage != null) rawImage.raycastTarget = enable;
+                if (image != null) image.raycastTarget = enable;
+                if (canvasGroup != null) canvasGroup.blocksRaycasts = enable;
+                if (text != null) text.raycastTarget = enable;
+            }
+
+            if (soundControl && audioPlayer != null)
+            {
+                if (enable && !audioPlayer.isPlaying) audioPlayer.Play();
+                else if (newState == ItemState.closed) { if (soundRestart) audioPlayer.Stop(); else audioPlayer.Pause(); }
+            }
+
+            if (videoControl && videoPlayer != null)
+            {
+                if (enable && !videoPlayer.isPlaying) videoPlayer.Play();
+                else if (newState == ItemState.closed) { if (videoRestart) videoPlayer.Stop(); else videoPlayer.Pause(); }
+            }
+
+            if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave && parent.childStateCounts[(int)_state] > 0) parent.childStateCounts[(int)_state] -= 1;
+
+            _state = newState;
+
+            switch (_state)
+            {
+                case ItemState.closed: if (OnClosed != null && OnClosed.GetPersistentEventCount() > 0) OnClosed.Invoke(); break;
+                case ItemState.opening: if (OnOpening != null && OnOpening.GetPersistentEventCount() > 0) OnOpening.Invoke(); break;
+                case ItemState.opened: if (OnOpened != null && OnOpened.GetPersistentEventCount() > 0) OnOpened.Invoke(); break;
+                case ItemState.closing: if (OnClosing != null && OnClosing.GetPersistentEventCount() > 0) OnClosing.Invoke(); break;
+            }
+
+            if (loops == 0 && !ignoreParent && parent != null && !parent.ignoreChilds && _state != ItemState.slave) parent.childStateCounts[(int)_state] += 1;
+        }
 
         private void OnClick()
         {

@@ -1274,7 +1274,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -1298,6 +1297,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -1545,6 +1547,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &526422480
 MonoBehaviour:
@@ -2106,7 +2123,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -2130,6 +2146,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -2377,6 +2396,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &702734046
 MonoBehaviour:
@@ -2587,6 +2621,7 @@ RectTransform:
   - {fileID: 1138030905}
   - {fileID: 1173963217}
   - {fileID: 438472918}
+  - {fileID: 1645684031}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4598,6 +4633,125 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1439774845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 750539774}
+    m_Modifications:
+    - target: {fileID: 3156959769311261448, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1026
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a24ecae0b1d54a49b90f77e79334c2e, type: 3}
 --- !u!1 &1492188807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,7 +5260,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5130,6 +5283,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -5377,6 +5533,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1633388255
 MonoBehaviour:
@@ -5415,6 +5586,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633388252}
   m_CullTransparentMesh: 0
+--- !u!224 &1645684031 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8925203670429779393, guid: 6a24ecae0b1d54a49b90f77e79334c2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1439774845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1649618349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,7 +5742,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -5589,6 +5765,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -5836,6 +6015,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1649618352
 MonoBehaviour:
@@ -6311,7 +6505,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -6335,6 +6528,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -6582,6 +6778,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1789066387
 MonoBehaviour:
@@ -7093,7 +7304,6 @@ MonoBehaviour:
     pathSpacing: 10
     pathNormal: 0
     pathLerpMode: 0
-  ID: 0
   loopActivated: 0
   currentLoops: 0
   childCountWithoutLoops: 0
@@ -7117,6 +7327,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  childStateCounts: 00000000000000000000000000000000
+  stateChgTime: 0
+  stateChgBranchMode: 0
   childItems: []
   tweens:
   - enabled: 1
@@ -7364,6 +7577,21 @@ MonoBehaviour:
     blendTime: 0
   parent: {fileID: 0}
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &2023935332
 MonoBehaviour:

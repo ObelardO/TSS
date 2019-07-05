@@ -185,7 +185,7 @@ namespace TSS.Editor
             evulate = EditorGUILayout.Slider(evulate, 0, 1);
 
             TSSTweenEditor.DrawTweensPanel(profile.tweens, profile, foldOutTweens, profile.values);
-            DrawItemsPanel(TSSItemBase.AllItems.Where(i => i.profile == profile).OrderBy(i => i.name).ToArray());
+            DrawItemsPanel(TSSBehaviour.GetItems().Where(i => i.profile == profile).OrderBy(i => i.name).ToArray());
             DrawValuesPanel();
 
             EditorGUILayout.Space();

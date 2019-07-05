@@ -279,7 +279,7 @@ namespace TSS.Editor
 
             bool ignoreChilds = item.ignoreChilds && ValuesIsIdentical(GetSelectedItemsValues<bool>("ignoreChilds"));
 
-            if (ignoreChilds || item.childItems.Count == 0) { EditorGUILayout.EndVertical(); return; }
+            //if (ignoreChilds || item.childItems.Count == 0) { EditorGUILayout.EndVertical(); return; }
 
             EditorGUILayout.BeginHorizontal();
             DrawItemProperty(item, "openChildBefore");

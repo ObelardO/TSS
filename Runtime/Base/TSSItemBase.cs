@@ -246,8 +246,6 @@ namespace TSS.Base
 
         public const int stateCount = 2;
 
-        public static List<TSSItem> AllItems = new List<TSSItem>();
-
         #endregion
 
         #region Init

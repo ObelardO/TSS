@@ -786,6 +786,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &112156997
 MonoBehaviour:
@@ -1866,6 +1881,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &411913849
 MonoBehaviour:
@@ -2291,6 +2321,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &430770389
 MonoBehaviour:
@@ -2820,6 +2865,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &475668439
 MonoBehaviour:
@@ -3729,6 +3789,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &689879589
 MonoBehaviour:
@@ -4434,6 +4509,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: ' s.'
 --- !u!114 &889850658
 MonoBehaviour:
@@ -4962,6 +5052,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1116479049
 MonoBehaviour:
@@ -6020,6 +6125,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1469881703
 MonoBehaviour:
@@ -6401,6 +6521,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1477720224
 MonoBehaviour:
@@ -7377,6 +7512,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1730701733
 MonoBehaviour:
@@ -7680,6 +7830,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 'SOME TYPED TEXT
 
     NEXT LINE
@@ -7801,7 +7966,7 @@ MonoBehaviour:
     childChainMode: 0
     brakeChainDelay: 1
     interactions: 0
-    blockRaycasting: 0
+    blockRaycasting: 1
     soundControl: 0
     soundRestart: 0
     videoControl: 0
@@ -7983,6 +8148,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 1789066387}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 1789066385}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1789066387
 MonoBehaviour:
@@ -7997,7 +8177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.45722005}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8394,6 +8574,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1852155967
 MonoBehaviour:
@@ -8834,6 +9029,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1897524104
 MonoBehaviour:
@@ -9372,6 +9582,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &1966480954
 MonoBehaviour:
@@ -9815,6 +10040,21 @@ MonoBehaviour:
     blendFactor: 0.25
     blendTime: 0
   _profile: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  image: {fileID: 0}
+  rawImage: {fileID: 0}
+  text: {fileID: 0}
+  gradient: {fileID: 0}
+  rect: {fileID: 0}
+  button: {fileID: 0}
+  colider: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  material: {fileID: 0}
+  sphereCollider: {fileID: 0}
+  itemRenderer: {fileID: 0}
+  itemLight: {fileID: 0}
+  path: {fileID: 0}
   stringPart: 
 --- !u!114 &2036467437
 MonoBehaviour:
