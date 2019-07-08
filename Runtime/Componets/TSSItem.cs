@@ -403,8 +403,8 @@ namespace TSS
 
         #region Update Methods
 
-        /// <summary>Switching to enw state</summary>
-        public void UpdateState(ItemState newState)
+        /// <summary>Switching to new state</summary>
+        private void UpdateState(ItemState newState)
         {
             bool enable = false;
 

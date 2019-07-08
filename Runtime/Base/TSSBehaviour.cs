@@ -67,6 +67,21 @@ namespace TSS.Base
 
         #region Public methods
 
+        /// <summary>Add item to behaviour on Awake. Strongly not recommended for manual use</summary>
+        /// <param name="item">TSSitem</param>
+        public static void OnItemAwake(TSSItem item)
+        {
+            AllItems.Add(item);
+        }
+
+        /// <summary>Remove item from behaviour on Destroy. Strongly not recommended for manual use</summary>
+        /// <param name="item">TSSitem</param>
+        public static void OnItemDestroy(TSSItem item)
+        {
+            RemoveItem(item);
+            AllItems.Remove(item);
+        }
+
         /// <summary>Add item to behaviour. Strongly not recommended for manual use</summary>
         /// <param name="item">TSSitem</param>
         public static void AddItem(TSSItem item)
@@ -81,21 +96,6 @@ namespace TSS.Base
             }
 
             item.behaviourCached = true;
-        }
-
-        /// <summary>Add item to behaviour on Awake. Strongly not recommended for manual use</summary>
-        /// <param name="item">TSSitem</param>
-        public static void OnItemAwake(TSSItem item)
-        {
-            AllItems.Add(item);
-        }
-
-        /// <summary>Remove item from behaviour on Destroy. Strongly not recommended for manual use</summary>
-        /// <param name="item">TSSitem</param>
-        public static void OnItemDestroy(TSSItem item)
-        {
-            RemoveItem(item);
-            AllItems.Remove(item);
         }
 
         /// <summary>Remove item from behaviour. Strongly not recommended for manual use</summary>
@@ -128,7 +128,7 @@ namespace TSS.Base
             cores.Remove(core);
         }
 
-        /// <summary>Manualy refresh all items inheritances and activate start states</summary>
+        /// <summary>Manualy refresh all items inheritances and activate start states. Strongly not recommended for manual use</summary>
         public static void RefreshAndStart()
         {
             for (int i = 0; i < AllItems.Count; i++)
@@ -152,10 +152,14 @@ namespace TSS.Base
                 RefreshAndStart();
             };
 
+            RefreshAndStart();
+
             if (instance == null) return;
         }
 
-        private static void Clear(Scene scene)
+        ///Strongly not recommended for manual use</summary>
+        [System.Obsolete("Only for debug")]
+        private static void Clear()
         {
             updatingItems.Clear();
             fixedUpdatingItems.Clear();
@@ -252,7 +256,7 @@ namespace TSS.Base
                     {
                         item.time = 0;
                         item.state = ItemState.closed;
-                        if (!item.loopActivated) TSSBehaviour.RemoveItem(item);
+                        if (!item.loopActivated) RemoveItem(item);
 
                     }
 
@@ -263,7 +267,7 @@ namespace TSS.Base
 
                     if (!item.loopActivated)
                     {
-                        TSSBehaviour.RemoveItem(item);
+                        RemoveItem(item);
                         if (!Application.isPlaying) break;
                     }
 
