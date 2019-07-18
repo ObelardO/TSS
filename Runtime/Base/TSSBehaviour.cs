@@ -144,15 +144,10 @@ namespace TSS.Base
 
         #region Private methods
 
-        [RuntimeInitializeOnLoadMethod]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void OnApplicationStart()
         {
-            SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
-            {
-                RefreshAndStart();
-            };
-
-            RefreshAndStart();
+            SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => RefreshAndStart();
 
             if (instance == null) return;
         }
