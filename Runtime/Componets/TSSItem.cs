@@ -173,16 +173,16 @@ namespace TSS
         public bool isSlave { get { return _state == ItemState.slave; } }
 
         /// <summary>Item's child states</summary>
-        /*[NonSerialized] OB_TEST*/ public int[] childStateCounts = new int[4];
-        /*[NonSerialized] OB_TEST*/ public float stateChgTime;
-        /*[NonSerialized] OB_TEST*/ public bool stateChgBranchMode;
+        [NonSerialized] public int[] childStateCounts = new int[4];
+        [NonSerialized] public float stateChgTime;
+        [NonSerialized] public bool stateChgBranchMode;
 
         /// <summary>List of child</summary>
-        /*[NonSerialized] OB_TEST*/ public List<TSSItem> childItems = new List<TSSItem>();
+        [NonSerialized] public List<TSSItem> childItems = new List<TSSItem>();
         /// <summary>List of attached tweens</summary>
         [HideInInspector] public List<TSSTween> tweens = new List<TSSTween>();
         /// <summary>parent item</summary>
-        /*[NonSerialized] OB_TEST*/ public TSSItem parent;
+        [NonSerialized] public TSSItem parent;
         
         [SerializeField] private TSSProfile _profile;
         /// <summary>Attached profile</summary>
