@@ -15,11 +15,11 @@ using TSS.Base;
 namespace TSS
 {
     [Serializable, DisallowMultipleComponent, AddComponentMenu("TSS/Item")]
-    #if UNITY_2018_3_OR_NEWER
-        [ExecuteAlways]
-    #else
+#if UNITY_2018_3_OR_NEWER
+    [ExecuteAlways]
+#else
         [ExecuteInEditMode]
-    #endif
+#endif
     public class TSSItem : MonoBehaviour
     {
         #region Properties
@@ -47,7 +47,7 @@ namespace TSS
         public float openDelay { set { values.delays[1] = value; } get { return values.delays[1]; } }
 
         /// <summary>Time in seconds which item waits before start closing</summary>
-        public float closeDelay{ set { values.delays[0] = value; } get { return values.delays[0]; } }
+        public float closeDelay { set { values.delays[0] = value; } get { return values.delays[0]; } }
 
         /// <summary>Time in seconds for which item opens</summary>
         public float openDuration { set { values.durations[1] = value; } get { return values.durations[1]; } }
@@ -183,7 +183,7 @@ namespace TSS
         [HideInInspector] public List<TSSTween> tweens = new List<TSSTween>();
         /// <summary>parent item</summary>
         [NonSerialized] public TSSItem parent;
-        
+
         [SerializeField] private TSSProfile _profile;
         /// <summary>Attached profile</summary>
         public TSSProfile profile { set { _profile = value; } get { return _profile; } }
@@ -385,7 +385,7 @@ namespace TSS
             {
                 parent.childItems.Remove(this);
                 if (values.loops != 0) parent.childCountWithoutLoops--;
-                parent.childStateCounts[(int) _state]--;
+                parent.childStateCounts[(int)_state]--;
             }
         }
 
