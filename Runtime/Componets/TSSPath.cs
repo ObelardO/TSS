@@ -11,11 +11,11 @@ using TSS.Base;
 namespace TSS
 {
     [System.Serializable, DisallowMultipleComponent, AddComponentMenu("TSS/Path"), RequireComponent(typeof(TSSItem))]
-    #if UNITY_2018_3_OR_NEWER
-        [ExecuteAlways]
-    #else
+#if UNITY_2018_3_OR_NEWER
+    [ExecuteAlways]
+#else
         [ExecuteInEditMode]
-    #endif
+#endif
     public class TSSPath : MonoBehaviour
     {
         #region Properties
@@ -49,7 +49,9 @@ namespace TSS
             set { item.values.pathResolution = value; item.values.pathResolution = Mathf.Clamp(item.values.pathResolution, 1, 10); UpdateSpacedPoints(); }
         }
 
-        public bool loop { get { return item.values.pathIsLooped; }
+        public bool loop
+        {
+            get { return item.values.pathIsLooped; }
             set
             {
                 if (item.values.pathIsLooped == value) return;
@@ -72,14 +74,16 @@ namespace TSS
             }
         }
 
-        public bool auto { get { return item.values.pathAutoControl; }
+        public bool auto
+        {
+            get { return item.values.pathAutoControl; }
             set
             {
                 if (item.values.pathAutoControl == value) return;
                 item.values.pathAutoControl = value;
 
                 if (item.values.pathAutoControl && ((loop && segmentsCount > 2) || (!loop && segmentsCount > 1)))
-                    AutoSetAllControls(); 
+                    AutoSetAllControls();
             }
         }
 
@@ -91,7 +95,7 @@ namespace TSS
         {
             if (item.values.pathLerpMode == PathLerpMode.baked)
                 return ToWorld(TSSPathBase.EvaluateSpacedPath(spacedPoints, Mathf.Clamp01(time)));
-            
+
             return ToWorld(TSSPathBase.EvaluateCubicPath(points, Mathf.Clamp01(time)));
         }
 
@@ -133,9 +137,9 @@ namespace TSS
         {
             if (toStart)
             {
-                points.Insert(0,points[0] * 2 - points[1]);
-                points.Insert(0,(points[0] + newPos) * 0.5f);
-                points.Insert(0,newPos);
+                points.Insert(0, points[0] * 2 - points[1]);
+                points.Insert(0, (points[0] + newPos) * 0.5f);
+                points.Insert(0, newPos);
 
 
                 SetPointPos(0, newPos, true);
@@ -152,11 +156,11 @@ namespace TSS
             UpdateSpacedPoints();
 
             if (item.values.pathLerpMode == PathLerpMode.dynamic)
-            pointsAttach.Add(null);
+                pointsAttach.Add(null);
 
             if (!auto) return;
 
-            AutoSetAllEffectedControls(count -1);
+            AutoSetAllEffectedControls(count - 1);
             UpdateSpacedPoints();
         }
 
@@ -295,7 +299,7 @@ namespace TSS
 
         private void AutoSetAllEffectedControls(int anchorID)
         {
-            for (int i = anchorID - 3; i <= anchorID + 3; i+=3)
+            for (int i = anchorID - 3; i <= anchorID + 3; i += 3)
             {
                 if (i >= 0 && i < count || loop) AutoSetControl(loopID(i));
             }
@@ -305,7 +309,7 @@ namespace TSS
 
         private void AutoSetAllControls()
         {
-            for (int i = 0; i < count; i+=3) AutoSetControl(i);
+            for (int i = 0; i < count; i += 3) AutoSetControl(i);
 
             AutoSetLoopEnds();
             UpdateSpacedPoints();
@@ -316,7 +320,7 @@ namespace TSS
             Vector3 anchorPos = points[anchorID];
             Vector3 direction = Vector3.zero;
             float[] distances = new float[2];
-            
+
             if (anchorID - 3 >= 0 || loop)
             {
                 Vector3 offset = points[loopID(anchorID - 3)] - anchorPos;
@@ -328,7 +332,7 @@ namespace TSS
             {
                 Vector3 offset = points[loopID(anchorID + 3)] - anchorPos;
                 direction -= offset.normalized;
-                distances[1] =-offset.magnitude;
+                distances[1] = -offset.magnitude;
             }
 
             direction.Normalize();
@@ -357,7 +361,7 @@ namespace TSS
 
         private void OnDrawGizmos()
         {
-            
+
         }
 
         #endregion

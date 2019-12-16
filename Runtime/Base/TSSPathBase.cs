@@ -95,6 +95,7 @@ namespace TSS.Base
 
                 int divisions = Mathf.CeilToInt(GetSegmentLegth(segmentPoints[0], segmentPoints[3], segmentPoints[1], segmentPoints[2]) * resolution * 10);
                 float t = 0;
+
                 while (t <= 1)
                 {
                     t += 1f / divisions;
